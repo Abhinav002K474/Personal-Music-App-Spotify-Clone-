@@ -17,7 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTrackIndex = -1;
     let currentQueue = [];
 
-
+    // View Management
+    const showView = (viewId) => {
+        const views = ['home-view', 'playlist-view', 'library-view', 'search-view'];
+        views.forEach(id => {
+            const v = document.getElementById(id);
+            if(v) v.style.display = (id === viewId) ? 'block' : 'none';
+        });
+        
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+        if (viewId === 'home-view') navHome.classList.add('active');
+        if (viewId === 'library-view') navLibrary.classList.add('active');
+        if (viewId === 'search-view') navSearch.classList.add('active');
+    };
 
     navHome.addEventListener('click', (e) => { e.preventDefault(); showView('home-view'); });
     navSearch.addEventListener('click', (e) => { 
@@ -277,105 +289,81 @@ document.addEventListener('DOMContentLoaded', () => {
         const homeGreeting = document.getElementById('home-greeting');
 
         if (homeGreeting) {
-            homeGreeting.innerText = "Relaxation Mix";
+            const hour = new Date().getHours();
+            let greeting = "Good evening";
+            if (hour < 12) greeting = "Good morning";
+            else if (hour < 18) greeting = "Good afternoon";
+            homeGreeting.innerText = greeting;
         }
 
         if (homeGrid) {
-            // Featured Cards (Screenshot 1)
-            homeGrid.innerHTML = libraryTracks.slice(0, 2).map((track, index) => {
+            // Show first 12 tracks as "Quick Picks"
+            homeGrid.innerHTML = libraryTracks.slice(0, 12).map((track, index) => {
                 const originalIndex = libraryTracks.indexOf(track);
                 return `
-                    <div class="featured-card" onclick="playLibraryTrack(${originalIndex})" style="grid-column: span 2; position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 20px; aspect-ratio: 16/9;">
-                        <img src="${track.cover}" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;">
-                            <div class="tag" style="background: var(--primary-blue); color: black; padding: 4px 12px; border-radius: 20px; font-size: 10px; font-weight: 800; width: fit-content; margin-bottom: 8px; text-transform: uppercase;">Mood: Deep Focus</div>
-                            <div style="font-size: 24px; font-weight: 800; color: white;">${track.title}</div>
-                            <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 4px;">Curated for night-time studio sessions</div>
+                    <div class="card" onclick="playLibraryTrack(${originalIndex})">
+                        <div style="position: relative; overflow: hidden; border-radius: var(--radius-md);">
+                            <img src="${track.cover}" alt="${track.title}" class="card-img" style="margin-bottom:0;">
+                            <div class="card-play-btn" style="position: absolute; bottom: 12px; right: 12px; width: 48px; height: 48px; border-radius: 50%; background: var(--primary-blue); display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; box-shadow: 0 8px 24px rgba(0,0,0,0.5); z-index: 2;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="black"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            </div>
                         </div>
-                        <div style="position: absolute; bottom: 20px; right: 20px; width: 48px; height: 48px; border-radius: 50%; background: var(--primary-blue); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,229,255,0.4);">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="black"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                        </div>
+                        <div class="card-title" style="margin-top: 16px;">${track.title}</div>
+                        <div class="card-subtitle">${track.artist}</div>
                     </div>
                 `;
             }).join('');
-
-            // Recently Played Section (Screenshot 1)
-            const recentlyPlayed = document.createElement('div');
-            recentlyPlayed.className = 'playlist-section';
-            recentlyPlayed.style.marginTop = '40px';
-            recentlyPlayed.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                    <h2 class="section-title" style="margin: 0;">Recently Played</h2>
-                    <span style="color: var(--primary-blue); font-size: 14px; font-weight: 700;">View All</span>
-                </div>
-                <div class="grid-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                    ${libraryTracks.slice(2, 6).map(track => `
-                        <div class="track-card" onclick="playLibraryTrack(${libraryTracks.indexOf(track)})">
-                            <img src="${track.cover}" style="width: 100%; aspect-ratio: 1; border-radius: 12px; object-fit: cover;">
-                            <div style="margin-top: 12px;">
-                                <div style="font-size: 14px; font-weight: 700; color: white;">${track.title}</div>
-                                <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">${track.artist}</div>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            homeGrid.after(recentlyPlayed);
         }
-    };
 
-    const renderLibrary = () => {
-        const libraryContainer = document.getElementById('library-tracklist');
-        const libraryHeader = document.querySelector('.library-header');
-        
-        if (libraryContainer) {
-            libraryContainer.innerHTML = `
-                <div style="padding: 20px 0;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-                        <h2 style="font-size: 28px; font-weight: 800; color: white;">Music I Love</h2>
-                        <span style="color: var(--primary-blue); font-size: 14px; font-weight: 700;">VIEW ALL</span>
+        if (mixesGrid) {
+            const mixes = [
+                { title: "Stress Reliever Mix", subtitle: "Deeply calming beats", color1: "#0066FF", color2: "#000" },
+                { title: "Electric Pulse", subtitle: "High energy rhythms", color1: "#00E5FF", color2: "#003333" }
+            ];
+            mixesGrid.innerHTML = mixes.map(mix => `
+                <div class="card">
+                    <div class="card-img" style="background: linear-gradient(135deg, ${mix.color1}, ${mix.color2}); display: flex; align-items: center; justify-content: center; margin-bottom: 0;">
+                        <span style="font-size: 40px; font-weight: 800; opacity: 0.1; letter-spacing: 4px;">MIX</span>
                     </div>
-                    ${libraryTracks.map((track, index) => `
-                        <div class="library-track-item" onclick="playLibraryTrack(${index})" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <div style="display: flex; align-items: center; gap: 16px;">
-                                <img src="${track.cover}" style="width: 56px; height: 56px; border-radius: 8px; object-fit: cover;">
-                                <div>
-                                    <div style="font-size: 15px; font-weight: 700; color: white;">${track.title}</div>
-                                    <div style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">${track.artist}</div>
-                                </div>
-                            </div>
-                            <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center;">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--primary-blue)"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                            </div>
-                        </div>
-                    `).join('')}
+                    <div class="card-title" style="margin-top: 16px;">${mix.title}</div>
+                    <div class="card-subtitle">${mix.subtitle}</div>
                 </div>
-            `;
+            `).join('');
         }
     };
 
-    const showView = (viewId) => {
-        const views = ['home-view', 'library-view', 'playlist-view', 'search-view'];
-        views.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.style.display = (id === viewId) ? 'block' : 'none';
-        });
+    const renderLibrary = (query = "") => {
+        const libCount = document.getElementById('lib-track-count');
+        
+        const filteredTracks = libraryTracks.filter(track => 
+            track.title.toLowerCase().includes(query.toLowerCase()) || 
+            track.artist.toLowerCase().includes(query.toLowerCase())
+        );
 
-        // Update nav active state
-        document.querySelectorAll('.mobile-nav .nav-item').forEach(item => {
-            const text = item.querySelector('span').innerText.toLowerCase();
-            const viewBase = viewId.replace('-view', '');
-            item.classList.toggle('active', text === viewBase);
-        });
-
-        // Toggle mobile headers
-        const homeHeader = document.querySelector('.home-header');
-        const libraryHeader = document.querySelector('.library-header');
-        if (homeHeader) homeHeader.style.display = (viewId === 'home-view') ? 'flex' : 'none';
-        if (libraryHeader) libraryHeader.style.display = (viewId === 'library-view') ? 'flex' : 'none';
-
-        if (viewId === 'home-view') renderHome();
-        if (viewId === 'library-view') renderLibrary();
+        if (libCount) libCount.innerText = `${filteredTracks.length} Tracks`;
+        
+        libraryTracklist.innerHTML = filteredTracks.map((track, index) => {
+            const originalIndex = libraryTracks.indexOf(track);
+            const isPlayingRow = (currentTrackIndex === originalIndex && currentQueue === libraryTracks);
+            return `
+                <tr class="song-row ${isPlayingRow ? 'playing' : ''}">
+                    <td class="index">${index + 1}</td>
+                    <td class="title-cell" onclick="playLibraryTrack(${originalIndex})">
+                        <img src="${track.cover}" class="small-art">
+                        <div>
+                            <div class="song-title">${track.title}</div>
+                            <div class="song-artist">${track.artist}</div>
+                        </div>
+                    </td>
+                    <td class="duration">
+                        <button onclick="renameTrack(${originalIndex}, event)" class="icon-btn" style="display: inline-flex; margin-right: 15px; opacity: 0.6;" title="Rename Track">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </button>
+                        3:45
+                    </td>
+                </tr>
+            `;
+        }).join('');
     };
 
     const libSearchInput = document.getElementById('library-search');
