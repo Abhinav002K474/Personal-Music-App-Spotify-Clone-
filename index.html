@@ -266,76 +266,9 @@
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
                     </button>
                     <div id="btn-play" class="play-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="current        if (homeGrid) {
-            // Quick Picks: 2 columns on mobile, cards look like the screenshot
-            homeGrid.innerHTML = libraryTracks.slice(0, 8).map((track, index) => {
-                const originalIndex = libraryTracks.indexOf(track);
-                return `
-                    <div class="card" onclick="playLibraryTrack(${originalIndex})" style="display: flex; align-items: center; gap: 8px; padding: 0; background: #2A2A2A; overflow: hidden;">
-                        <img src="${track.cover}" style="width: 56px; height: 56px; object-fit: cover;">
-                        <div class="card-title" style="margin: 0; font-size: 11px; font-weight: 700; padding-right: 8px;">${track.title}</div>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                     </div>
-                `;
-            }).join('');
-        }
-
-        if (mixesGrid) {
-            const mixes = [
-                { title: "Simple Plan", subtitle: "My Chemical Romance, Fall Out Boy...", color1: "#4dabf7", color2: "#1864ab" },
-                { title: "David Guetta", subtitle: "Rihanna, David Guetta, Snoop Dogg...", color1: "#da77f2", color2: "#862e9c" },
-                { title: "Rock Anthems", subtitle: "Linkin Park, Skillet, Three Days Grace...", color1: "#ff8787", color2: "#c92a2a" }
-            ];
-            mixesGrid.innerHTML = mixes.map(mix => `
-                <div class="card" style="min-width: 160px; background: transparent; border: none; padding: 0;">
-                    <div style="width: 160px; height: 160px; background: linear-gradient(135deg, ${mix.color1}, ${mix.color2}); border-radius: 4px; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; position: relative;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="position: absolute; top: 8px; left: 8px; opacity: 0.8;"><circle cx="12" cy="12" r="10"></circle><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0z"></path></svg>
-                        <div style="font-size: 10px; font-weight: 800; opacity: 0.6; margin-bottom: 4px; letter-spacing: 1px;">RADIO</div>
-                        <div style="font-size: 18px; font-weight: 900; line-height: 1;">${mix.title}</div>
-                    </div>
-                    <div class="card-subtitle" style="margin-top: 8px; font-size: 11px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${mix.subtitle}</div>
-                </div>
-            `).join('');
-        }
-    };
-
-    const renderLibrary = (query = "") => {
-        const filteredTracks = libraryTracks.filter(track => 
-            track.title.toLowerCase().includes(query.toLowerCase()) || 
-            track.artist.toLowerCase().includes(query.toLowerCase())
-        );
-
-        // Spotify Library List Style
-        const specialItems = `
-            <div class="library-item" onclick="showView('playlist-view')">
-                <img src="${libraryTracks[0].cover}" class="lib-art square">
-                <div>
-                    <div style="font-size: 14px; font-weight: 700; color: #1DB954;">MUSIC I 💙</div>
-                    <div style="font-size: 12px; color: var(--text-secondary);">📌 Playlist • HELL PHOENIX 🔥</div>
-                </div>
-            </div>
-            <div class="library-item">
-                <div class="lib-art square" style="background: linear-gradient(135deg, #450af5, #c4efd9); display: flex; align-items: center; justify-content: center;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                </div>
-                <div>
-                    <div style="font-size: 14px; font-weight: 700;">Liked Songs</div>
-                    <div style="font-size: 12px; color: var(--text-secondary);">Playlist • ${libraryTracks.length} songs</div>
-                </div>
-            </div>
-        `;
-
-        const artists = [...new Set(libraryTracks.map(t => t.artist))].slice(0, 5).map(artist => `
-            <div class="library-item">
-                <div class="lib-art round" style="background: #333; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--primary-blue);">${artist[0]}</div>
-                <div>
-                    <div style="font-size: 14px; font-weight: 700;">${artist}</div>
-                    <div style="font-size: 12px; color: var(--text-secondary);">Artist</div>
-                </div>
-            </div>
-        `).join('');
-
-        libraryTracklist.innerHTML = specialItems + artists;
-    };le="Next">
+                    <button id="btn-next" class="icon-btn" title="Next">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
                     </button>
                     <button id="btn-repeat" class="icon-btn" title="Repeat">
