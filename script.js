@@ -297,19 +297,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (homeGrid) {
-            // Show first 12 tracks as "Quick Picks"
-            homeGrid.innerHTML = libraryTracks.slice(0, 12).map((track, index) => {
+            // Quick Picks: 2 columns on mobile, cards look like the screenshot
+            homeGrid.innerHTML = libraryTracks.slice(0, 8).map((track, index) => {
                 const originalIndex = libraryTracks.indexOf(track);
                 return `
-                    <div class="card" onclick="playLibraryTrack(${originalIndex})">
-                        <div style="position: relative; overflow: hidden; border-radius: var(--radius-md);">
-                            <img src="${track.cover}" alt="${track.title}" class="card-img" style="margin-bottom:0;">
-                            <div class="card-play-btn" style="position: absolute; bottom: 12px; right: 12px; width: 48px; height: 48px; border-radius: 50%; background: var(--primary-blue); display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; box-shadow: 0 8px 24px rgba(0,0,0,0.5); z-index: 2;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="black"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                            </div>
-                        </div>
-                        <div class="card-title" style="margin-top: 16px;">${track.title}</div>
-                        <div class="card-subtitle">${track.artist}</div>
+                    <div class="card" onclick="playLibraryTrack(${originalIndex})" style="display: flex; align-items: center; gap: 8px; padding: 0; background: #2A2A2A; overflow: hidden; border-radius: 4px;">
+                        <img src="${track.cover}" style="width: 56px; height: 56px; object-fit: cover;">
+                        <div class="card-title" style="margin: 0; font-size: 11px; font-weight: 700; padding-right: 8px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${track.title}</div>
                     </div>
                 `;
             }).join('');
@@ -317,53 +311,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (mixesGrid) {
             const mixes = [
-                { title: "Stress Reliever Mix", subtitle: "Deeply calming beats", color1: "#0066FF", color2: "#000" },
-                { title: "Electric Pulse", subtitle: "High energy rhythms", color1: "#00E5FF", color2: "#003333" }
+                { title: "Simple Plan", subtitle: "My Chemical Romance, Fall Out Boy...", color1: "#4dabf7", color2: "#1864ab" },
+                { title: "David Guetta", subtitle: "Rihanna, David Guetta, Snoop Dogg...", color1: "#da77f2", color2: "#862e9c" },
+                { title: "Rock Anthems", subtitle: "Linkin Park, Skillet, Three Days Grace...", color1: "#ff8787", color2: "#c92a2a" }
             ];
             mixesGrid.innerHTML = mixes.map(mix => `
-                <div class="card">
-                    <div class="card-img" style="background: linear-gradient(135deg, ${mix.color1}, ${mix.color2}); display: flex; align-items: center; justify-content: center; margin-bottom: 0;">
-                        <span style="font-size: 40px; font-weight: 800; opacity: 0.1; letter-spacing: 4px;">MIX</span>
+                <div class="card" style="min-width: 160px; background: transparent; border: none; padding: 0; margin-right: 16px;">
+                    <div style="width: 160px; height: 160px; background: linear-gradient(135deg, ${mix.color1}, ${mix.color2}); border-radius: 4px; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; position: relative; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="position: absolute; top: 8px; left: 8px; opacity: 0.8;"><circle cx="12" cy="12" r="10"></circle><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0z"></path></svg>
+                        <div style="font-size: 10px; font-weight: 800; opacity: 0.6; margin-bottom: 4px; letter-spacing: 1px;">RADIO</div>
+                        <div style="font-size: 18px; font-weight: 900; line-height: 1;">${mix.title}</div>
                     </div>
-                    <div class="card-title" style="margin-top: 16px;">${mix.title}</div>
-                    <div class="card-subtitle">${mix.subtitle}</div>
+                    <div class="card-subtitle" style="margin-top: 8px; font-size: 11px; color: #b3b3b3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${mix.subtitle}</div>
                 </div>
             `).join('');
         }
     };
 
     const renderLibrary = (query = "") => {
-        const libCount = document.getElementById('lib-track-count');
-        
         const filteredTracks = libraryTracks.filter(track => 
             track.title.toLowerCase().includes(query.toLowerCase()) || 
             track.artist.toLowerCase().includes(query.toLowerCase())
         );
 
-        if (libCount) libCount.innerText = `${filteredTracks.length} Tracks`;
-        
-        libraryTracklist.innerHTML = filteredTracks.map((track, index) => {
-            const originalIndex = libraryTracks.indexOf(track);
-            const isPlayingRow = (currentTrackIndex === originalIndex && currentQueue === libraryTracks);
-            return `
-                <tr class="song-row ${isPlayingRow ? 'playing' : ''}">
-                    <td class="index">${index + 1}</td>
-                    <td class="title-cell" onclick="playLibraryTrack(${originalIndex})">
-                        <img src="${track.cover}" class="small-art">
-                        <div>
-                            <div class="song-title">${track.title}</div>
-                            <div class="song-artist">${track.artist}</div>
-                        </div>
-                    </td>
-                    <td class="duration">
-                        <button onclick="renameTrack(${originalIndex}, event)" class="icon-btn" style="display: inline-flex; margin-right: 15px; opacity: 0.6;" title="Rename Track">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                        </button>
-                        3:45
-                    </td>
-                </tr>
-            `;
-        }).join('');
+        // Spotify Library List Style
+        const specialItems = `
+            <div class="library-item" onclick="showView('playlist-view')" style="display: flex; align-items: center; gap: 12px; padding: 12px 0;">
+                <img src="${libraryTracks[0].cover}" class="lib-art square" style="width: 64px; height: 64px; border-radius: 4px; object-fit: cover;">
+                <div>
+                    <div style="font-size: 14px; font-weight: 700; color: #1DB954;">MUSIC I 💙</div>
+                    <div style="font-size: 12px; color: #b3b3b3; margin-top: 4px;">📌 Playlist • HELL PHOENIX 🔥</div>
+                </div>
+            </div>
+            <div class="library-item" style="display: flex; align-items: center; gap: 12px; padding: 12px 0;">
+                <div class="lib-art square" style="width: 64px; height: 64px; border-radius: 4px; background: linear-gradient(135deg, #450af5, #c4efd9); display: flex; align-items: center; justify-content: center;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+                <div>
+                    <div style="font-size: 14px; font-weight: 700; color: white;">Liked Songs</div>
+                    <div style="font-size: 12px; color: #b3b3b3; margin-top: 4px;">Playlist • ${libraryTracks.length} songs</div>
+                </div>
+            </div>
+        `;
+
+        const artists = [...new Set(libraryTracks.map(t => t.artist))].slice(0, 8).map(artist => `
+            <div class="library-item" style="display: flex; align-items: center; gap: 12px; padding: 12px 0;">
+                <div class="lib-art round" style="width: 64px; height: 64px; border-radius: 50%; background: #333; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #00E5FF; font-size: 20px;">${artist[0]}</div>
+                <div>
+                    <div style="font-size: 14px; font-weight: 700; color: white;">${artist}</div>
+                    <div style="font-size: 12px; color: #b3b3b3; margin-top: 4px;">Artist</div>
+                </div>
+            </div>
+        `).join('');
+
+        const libraryContainer = document.getElementById('library-tracklist');
+        if (libraryContainer) libraryContainer.innerHTML = specialItems + artists;
     };
 
     const libSearchInput = document.getElementById('library-search');

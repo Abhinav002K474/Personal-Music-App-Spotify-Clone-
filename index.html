@@ -86,114 +86,150 @@
                 <span>Search</span>
             </a>
             <a href="#" class="nav-item" onclick="showView('library-view')">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
                 <span>Library</span>
+            </a>
+            <a href="#" class="nav-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                <span>Premium</span>
+            </a>
+            <a href="#" class="nav-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <span>Create</span>
             </a>
         </nav>
 
         <!-- Main Content -->
         <main class="main-content">
             <!-- Home View -->
-            <div id="home-view">
-                <header style="margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center;">
-                    <h1 class="section-title" id="home-greeting">Good afternoon</h1>
-                    <div class="user-profile" style="width: 40px; height: 40px; border-radius: 50%; background: var(--glass-bg); border: 1px solid var(--glass-border);"></div>
-                </header>
-
-                <section style="margin-bottom: 48px;">
-                    <h2 class="section-title">Quick Picks</h2>
-                    <div class="grid-container" id="home-grid">
-                        <!-- Dynamic tracks will be injected here -->
+            <section id="home-view">
+                <div class="mobile-header">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div class="profile-circle">S</div>
+                        <div class="chip active">All</div>
+                        <div class="chip">Music</div>
+                        <div class="chip">Podcasts</div>
                     </div>
-                </section>
+                </div>
 
-                <section>
-                    <h2 class="section-title">Made For You</h2>
-                    <div class="grid-container" id="mixes-grid">
-                        <!-- Mix cards will be injected here -->
+                <div class="playlist-section">
+                    <h2 class="section-title" id="home-greeting">Good afternoon</h2>
+                    <div id="home-grid" class="grid-container">
+                        <!-- Quick Picks (2 cols on mobile) -->
                     </div>
-                </section>
-            </div>
+                </div>
+
+                <div class="playlist-section" style="margin-top: 40px;">
+                    <h2 class="section-title">Jump back in</h2>
+                    <div id="mixes-grid" class="grid-container" style="display: flex; overflow-x: auto; gap: 16px; scrollbar-width: none;">
+                        <!-- Horizontal mixes -->
+                    </div>
+                </div>
+            </section>
 
             <!-- Playlist View (Hidden by default) -->
-            <div id="playlist-view" style="display: none;">
-                <div class="playlist-header" style="display: flex; gap: 32px; align-items: flex-end; margin-bottom: 40px;">
-                    <img id="playlist-art" src="https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg" alt="Playlist Art" style="width: 232px; height: 232px; border-radius: var(--radius-lg); box-shadow: 0 12px 48px rgba(0,0,0,0.7);">
-                    <div class="playlist-info">
-                        <p style="font-weight: 700; font-size: 14px; margin-bottom: 8px;">PLAYLIST</p>
-                        <h1 id="playlist-name" style="font-size: 72px; font-weight: 800; margin-bottom: 16px; letter-spacing: -2px;">Deep Focus</h1>
-                        <p style="color: var(--text-secondary);">The ultimate sonic sanctuary for your mind.</p>
-                    </div>
-                </div>
-
-                <div class="song-list-controls" style="display: flex; align-items: center; gap: 32px; margin-bottom: 32px;">
-                    <div class="play-btn" style="width: 56px; height: 56px; display: flex; align-items: center; justify-content: center;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                    </div>
-                    <button class="icon-btn" style="opacity: 0.6; color: white;">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                    </button>
-                    <button class="icon-btn" style="opacity: 0.6; color: white;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-                    </button>
-                </div>
-
-                <table style="width: 100%; border-collapse: collapse; color: var(--text-secondary);">
-                    <thead>
-                        <tr style="border-bottom: 1px solid var(--glass-border); text-align: left; font-size: 12px; letter-spacing: 1px;">
-                            <th style="padding: 12px; width: 40px;">#</th>
-                            <th style="padding: 12px;">TITLE</th>
-                            <th style="padding: 12px;">ALBUM</th>
-                            <th style="padding: 12px; width: 100px;">DURATION</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tracklist-body">
-                        <!-- Tracks will be injected here -->
-                    </tbody>
-                </table>
-            </div>
-            <!-- Library View (Hidden by default) -->
-            <div id="library-view" style="display: none;">
+            <section id="playlist-view" style="display: none;">
                 <div class="playlist-header">
-                    <img src="https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg" class="playlist-art-large" id="lib-header-art">
+                    <div id="btn-back-playlist" onclick="showView('home-view')" style="position: absolute; top: 16px; left: 16px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); border-radius: 50%; cursor: pointer; z-index: 10;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="m15 18-6-6 6-6"></path></svg>
+                    </div>
+                    <img id="playlist-art" src="https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg" alt="Playlist Art" class="playlist-art-large">
                     <div class="playlist-info">
-                        <p style="font-weight: 700; font-size: 14px; margin-bottom: 8px; color: var(--primary-blue);">YOUR COLLECTION</p>
-                        <h1 style="font-size: 72px; font-weight: 800; margin-bottom: 16px; letter-spacing: -2px; display: flex; align-items: center; gap: 16px;">
-                            Music I 💙
-                        </h1>
-                        <div style="display: flex; align-items: center; gap: 16px; margin-top: 24px;">
-                            <button class="btn-primary" onclick="playAllLibrary()">PLAY ALL</button>
-                            <button class="btn-secondary" onclick="sortLibraryAlphabetically()">SORT A-Z</button>
-                            <div class="search-box" style="position: relative; margin-left: auto; width: 300px;">
-                                <input type="text" id="library-search" placeholder="Search in collection..." style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 12px 16px 12px 40px; border-radius: 20px; color: white; outline: none; transition: all 0.3s ease;">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                            </div>
-                            <span id="lib-track-count" style="color: var(--text-secondary); font-weight: 500; min-width: 80px;">0 Tracks</span>
+                        <h1 id="playlist-name" style="font-size: 32px; font-weight: 800; margin-top: 20px;">Music I 💙</h1>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-top: 12px;">
+                            <div class="profile-circle" style="width: 24px; height: 24px; font-size: 10px;">HP</div>
+                            <span style="font-weight: 700; font-size: 13px;">HELL PHOENIX 🔥</span>
+                        </div>
+                        <div style="color: var(--text-secondary); font-size: 12px; margin-top: 4px;">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            1 save • 21h 2min
                         </div>
                     </div>
                 </div>
 
+                <div class="song-list-controls" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+                    <div style="display: flex; align-items: center; gap: 24px;">
+                        <button class="icon-btn" style="color: var(--text-secondary);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg></button>
+                        <button class="icon-btn" style="color: var(--text-secondary);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></button>
+                        <button class="icon-btn" style="color: var(--text-secondary);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg></button>
+                        <button class="icon-btn" style="color: var(--text-secondary);"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></button>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <button class="icon-btn" style="color: #1DB954;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 18h20"></path><path d="m17 4-7 7 7 7"></path></svg></button>
+                        <div class="play-btn" style="width: 50px; height: 50px; background: #1DB954; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="black"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons-row" style="display: flex; gap: 8px; margin-bottom: 24px; overflow-x: auto; scrollbar-width: none;">
+                    <button class="chip" style="background: #282828; border-radius: 8px; padding: 6px 12px;">+ Add</button>
+                    <button class="chip" style="background: #282828; border-radius: 8px; padding: 6px 12px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg> Edit</button>
+                    <button class="chip" style="background: #282828; border-radius: 8px; padding: 6px 12px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px;"><path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="m21 8-4-4-4 4"></path><path d="M17 4v16"></path></svg> Sort</button>
+                    <button class="chip" style="background: #282828; border-radius: 8px; padding: 6px 12px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg> Name</button>
+                </div>
+
                 <table class="song-table">
-                    <thead>
-                        <tr style="border-bottom: 1px solid var(--glass-border); text-align: left; font-size: 12px; letter-spacing: 1px; color: var(--text-secondary);">
-                            <th style="padding: 12px; width: 60px; text-align: center;">#</th>
-                            <th style="padding: 12px;">TITLE</th>
-                            <th style="padding: 12px; text-align: right; width: 100px;">DURATION</th>
-                        </tr>
-                    </thead>
-                    <tbody id="library-tracklist">
+                    <tbody id="tracklist-body">
                         <!-- Tracks will be injected here -->
                     </tbody>
                 </table>
-            </div>
+            </section>
+            <!-- Library View (Hidden by default) -->
+            <section id="library-view" style="display: none;">
+                <div class="mobile-header">
+                    <div style="display: flex; align-items: center; gap: 16px; width: 100%;">
+                        <div class="profile-circle">S</div>
+                        <h1 style="font-size: 24px; font-weight: 700; margin-left: 8px;">Your Library</h1>
+                        <div style="margin-left: auto; display: flex; gap: 20px;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chip-container">
+                    <div class="chip active">Playlists</div>
+                    <div class="chip">Podcasts</div>
+                    <div class="chip">Albums</div>
+                    <div class="chip">Artists</div>
+                </div>
+
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 10px; margin-bottom: 20px;">
+                    <div style="display: flex; align-items: center; gap: 8px; color: var(--text-white); font-size: 13px; font-weight: 600;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="m21 8-4-4-4 4"></path><path d="M17 4v16"></path></svg>
+                        Recents
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                </div>
+
+                <div id="library-tracklist">
+                    <!-- List items like 'Music I 💙', 'Liked Songs', Artists, etc. -->
+                </div>
+            </section>
 
             <!-- Search View (Hidden by default) -->
-            <div id="search-view" style="display: none;">
-                <h1 class="section-title">Search</h1>
-                <div class="search-box" style="position: relative; margin-bottom: 32px; width: 100%; max-width: 600px;">
-                    <input type="text" id="global-search" placeholder="What do you want to listen to?" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 16px 20px 16px 48px; border-radius: 30px; color: white; outline: none; font-size: 16px; transition: all 0.3s ease;">
+            <section id="search-view" style="display: none;">
+                <div class="mobile-header">
+                    <div style="display: flex; align-items: center; gap: 12px; width: 100%;">
+                        <div class="profile-circle">S</div>
+                        <h1 style="font-size: 24px; font-weight: 700; margin-left: 8px;">Search</h1>
+                    </div>
+                </div>
+                
+                <div class="search-box" style="position: relative; margin: 16px 0; width: 100%;">
+                    <input type="text" id="global-search" placeholder="What do you want to listen to?" style="width: 100%; background: #282828; border: none; padding: 16px 20px 16px 48px; border-radius: 8px; color: white; outline: none; font-size: 16px; font-weight: 600;">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </div>
+
+                <div id="search-results">
+                    <table class="song-table">
+                        <tbody id="search-tracklist">
+                            <!-- Search results will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
                 <div id="search-results">
                     <table class="song-table">
                         <tbody id="search-tracklist">
@@ -230,9 +266,76 @@
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
                     </button>
                     <div id="btn-play" class="play-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="current        if (homeGrid) {
+            // Quick Picks: 2 columns on mobile, cards look like the screenshot
+            homeGrid.innerHTML = libraryTracks.slice(0, 8).map((track, index) => {
+                const originalIndex = libraryTracks.indexOf(track);
+                return `
+                    <div class="card" onclick="playLibraryTrack(${originalIndex})" style="display: flex; align-items: center; gap: 8px; padding: 0; background: #2A2A2A; overflow: hidden;">
+                        <img src="${track.cover}" style="width: 56px; height: 56px; object-fit: cover;">
+                        <div class="card-title" style="margin: 0; font-size: 11px; font-weight: 700; padding-right: 8px;">${track.title}</div>
                     </div>
-                    <button id="btn-next" class="icon-btn" title="Next">
+                `;
+            }).join('');
+        }
+
+        if (mixesGrid) {
+            const mixes = [
+                { title: "Simple Plan", subtitle: "My Chemical Romance, Fall Out Boy...", color1: "#4dabf7", color2: "#1864ab" },
+                { title: "David Guetta", subtitle: "Rihanna, David Guetta, Snoop Dogg...", color1: "#da77f2", color2: "#862e9c" },
+                { title: "Rock Anthems", subtitle: "Linkin Park, Skillet, Three Days Grace...", color1: "#ff8787", color2: "#c92a2a" }
+            ];
+            mixesGrid.innerHTML = mixes.map(mix => `
+                <div class="card" style="min-width: 160px; background: transparent; border: none; padding: 0;">
+                    <div style="width: 160px; height: 160px; background: linear-gradient(135deg, ${mix.color1}, ${mix.color2}); border-radius: 4px; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; position: relative;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="position: absolute; top: 8px; left: 8px; opacity: 0.8;"><circle cx="12" cy="12" r="10"></circle><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0z"></path></svg>
+                        <div style="font-size: 10px; font-weight: 800; opacity: 0.6; margin-bottom: 4px; letter-spacing: 1px;">RADIO</div>
+                        <div style="font-size: 18px; font-weight: 900; line-height: 1;">${mix.title}</div>
+                    </div>
+                    <div class="card-subtitle" style="margin-top: 8px; font-size: 11px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${mix.subtitle}</div>
+                </div>
+            `).join('');
+        }
+    };
+
+    const renderLibrary = (query = "") => {
+        const filteredTracks = libraryTracks.filter(track => 
+            track.title.toLowerCase().includes(query.toLowerCase()) || 
+            track.artist.toLowerCase().includes(query.toLowerCase())
+        );
+
+        // Spotify Library List Style
+        const specialItems = `
+            <div class="library-item" onclick="showView('playlist-view')">
+                <img src="${libraryTracks[0].cover}" class="lib-art square">
+                <div>
+                    <div style="font-size: 14px; font-weight: 700; color: #1DB954;">MUSIC I 💙</div>
+                    <div style="font-size: 12px; color: var(--text-secondary);">📌 Playlist • HELL PHOENIX 🔥</div>
+                </div>
+            </div>
+            <div class="library-item">
+                <div class="lib-art square" style="background: linear-gradient(135deg, #450af5, #c4efd9); display: flex; align-items: center; justify-content: center;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+                <div>
+                    <div style="font-size: 14px; font-weight: 700;">Liked Songs</div>
+                    <div style="font-size: 12px; color: var(--text-secondary);">Playlist • ${libraryTracks.length} songs</div>
+                </div>
+            </div>
+        `;
+
+        const artists = [...new Set(libraryTracks.map(t => t.artist))].slice(0, 5).map(artist => `
+            <div class="library-item">
+                <div class="lib-art round" style="background: #333; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--primary-blue);">${artist[0]}</div>
+                <div>
+                    <div style="font-size: 14px; font-weight: 700;">${artist}</div>
+                    <div style="font-size: 12px; color: var(--text-secondary);">Artist</div>
+                </div>
+            </div>
+        `).join('');
+
+        libraryTracklist.innerHTML = specialItems + artists;
+    };le="Next">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
                     </button>
                     <button id="btn-repeat" class="icon-btn" title="Repeat">
