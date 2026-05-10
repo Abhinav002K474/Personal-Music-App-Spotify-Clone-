@@ -630,46 +630,28 @@ body {
     color: var(--primary-blue);
 }
 
+/* Mobile Headers */
+.mobile-header {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: #000;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+}
+
 /* Responsive Media Queries */
 @media (max-width: 768px) {
-    .mobile-header, .chip-container {
-        display: flex;
-        gap: 8px;
-        padding: 16px 0;
-        overflow-x: auto;
-        scrollbar-width: none;
-    }
-
-    .mobile-header::-webkit-scrollbar, .chip-container::-webkit-scrollbar { display: none; }
-
-    .chip {
-        padding: 8px 16px;
-        background: #2A2A2A;
-        border-radius: 20px;
-        font-size: 13px;
-        font-weight: 600;
-        white-space: nowrap;
-        color: white;
-    }
-
-    .chip.active {
-        background: #1DB954;
-        color: black;
-    }
-
-    .profile-circle {
-        min-width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        background: #E91E63;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 14px;
-        color: white;
-    }
-
+    .mobile-header { display: flex; }
+    
     .app-container {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 0;
@@ -679,10 +661,31 @@ body {
 
     .mobile-nav {
         display: flex;
-        background: #000;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(40px);
         height: 85px;
         padding-bottom: 20px;
         border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .mobile-nav .nav-item {
+        flex: 1;
+        text-align: center;
+    }
+
+    .mobile-nav .nav-item span {
+        font-size: 10px;
+        margin-top: 4px;
+        font-weight: 500;
+        opacity: 0.7;
+    }
+
+    .mobile-nav .nav-item.active {
+        color: var(--primary-blue);
+    }
+
+    .mobile-nav .nav-item.active span {
+        opacity: 1;
     }
 
     .main-content {
@@ -690,99 +693,54 @@ body {
         padding-bottom: 180px;
     }
 
-    #home-grid {
-        display: grid !important;
+    /* Featured Card Style (Screenshot 1) */
+    .featured-card {
+        box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+        transition: transform 0.3s ease;
+    }
+
+    .featured-card:active {
+        transform: scale(0.98);
+    }
+
+    /* Track Cards Grid */
+    .grid-container {
+        display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 8px;
-    }
-
-    #mixes-grid {
-        display: flex !important;
-        overflow-x: auto;
         gap: 16px;
-        padding-bottom: 10px;
-        scrollbar-width: none;
     }
 
-    #mixes-grid::-webkit-scrollbar { display: none; }
+    /* Library List Style (Screenshot 2) */
+    .library-track-item {
+        transition: background 0.2s;
+    }
 
+    .library-track-item:active {
+        background: rgba(255,255,255,0.05);
+    }
+
+    /* Floating Player Bar */
     .player-bar {
         position: fixed;
         bottom: 95px;
         left: 8px;
         right: 8px;
         width: calc(100% - 16px);
-        height: 56px;
-        background: #282828;
-        border-radius: 8px;
-        padding: 0 12px;
+        height: 64px;
+        background: rgba(20, 20, 20, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.08);
+        padding: 0 16px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        z-index: 999;
-        border: none;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        z-index: 1000;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.5);
     }
 
-    .current-track { gap: 12px; max-width: 65%; }
-    .track-art { width: 40px; height: 40px; border-radius: 4px; }
-    .track-info .title { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .track-info .artist { font-size: 11px; opacity: 0.7; }
-
-    .playlist-header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 60px 16px 24px;
-        background: linear-gradient(180deg, #5038a0 0%, #121212 100%);
-        margin: 0 -16px 20px;
-        position: relative;
-    }
-
-    .playlist-art-large {
-        width: 200px;
-        height: 200px;
-        margin: 0 auto;
-        box-shadow: 0 12px 48px rgba(0,0,0,0.8);
-    }
-
-    .playlist-info h1 {
-        font-size: 32px !important;
-        margin-top: 24px;
-        font-weight: 800;
-    }
-
-    .library-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 8px 0;
-    }
-
-    .lib-art {
-        width: 64px;
-        height: 64px;
-        object-fit: cover;
-    }
-
-    .lib-art.round { border-radius: 50%; }
-    .lib-art.square { border-radius: 4px; }
-
-    .song-row td {
-        padding: 12px 0;
-    }
-
-    .song-row .small-art {
-        width: 48px;
-        height: 48px;
-        border-radius: 4px;
-    }
-
-    .play-btn {
-        width: 48px;
-        height: 48px;
-        background: #1DB954;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
+    .track-info .title { font-size: 14px; font-weight: 600; }
+    .track-info .artist { font-size: 12px; opacity: 0.6; }
 }
 
 

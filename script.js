@@ -289,83 +289,105 @@ document.addEventListener('DOMContentLoaded', () => {
         const homeGreeting = document.getElementById('home-greeting');
 
         if (homeGreeting) {
-            const hour = new Date().getHours();
-            let greeting = "Good evening";
-            if (hour < 12) greeting = "Good morning";
-            else if (hour < 18) greeting = "Good afternoon";
-            homeGreeting.innerText = greeting;
+            homeGreeting.innerText = "Relaxation Mix";
         }
 
         if (homeGrid) {
-            // Quick Picks: 2 columns on mobile, cards look like the screenshot
-            homeGrid.innerHTML = libraryTracks.slice(0, 8).map((track, index) => {
+            // Featured Cards (Screenshot 1)
+            homeGrid.innerHTML = libraryTracks.slice(0, 2).map((track, index) => {
                 const originalIndex = libraryTracks.indexOf(track);
                 return `
-                    <div class="card" onclick="playLibraryTrack(${originalIndex})" style="display: flex; align-items: center; gap: 8px; padding: 0; background: #2A2A2A; overflow: hidden; border-radius: 4px;">
-                        <img src="${track.cover}" style="width: 56px; height: 56px; object-fit: cover;">
-                        <div class="card-title" style="margin: 0; font-size: 11px; font-weight: 700; padding-right: 8px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${track.title}</div>
+                    <div class="featured-card" onclick="playLibraryTrack(${originalIndex})" style="grid-column: span 2; position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 20px; aspect-ratio: 16/9;">
+                        <img src="${track.cover}" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;">
+                            <div class="tag" style="background: var(--primary-blue); color: black; padding: 4px 12px; border-radius: 20px; font-size: 10px; font-weight: 800; width: fit-content; margin-bottom: 8px; text-transform: uppercase;">Mood: Deep Focus</div>
+                            <div style="font-size: 24px; font-weight: 800; color: white;">${track.title}</div>
+                            <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 4px;">Curated for night-time studio sessions</div>
+                        </div>
+                        <div style="position: absolute; bottom: 20px; right: 20px; width: 48px; height: 48px; border-radius: 50%; background: var(--primary-blue); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,229,255,0.4);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="black"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
                     </div>
                 `;
             }).join('');
-        }
 
-        if (mixesGrid) {
-            const mixes = [
-                { title: "Simple Plan", subtitle: "My Chemical Romance, Fall Out Boy...", color1: "#4dabf7", color2: "#1864ab" },
-                { title: "David Guetta", subtitle: "Rihanna, David Guetta, Snoop Dogg...", color1: "#da77f2", color2: "#862e9c" },
-                { title: "Rock Anthems", subtitle: "Linkin Park, Skillet, Three Days Grace...", color1: "#ff8787", color2: "#c92a2a" }
-            ];
-            mixesGrid.innerHTML = mixes.map(mix => `
-                <div class="card" style="min-width: 160px; background: transparent; border: none; padding: 0; margin-right: 16px;">
-                    <div style="width: 160px; height: 160px; background: linear-gradient(135deg, ${mix.color1}, ${mix.color2}); border-radius: 4px; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; position: relative; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="position: absolute; top: 8px; left: 8px; opacity: 0.8;"><circle cx="12" cy="12" r="10"></circle><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0z"></path></svg>
-                        <div style="font-size: 10px; font-weight: 800; opacity: 0.6; margin-bottom: 4px; letter-spacing: 1px;">RADIO</div>
-                        <div style="font-size: 18px; font-weight: 900; line-height: 1;">${mix.title}</div>
-                    </div>
-                    <div class="card-subtitle" style="margin-top: 8px; font-size: 11px; color: #b3b3b3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${mix.subtitle}</div>
+            // Recently Played Section (Screenshot 1)
+            const recentlyPlayed = document.createElement('div');
+            recentlyPlayed.className = 'playlist-section';
+            recentlyPlayed.style.marginTop = '40px';
+            recentlyPlayed.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 class="section-title" style="margin: 0;">Recently Played</h2>
+                    <span style="color: var(--primary-blue); font-size: 14px; font-weight: 700;">View All</span>
                 </div>
-            `).join('');
+                <div class="grid-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    ${libraryTracks.slice(2, 6).map(track => `
+                        <div class="track-card" onclick="playLibraryTrack(${libraryTracks.indexOf(track)})">
+                            <img src="${track.cover}" style="width: 100%; aspect-ratio: 1; border-radius: 12px; object-fit: cover;">
+                            <div style="margin-top: 12px;">
+                                <div style="font-size: 14px; font-weight: 700; color: white;">${track.title}</div>
+                                <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">${track.artist}</div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            homeGrid.after(recentlyPlayed);
         }
     };
 
-    const renderLibrary = (query = "") => {
-        const filteredTracks = libraryTracks.filter(track => 
-            track.title.toLowerCase().includes(query.toLowerCase()) || 
-            track.artist.toLowerCase().includes(query.toLowerCase())
-        );
-
-        // Spotify Library List Style
-        const specialItems = `
-            <div class="library-item" onclick="showView('playlist-view')" style="display: flex; align-items: center; gap: 12px; padding: 12px 0;">
-                <img src="${libraryTracks[0].cover}" class="lib-art square" style="width: 64px; height: 64px; border-radius: 4px; object-fit: cover;">
-                <div>
-                    <div style="font-size: 14px; font-weight: 700; color: #1DB954;">MUSIC I 💙</div>
-                    <div style="font-size: 12px; color: #b3b3b3; margin-top: 4px;">📌 Playlist • HELL PHOENIX 🔥</div>
-                </div>
-            </div>
-            <div class="library-item" style="display: flex; align-items: center; gap: 12px; padding: 12px 0;">
-                <div class="lib-art square" style="width: 64px; height: 64px; border-radius: 4px; background: linear-gradient(135deg, #450af5, #c4efd9); display: flex; align-items: center; justify-content: center;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                </div>
-                <div>
-                    <div style="font-size: 14px; font-weight: 700; color: white;">Liked Songs</div>
-                    <div style="font-size: 12px; color: #b3b3b3; margin-top: 4px;">Playlist • ${libraryTracks.length} songs</div>
-                </div>
-            </div>
-        `;
-
-        const artists = [...new Set(libraryTracks.map(t => t.artist))].slice(0, 8).map(artist => `
-            <div class="library-item" style="display: flex; align-items: center; gap: 12px; padding: 12px 0;">
-                <div class="lib-art round" style="width: 64px; height: 64px; border-radius: 50%; background: #333; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #00E5FF; font-size: 20px;">${artist[0]}</div>
-                <div>
-                    <div style="font-size: 14px; font-weight: 700; color: white;">${artist}</div>
-                    <div style="font-size: 12px; color: #b3b3b3; margin-top: 4px;">Artist</div>
-                </div>
-            </div>
-        `).join('');
-
+    const renderLibrary = () => {
         const libraryContainer = document.getElementById('library-tracklist');
-        if (libraryContainer) libraryContainer.innerHTML = specialItems + artists;
+        const libraryHeader = document.querySelector('.library-header');
+        
+        if (libraryContainer) {
+            libraryContainer.innerHTML = `
+                <div style="padding: 20px 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                        <h2 style="font-size: 28px; font-weight: 800; color: white;">Music I Love</h2>
+                        <span style="color: var(--primary-blue); font-size: 14px; font-weight: 700;">VIEW ALL</span>
+                    </div>
+                    ${libraryTracks.map((track, index) => `
+                        <div class="library-track-item" onclick="playLibraryTrack(${index})" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <div style="display: flex; align-items: center; gap: 16px;">
+                                <img src="${track.cover}" style="width: 56px; height: 56px; border-radius: 8px; object-fit: cover;">
+                                <div>
+                                    <div style="font-size: 15px; font-weight: 700; color: white;">${track.title}</div>
+                                    <div style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">${track.artist}</div>
+                                </div>
+                            </div>
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--primary-blue)"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+    };
+
+    const showView = (viewId) => {
+        const views = ['home-view', 'library-view', 'playlist-view', 'search-view'];
+        views.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = (id === viewId) ? 'block' : 'none';
+        });
+
+        // Update nav active state
+        document.querySelectorAll('.mobile-nav .nav-item').forEach(item => {
+            const text = item.querySelector('span').innerText.toLowerCase();
+            const viewBase = viewId.replace('-view', '');
+            item.classList.toggle('active', text === viewBase);
+        });
+
+        // Toggle mobile headers
+        const homeHeader = document.querySelector('.home-header');
+        const libraryHeader = document.querySelector('.library-header');
+        if (homeHeader) homeHeader.style.display = (viewId === 'home-view') ? 'flex' : 'none';
+        if (libraryHeader) libraryHeader.style.display = (viewId === 'library-view') ? 'flex' : 'none';
+
+        if (viewId === 'home-view') renderHome();
+        if (viewId === 'library-view') renderLibrary();
     };
 
     const libSearchInput = document.getElementById('library-search');
