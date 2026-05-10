@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const track = libraryTracks.splice(index, 1)[0];
         track.title = "Line Without a Hook";
         track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778180350/videoplayback_sopenc.mp4";
-        track.cover = "https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg";
+        track.cover = "neon_beats.png";
         libraryTracks.unshift(track); // Move to front
     }
 
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hasDieWithASmile) {
         const track = libraryTracks.find(t => t.title === "Die With A Smile");
         track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778217207/Die_With_A_Smile_Eren_X_Mikasa_AMV_-_ToastLmao_1080p_h264_mgn6x0.mp4";
-        track.cover = "https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg";
+        track.cover = "zen_garden.png";
     }
 
     const hasLoveStory = libraryTracks.some(t => t.title === "Love Story Lyrics");
@@ -278,6 +278,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const track = libraryTracks.find(t => t.title.includes("YOASOBI アイドル"));
         track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778387693/YTDown_YouTube_Media_ZRtdQ81jPUQ_002_720p_mjwhn5.mp4";
     }
+
+    // Force migration: Remove any lingering profile images from song covers
+    libraryTracks.forEach((track, idx) => {
+        if (track.cover && track.cover.includes("download_b4rtyo.jpg")) {
+            const fallbackCovers = ["neon_beats.png", "zen_garden.png", "midnight_rain.png"];
+            track.cover = fallbackCovers[idx % fallbackCovers.length];
+        }
+    });
     
     localStorage.setItem('stressTuneLibrary', JSON.stringify(libraryTracks));
 
