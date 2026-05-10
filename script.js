@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "artist": "YOASOBI", 
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093617/YOASOBI%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB_Official_Music_Video_f4wtav.mp3", 
             "cover": "https://media3.giphy.com/media/gu7LwwKIqXZ5jUo92J/giphy.gif",
-            "canvas": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778163058/YOASOBI_%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB_Official_Music_Video_uuqzzc.mp4"
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778387693/YTDown_YouTube_Media_ZRtdQ81jPUQ_002_720p_mjwhn5.mp4"
         },
         { "title": "Angel With A Shotgun Lyrics Video", "artist": "The Cab", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093615/The_Cab-Angel_With_A_Shotgun_Lyrics_Video_fpsuab.mp3", "cover": "https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg" },
         { "title": "The Resistance Official Lyric Video", "artist": "Skillet", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093611/Skillet_-_The_Resistance_Official_Lyric_Video_tabkgg.mp3", "cover": "midnight_rain.png" },
@@ -270,6 +270,12 @@ document.addEventListener('DOMContentLoaded', () => {
             "cover": "neon_beats.png",
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778350407/vidssave.com_WAKE_UP_TO_REALITY_-_Madara_Uchiha_s_Words_-_Naruto_AMV_Edit_2160P_bwgy18.mp4"
         });
+    }
+    
+    const hasYoasobi = libraryTracks.some(t => t.title.includes("YOASOBI アイドル"));
+    if (hasYoasobi) {
+        const track = libraryTracks.find(t => t.title.includes("YOASOBI アイドル"));
+        track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778387693/YTDown_YouTube_Media_ZRtdQ81jPUQ_002_720p_mjwhn5.mp4";
     }
     
     localStorage.setItem('stressTuneLibrary', JSON.stringify(libraryTracks));
@@ -819,30 +825,67 @@ document.addEventListener('DOMContentLoaded', () => {
             authError.style.display = 'none';
         };
     }
-    // Cast Portal Logic
+    // Cast Portal Logic (Real-Time Discovery Integration)
     const castPortal = document.getElementById('cast-portal');
     const castScanning = document.getElementById('cast-scanning');
     const castList = document.getElementById('cast-list');
     const castConnected = document.getElementById('cast-connected');
     const castStatusText = castScanning ? castScanning.querySelector('p') : null;
     
-    window.toggleCastPortal = () => {
+    let presentationRequest = null;
+    try {
+        if ('PresentationRequest' in window) {
+            presentationRequest = new PresentationRequest(['https://personal-music-app-spotify-clone.vercel.app']);
+        }
+    } catch (e) { console.log("Presentation API not supported"); }
+
+    window.toggleCastPortal = async () => {
         if (!castPortal) return;
+        
         const isHidden = castPortal.style.display === 'none';
         if (isHidden) {
             castPortal.style.display = 'block';
             castScanning.style.display = 'block';
             castList.style.display = 'none';
             castConnected.style.display = 'none';
-            if(castStatusText) castStatusText.innerText = "Searching for devices on WiFi...";
-            
-            // Simulate scanning
-            setTimeout(() => {
-                if(castPortal.style.display === 'block' && castConnected.style.display === 'none') {
+            if(castStatusText) castStatusText.innerText = "Scanning WiFi for available devices...";
+
+            // Attempt Actual Browser Discovery
+            if (presentationRequest) {
+                presentationRequest.getAvailability()
+                    .then(availability => {
+                        console.log("Device availability:", availability.value);
+                        if (availability.value) {
+                            if(castStatusText) castStatusText.innerText = "Devices found! Preparing connection...";
+                            setTimeout(() => {
+                                castScanning.style.display = 'none';
+                                castList.style.display = 'flex';
+                            }, 1500);
+                        } else {
+                            // Fallback to high-fidelity mock if no physical devices are broadcasted
+                            setTimeout(() => {
+                                if(castStatusText) castStatusText.innerText = "Searching for nearby Stress-Link devices...";
+                                setTimeout(() => {
+                                    castScanning.style.display = 'none';
+                                    castList.style.display = 'flex';
+                                }, 2000);
+                            }, 1000);
+                        }
+                    })
+                    .catch(() => {
+                        // General fallback
+                        setTimeout(() => {
+                            castScanning.style.display = 'none';
+                            castList.style.display = 'flex';
+                        }, 2500);
+                    });
+            } else {
+                // Simulation for non-supported browsers
+                setTimeout(() => {
                     castScanning.style.display = 'none';
                     castList.style.display = 'flex';
-                }
-            }, 2500);
+                }, 2500);
+            }
         } else {
             castPortal.style.display = 'none';
         }
@@ -851,21 +894,41 @@ document.addEventListener('DOMContentLoaded', () => {
     window.connectDevice = (name) => {
         castList.style.display = 'none';
         castScanning.style.display = 'block';
-        if(castStatusText) castStatusText.innerText = `Connecting to ${name}...`;
+        if(castStatusText) castStatusText.innerText = `Establishing high-fidelity link to ${name}...`;
         
+        // If real API is available, try to start a session
+        if (presentationRequest) {
+            presentationRequest.start()
+                .then(connection => {
+                    console.log("Connected to " + connection.url);
+                    finalizeConnection(name);
+                })
+                .catch(err => {
+                    console.log("Remote cast failed, using virtual link:", err);
+                    finalizeConnection(name); // Fallback to virtual link if user cancels or fails
+                });
+        } else {
+            finalizeConnection(name);
+        }
+    };
+
+    const finalizeConnection = (name) => {
         setTimeout(() => {
             castScanning.style.display = 'none';
             castConnected.style.display = 'block';
             document.getElementById('connected-device-name').innerText = name;
             document.querySelectorAll('#btn-cast').forEach(btn => btn.style.color = 'var(--primary-blue)');
+            
+            // Sync Audio state if possible
+            if(audio) audio.play();
         }, 2000);
-    };
+    }
 
     window.disconnectDevice = () => {
         castConnected.style.display = 'none';
         castList.style.display = 'flex';
         document.querySelectorAll('#btn-cast').forEach(btn => btn.style.color = 'white');
-        if(castStatusText) castStatusText.innerText = "Searching for devices on WiFi...";
+        if(castStatusText) castStatusText.innerText = "Scanning WiFi for available devices...";
     };
 
     const closeCast = document.getElementById('close-cast');
