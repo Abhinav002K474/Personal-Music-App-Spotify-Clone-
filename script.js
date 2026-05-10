@@ -484,6 +484,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const playerArt = document.getElementById('player-art');
         if (playerArt) playerArt.src = cover;
 
+        // Send Discord Notification if active
+        sendDiscordNotification(title, artist, cover);
+
         const overlayName = document.getElementById('overlay-name');
         const overlayArtist = document.getElementById('overlay-artist');
         if (overlayName) overlayName.innerText = title;
@@ -992,6 +995,73 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Discord Integration & Stream Mode
+    const discordBtn = document.getElementById('discord-btn');
+    const discordModal = document.getElementById('discord-modal');
+    const discordWebhookInput = document.getElementById('discord-webhook-url');
+    const saveDiscordWebhook = document.getElementById('save-discord-webhook');
+    const streamModeBtn = document.getElementById('stream-mode-btn');
+
+    let streamModeActive = false;
+    let discordWebhook = localStorage.getItem('stressTuneDiscordWebhook') || '';
+
+    if (discordWebhookInput) discordWebhookInput.value = discordWebhook;
+
+    if (discordBtn) {
+        discordBtn.onclick = () => {
+            discordModal.style.display = 'flex';
+        };
+    }
+
+    if (saveDiscordWebhook) {
+        saveDiscordWebhook.onclick = () => {
+            discordWebhook = discordWebhookInput.value.trim();
+            localStorage.setItem('stressTuneDiscordWebhook', discordWebhook);
+            discordModal.style.display = 'none';
+            if (discordWebhook) {
+                alert("Discord Stream Sync Active!");
+                sendDiscordNotification("Stress Tune Sync", "Connected to Discord", "https://res.cloudinary.com/dhocv2p3t/image/upload/v1778145351/deep_focus_m0z8m8.png");
+            }
+        };
+    }
+
+    if (streamModeBtn) {
+        streamModeBtn.onclick = () => {
+            streamModeActive = !streamModeActive;
+            document.body.classList.toggle('stream-mode', streamModeActive);
+            streamModeBtn.style.color = streamModeActive ? 'var(--primary-blue)' : 'white';
+            
+            if (streamModeActive) {
+                const overlay = document.getElementById('now-playing-overlay');
+                if (overlay && overlay.style.display === 'none') {
+                    overlay.style.display = 'block';
+                }
+            }
+        };
+    }
+
+    function sendDiscordNotification(title, artist, cover) {
+        if (!discordWebhook || !discordWebhook.startsWith('https://discord.com')) return;
+        
+        const payload = {
+            embeds: [{
+                title: "Now Playing on Stress Tune 🎵",
+                description: `**${title}**\nby ${artist}`,
+                thumbnail: { url: cover.startsWith('http') ? cover : window.location.origin + '/' + cover },
+                color: 5814783, 
+                timestamp: new Date(),
+                footer: { text: "Streaming live via Stress Tune Platform" }
+            }]
+        };
+
+        fetch(discordWebhook, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).catch(err => console.error("Discord Sync Error:", err));
+    };
+
     renderHome();
+    setupEQControls();
     console.log('Stress Tune: High-Fidelity Canvas Ready');
 });
