@@ -17,19 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTrackIndex = -1;
     let currentQueue = [];
 
-    // View Management
-    const showView = (viewId) => {
-        const views = ['home-view', 'playlist-view', 'library-view', 'search-view'];
-        views.forEach(id => {
-            const v = document.getElementById(id);
-            if(v) v.style.display = (id === viewId) ? 'block' : 'none';
-        });
-        
-        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-        if (viewId === 'home-view') navHome.classList.add('active');
-        if (viewId === 'library-view') navLibrary.classList.add('active');
-        if (viewId === 'search-view') navSearch.classList.add('active');
-    };
+
 
     navHome.addEventListener('click', (e) => { e.preventDefault(); showView('home-view'); });
     navSearch.addEventListener('click', (e) => { 
