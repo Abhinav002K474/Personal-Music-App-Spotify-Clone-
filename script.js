@@ -535,8 +535,9 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             video.ontimeupdate = syncVideos;
 
-            // Start playing
+            // Start playing both videos
             video.play().catch(e => console.log("Background video blocked:", e));
+            if(centerVideo) centerVideo.play().catch(e => console.log("Center video blocked:", e));
             
             // Hide Static Art
             if (overlayArt) overlayArt.style.display = 'none';
