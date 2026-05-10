@@ -728,6 +728,36 @@ body.stream-mode #now-playing-overlay {
     background: black;
 }
 
+.exit-stream-btn {
+    display: none;
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    z-index: 1010;
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid var(--primary-blue);
+    color: var(--primary-blue);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+}
+
+.exit-stream-btn:hover {
+    background: var(--primary-blue);
+    color: black;
+    transform: scale(1.05);
+}
+
+body.stream-mode .exit-stream-btn {
+    display: block;
+}
+
 /* Discord Modal & UI */
 .modal-overlay {
     position: fixed;

@@ -1043,6 +1043,18 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
+    const exitStreamOverlayBtn = document.getElementById('exit-stream-overlay-btn');
+    if (exitStreamOverlayBtn) {
+        exitStreamOverlayBtn.onclick = () => {
+            streamModeActive = false;
+            document.body.classList.remove('stream-mode');
+            if (streamModeBtn) streamModeBtn.style.color = 'white';
+            const overlay = document.getElementById('now-playing-overlay');
+            if (overlay) overlay.style.display = 'none';
+            document.body.style.overflow = 'hidden'; 
+        };
+    }
+
     function sendDiscordNotification(title, artist, cover) {
         if (!discordWebhook || !discordWebhook.startsWith('https://discord.com')) return;
         
