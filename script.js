@@ -297,8 +297,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (homeGrid) {
-            // Show first 12 tracks as "Quick Picks"
-            homeGrid.innerHTML = libraryTracks.slice(0, 12).map((track, index) => {
+            // Show all tracks from 'Music I 💙' on the home screen
+            homeGrid.innerHTML = libraryTracks.map((track, index) => {
                 const originalIndex = libraryTracks.indexOf(track);
                 return `
                     <div class="card" onclick="playLibraryTrack(${originalIndex})">
