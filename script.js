@@ -292,8 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     localStorage.setItem('stressTuneLibrary', JSON.stringify(libraryTracks));
 
-    const playSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>`;
-    const pauseSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>`;
+
 
     const renderHome = () => {
         const homeGrid = document.getElementById('home-grid');
