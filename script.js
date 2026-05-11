@@ -336,19 +336,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const hasDynasty = libraryTracks.some(t => t.title === "Dynasty");
-    if (hasDynasty) {
+    if (!hasDynasty) {
+        libraryTracks.push({ 
+            "title": "Dynasty", 
+            "artist": "MIIA", 
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483126/MIIA_-_Dynasty_Lyrics_db8g63.mp3", 
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482821/YTDown_YouTube_Dynasty-AMV-Anime-Mix_Media_pmN_l7FuyIg_002_720p_vbrqdr.mp4"
+        });
+    } else {
         const track = libraryTracks.find(t => t.title === "Dynasty");
         track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482821/YTDown_YouTube_Dynasty-AMV-Anime-Mix_Media_pmN_l7FuyIg_002_720p_vbrqdr.mp4";
     }
 
     const hasLoveIsGone = libraryTracks.some(t => t.title === "Love is Gone");
-    if (hasLoveIsGone) {
+    if (!hasLoveIsGone) {
+        libraryTracks.push({ 
+            "title": "Love is Gone", 
+            "artist": "SLANDER ft. Dylan Matthew", 
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483122/SLANDER_-_Love_Is_Gone_ft._Dylan_Matthew_Acoustic_j4pugd.mp3", 
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482360/vidssave.com_Love_Is_Gone_AMV_MIX_1080P_ivxwrs.mp4"
+        });
+    } else {
         const track = libraryTracks.find(t => t.title === "Love is Gone");
         track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482360/vidssave.com_Love_Is_Gone_AMV_MIX_1080P_ivxwrs.mp4";
     }
 
     const hasInfinity = libraryTracks.some(t => t.title === "Infinity");
-    if (hasInfinity) {
+    if (!hasInfinity) {
+        libraryTracks.push({ 
+            "title": "Infinity", 
+            "artist": "Jaymes Young", 
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483293/Jaymes_Young_-_Infinity_h8k3qg.mp3", 
+            "cover": "zen_garden.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482714/vidssave.com_AMV_-_Infinity_%E1%B4%B4%E1%B4%B0_1080P_ka9jub.mp4"
+        });
+    } else {
         const track = libraryTracks.find(t => t.title === "Infinity");
         track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482714/vidssave.com_AMV_-_Infinity_%E1%B4%B4%E1%B4%B0_1080P_ka9jub.mp4";
     }
