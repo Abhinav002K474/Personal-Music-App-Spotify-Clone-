@@ -11,6 +11,29 @@
     <link rel="shortcut icon" href="https://res.cloudinary.com/dhhn1410c/image/upload/v1778486852/ChatGPT_Image_May_11_2026_01_35_08_PM_sfkt8n.png" type="image/png">
 </head>
 <body style="overflow: hidden;">
+    <!-- Cinematic Logo Intro -->
+    <div id="intro-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 100000; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none;">
+        <canvas id="intro-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 2s ease-in;"></canvas>
+        
+        <div id="intro-scene" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transform: scale(1.2); opacity: 0; transition: all 4s cubic-bezier(0.2, 0, 0.2, 1);">
+            <!-- Nebula Glow -->
+            <div style="position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, rgba(0,0,0,0) 70%); filter: blur(60px); animation: nebulaFloat 10s infinite alternate;"></div>
+            
+            <!-- Full Moon -->
+            <div id="intro-moon" style="position: relative; width: 300px; height: 300px; border-radius: 50%; background: #fff; box-shadow: 0 0 100px rgba(147, 51, 234, 0.4), inset -20px -20px 50px rgba(0,0,0,0.1); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <div style="position: absolute; width: 100%; height: 100%; background: url('https://res.cloudinary.com/dhhn1410c/image/upload/v1778486852/ChatGPT_Image_May_11_2026_01_35_08_PM_sfkt8n.png'); background-size: cover; background-position: center; filter: grayscale(1) brightness(0) contrast(2); transform: scale(2.5) translateY(10px); opacity: 0.9;"></div>
+            </div>
+
+            <!-- Logo Reveal Overlay -->
+            <div id="intro-logo-reveal" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; opacity: 0; pointer-events: none; transition: opacity 0.5s ease;"></div>
+            
+            <!-- Final Logo State -->
+            <div id="intro-final-logo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0; display: flex; flex-direction: column; align-items: center; transition: all 1s ease-out;">
+                <img src="https://res.cloudinary.com/dhhn1410c/image/upload/v1778486852/ChatGPT_Image_May_11_2026_01_35_08_PM_sfkt8n.png" style="width: 100vw; max-width: 800px; filter: drop-shadow(0 0 30px rgba(0, 229, 255, 0.3));">
+            </div>
+        </div>
+    </div>
+
     <!-- Authentication Screen -->
     <div id="auth-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: #000; display: flex; align-items: center; justify-content: center; transition: all 0.5s ease-out;">
         <div class="auth-container" style="text-align: center; width: 100%; max-width: 400px; padding: 40px; background: rgba(15, 15, 15, 0.8); border: 1px solid var(--glass-border); border-radius: 24px; backdrop-filter: blur(20px); box-shadow: 0 0 100px rgba(0, 229, 255, 0.1);">
