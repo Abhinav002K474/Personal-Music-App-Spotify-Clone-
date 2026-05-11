@@ -617,16 +617,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Sync Logic: Ensure center video follows background video
             const syncVideos = () => {
-                if (centerVideo && Math.abs(video.currentTime - centerVideo.currentTime) > 0.1) {
+                if (centerVideo && Math.abs(video.currentTime - centerVideo.currentTime) > 0.3) {
                     centerVideo.currentTime = video.currentTime;
                 }
             };
 
             video.onplaying = () => {
-                if(centerVideo) centerVideo.play();
+                if(centerVideo) centerVideo.play().catch(() => {});
             };
             video.onpause = () => {
                 if(centerVideo) centerVideo.pause();
+            };
+            video.onseeking = () => {
+                if(centerVideo) centerVideo.currentTime = video.currentTime;
             };
             video.ontimeupdate = syncVideos;
 
