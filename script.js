@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { "title": "The Phoenix Part 2 of 11", "artist": "Fall Out Boy", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093565/Fall_Out_Boy_-_The_Phoenix_Official_Video_-_Part_2_of_11_xsllmm.mp3", "cover": "midnight_rain.png" },
         { "title": "Mockingbird Lyrics", "artist": "Eminem", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093560/Eminem_-_Mockingbird_Lyrics_bcn8fg.mp3", "cover": "zen_garden.png" },
         { "title": "Fairytale", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093560/Fairytale_lxzstg.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778438594/vidssave.com_Fairytale_-_AMV_-_Anime_MIX_720P_bvwxet.mp4" },
-        { "title": "Perfect Lyrics", "artist": "Ed Sheeran", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093558/Ed_Sheeran_-_Perfect_Lyrics_yhbbdg.mp3", "cover": "zen_garden.png" },
+        { "title": "Perfect Lyrics", "artist": "Ed Sheeran", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093558/Ed_Sheeran_-_Perfect_Lyrics_yhbbdg.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482939/vidssave.com_Perfect_-_AMV_-_Anime_MV_720p60_wxckgb.mp4" },
         { "title": "Love Me Like You Do Lyrics", "artist": "Ellie Goulding", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093558/Ellie_Goulding_-_Love_Me_Like_You_Do_Lyrics_x699mn.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482299/vidssave.com_amu_ikuto___love_me_like_you_do_720P_lzsffp.mp4" },
         { "title": "Gangsta s Paradise feat. L.V. Official Music Video", "artist": "Coolio", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093556/Coolio_-_Gangsta_s_Paradise_feat._L.V._Official_Music_Video_vgpvl1.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778263902/AMV_-_Tokyo_revengers_-_gangster_paradise_Toman_vs_Valhalla_xkehvs.mp4" },
         { "title": "Royalty ft. Neoni Official Lyric Video", "artist": "Egzod Maestro Chives", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093556/Egzod_Maestro_Chives_-_Royalty_ft._Neoni_Official_Lyric_Video_zzklxh.mp3", "cover": "neon_beats.png" },
@@ -182,6 +182,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hasFairytale) {
         const track = libraryTracks.find(t => t.title === "Fairytale");
         track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778438594/vidssave.com_Fairytale_-_AMV_-_Anime_MIX_720P_bvwxet.mp4";
+    }
+
+    const hasPerfectLyrics = libraryTracks.some(t => t.title === "Perfect Lyrics");
+    if (hasPerfectLyrics) {
+        const track = libraryTracks.find(t => t.title === "Perfect Lyrics");
+        track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482939/vidssave.com_Perfect_-_AMV_-_Anime_MV_720p60_wxckgb.mp4";
     }
 
     const hasDieWithASmile = libraryTracks.some(t => t.title === "Die With A Smile");
