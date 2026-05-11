@@ -25,8 +25,10 @@
         <canvas id="intro-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 2s ease-in;"></canvas>
         
         <div id="intro-scene" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transform: scale(1.2); opacity: 0; transition: all 4s cubic-bezier(0.2, 0, 0.2, 1);">
-            <!-- Nebula Glow -->
-            <div style="position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, rgba(0,0,0,0) 70%); filter: blur(60px); animation: nebulaFloat 10s infinite alternate;"></div>
+            <!-- Nebula & Clouds -->
+            <div class="intro-cloud" style="position: absolute; width: 800px; height: 800px; background: radial-gradient(circle, rgba(147, 51, 234, 0.2) 0%, rgba(0,0,0,0) 70%); filter: blur(80px); top: -20%; left: -20%; animation: cloudMove1 20s infinite alternate;"></div>
+            <div class="intro-cloud" style="position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, rgba(0,0,0,0) 70%); filter: blur(60px); bottom: -10%; right: -10%; animation: cloudMove2 25s infinite alternate;"></div>
+            <div class="intro-cloud" style="position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, rgba(0,0,0,0) 70%); filter: blur(50px); top: 10%; right: -5%; animation: cloudMove3 15s infinite alternate;"></div>
             
             <!-- Full Moon -->
             <div id="intro-moon" style="position: relative; width: 300px; height: 300px; border-radius: 50%; background: #fff; box-shadow: 0 0 100px rgba(147, 51, 234, 0.4), inset -20px -20px 50px rgba(0,0,0,0.1); overflow: hidden; display: flex; align-items: center; justify-content: center;">
