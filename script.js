@@ -1118,7 +1118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             discordModal.style.display = 'none';
             if (discordWebhook) {
                 alert("Discord Stream Sync Active!");
-                sendDiscordNotification("Stress Tune Sync", "Connected to Discord", "https://res.cloudinary.com/dhocv2p3t/image/upload/v1778145351/deep_focus_m0z8m8.png");
+                sendDiscordNotification("PARADISE 音楽 Sync", "Connected to Discord", "https://res.cloudinary.com/dhocv2p3t/image/upload/v1778145351/deep_focus_m0z8m8.png");
             }
         };
     }
@@ -1155,12 +1155,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const payload = {
             embeds: [{
-                title: "Now Playing on Stress Tune 🎵",
+                title: "Now Playing on PARADISE 音楽 🎵",
                 description: `**${title}**\nby ${artist}`,
                 thumbnail: { url: cover.startsWith('http') ? cover : window.location.origin + '/' + cover },
                 color: 5814783, 
                 timestamp: new Date(),
-                footer: { text: "Streaming live via Stress Tune Platform" }
+                footer: { text: "Streaming live via PARADISE 音楽 Platform" }
             }]
         };
 
@@ -1173,5 +1173,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderHome();
     setupEQControls();
-    console.log('Stress Tune: High-Fidelity Canvas Ready');
+    console.log('PARADISE 音楽: High-Fidelity Canvas Ready');
 });

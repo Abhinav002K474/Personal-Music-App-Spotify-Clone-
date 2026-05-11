@@ -1,8 +1,8 @@
-# 🎵 Stress Tune: High-Fidelity Music Experience
+# 🎵 PARADISE 音楽: Where Music Meets Anime
 
-Stress Tune is a premium, high-fidelity music streaming platform designed with a futuristic "Electric Blue & Black" aesthetic. It combines immersive AMV/GMV visualizers with advanced audio processing tools to create a professional-grade listening sanctuary.
+PARADISE 音楽 is a premium, high-fidelity music streaming platform designed with a futuristic "Electric Blue & Black" aesthetic. It combines immersive AMV/GMV visualizers with advanced audio processing tools to create a professional-grade listening sanctuary.
 
-![Stress Tune UI Preview](https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg)
+![PARADISE 音楽 UI Preview](https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg)
 
 ## ✨ Key Features
 
