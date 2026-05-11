@@ -134,7 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { "title": "Shatter Me", "artist": "Lindsey Stirling ft. Lzzy Hale", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778346095/Lindsey_Stirling_-_Shatter_Me_ft._Lzzy_Hale_Lyrics_wztopr.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778345854/YTDown_YouTube_Naofumi-_-Raphtalia-Shatter-Me-AMV_Media_ffiphpTEZS8_001_720p_qlou9a.mp4" },
         { "title": "Royalty X Madara", "artist": "Madara Uchiha AMV", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778350313/vidssave.com_WAKE_UP_TO_REALITY_-_Madara_Uchiha_s_Words_-_Naruto_AMV_Edit_48KBPS_ah4y1q.webm", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778350407/vidssave.com_WAKE_UP_TO_REALITY_-_Madara_Uchiha_s_Words_-_Naruto_AMV_Edit_2160P_bwgy18.mp4" },
         { "title": "My Demons", "artist": "Starset", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778431256/Starset-My_Demons_Lyrics_Video_u1952b.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778431420/beyblade-amv-my-demons-720-ytshorts.savetube.me_e2w4e9.mp4" },
-        { "title": "Stay with me", "artist": "Heavenly Jumpstyle", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778434792/HEAVENLY_JUMPSTYLE_Lyrics_woamjr.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778434595/YTDown_Shorts_Resting-My-Eyes-Leon-Kennedy-Edit-HEAVEN_Media_9uZk7Ugr-Zc_002_720p_nf450q.mp4" }
+        { "title": "Stay with me", "artist": "Heavenly Jumpstyle", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778434792/HEAVENLY_JUMPSTYLE_Lyrics_woamjr.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778434595/YTDown_Shorts_Resting-My-Eyes-Leon-Kennedy-Edit-HEAVEN_Media_9uZk7Ugr-Zc_002_720p_nf450q.mp4" },
+        { "title": "Dynasty", "artist": "MIIA", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483126/MIIA_-_Dynasty_Lyrics_db8g63.mp3", "cover": "midnight_rain.png" },
+        { "title": "Love is Gone", "artist": "SLANDER ft. Dylan Matthew", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483122/SLANDER_-_Love_Is_Gone_ft._Dylan_Matthew_Acoustic_j4pugd.mp3", "cover": "midnight_rain.png" },
+        { "title": "Infinity", "artist": "Jaymes Young", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483293/Jaymes_Young_-_Infinity_h8k3qg.mp3", "cover": "zen_garden.png" }
     ];
     let libraryTracks = JSON.parse(localStorage.getItem('stressTuneLibrary')) || defaultTracks;
 
@@ -324,6 +327,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const track = libraryTracks.find(t => t.title === "Stay with me");
         track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778434792/HEAVENLY_JUMPSTYLE_Lyrics_woamjr.mp3";
         track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778434595/YTDown_Shorts_Resting-My-Eyes-Leon-Kennedy-Edit-HEAVEN_Media_9uZk7Ugr-Zc_002_720p_nf450q.mp4";
+    }
+
+    const hasDynasty = libraryTracks.some(t => t.title === "Dynasty");
+    if (!hasDynasty) {
+        libraryTracks.push({ 
+            "title": "Dynasty", 
+            "artist": "MIIA", 
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483126/MIIA_-_Dynasty_Lyrics_db8g63.mp3", 
+            "cover": "midnight_rain.png"
+        });
+    }
+
+    const hasLoveIsGone = libraryTracks.some(t => t.title === "Love is Gone");
+    if (!hasLoveIsGone) {
+        libraryTracks.push({ 
+            "title": "Love is Gone", 
+            "artist": "SLANDER ft. Dylan Matthew", 
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483122/SLANDER_-_Love_Is_Gone_ft._Dylan_Matthew_Acoustic_j4pugd.mp3", 
+            "cover": "midnight_rain.png"
+        });
+    }
+
+    const hasInfinity = libraryTracks.some(t => t.title === "Infinity");
+    if (!hasInfinity) {
+        libraryTracks.push({ 
+            "title": "Infinity", 
+            "artist": "Jaymes Young", 
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483293/Jaymes_Young_-_Infinity_h8k3qg.mp3", 
+            "cover": "zen_garden.png"
+        });
     }
 
     // Force migration: Remove any lingering profile images from song covers
