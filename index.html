@@ -9,6 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="https://res.cloudinary.com/dhhn1410c/image/upload/v1778486852/ChatGPT_Image_May_11_2026_01_35_08_PM_sfkt8n.png" type="image/png">
+    <style>
+        /* Fail-safe: ensure intro hides even if JS fails */
+        #intro-overlay {
+            animation: introFallback 1s forwards 10s;
+        }
+        @keyframes introFallback {
+            to { opacity: 0; pointer-events: none; visibility: hidden; }
+        }
+    </style>
 </head>
 <body style="overflow: hidden;">
     <!-- Cinematic Logo Intro -->
@@ -388,7 +397,7 @@
                 <div class="device-icon-wrapper">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
                 </div>
-                <div class="device-info">
+                                <div class="device-info">
                     <div class="device-name">Home Theater</div>
                     <div class="device-status">Available</div>
                 </div>

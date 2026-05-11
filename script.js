@@ -1176,80 +1176,95 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('PARADISE 音楽: High-Fidelity Canvas Ready');
 
     // Cinematic Intro Sequence
-    const introOverlay = document.getElementById('intro-overlay');
-    const introCanvas = document.getElementById('intro-canvas');
-    const introScene = document.getElementById('intro-scene');
-    const introMoon = document.getElementById('intro-moon');
-    const introLogoReveal = document.getElementById('intro-logo-reveal');
-    const introFinalLogo = document.getElementById('intro-final-logo');
-    const authScreen = document.getElementById('auth-screen');
+    const runIntro = () => {
+        try {
+            const introOverlay = document.getElementById('intro-overlay');
+            const introCanvas = document.getElementById('intro-canvas');
+            const introScene = document.getElementById('intro-scene');
+            const introMoon = document.getElementById('intro-moon');
+            const introFinalLogo = document.getElementById('intro-final-logo');
 
-    if (introOverlay && introCanvas) {
-        const ctx = introCanvas.getContext('2d');
-        let width, height, stars = [];
+            if (!introOverlay || !introCanvas) {
+                console.warn("Intro elements missing");
+                return;
+            }
 
-        const resize = () => {
-            width = introCanvas.width = window.innerWidth;
-            height = introCanvas.height = window.innerHeight;
-            stars = Array.from({ length: 400 }, () => ({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                size: Math.random() * 1.5,
-                opacity: Math.random(),
-                speed: 0.05 + Math.random() * 0.1
-            }));
-        };
+            const ctx = introCanvas.getContext('2d');
+            let width, height, stars = [];
 
-        const animateStars = () => {
-            ctx.clearRect(0, 0, width, height);
-            stars.forEach(star => {
-                star.opacity += star.speed * (Math.random() > 0.5 ? 1 : -1);
-                star.opacity = Math.max(0.1, Math.min(1, star.opacity));
-                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-                ctx.fill();
-            });
-            requestAnimationFrame(animateStars);
-        };
+            const resize = () => {
+                width = introCanvas.width = window.innerWidth;
+                height = introCanvas.height = window.innerHeight;
+                stars = Array.from({ length: 400 }, () => ({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    size: Math.random() * 1.5,
+                    opacity: Math.random(),
+                    speed: 0.05 + Math.random() * 0.1
+                }));
+            };
 
-        window.addEventListener('resize', resize);
-        resize();
-        animateStars();
+            const animateStars = () => {
+                if (!introOverlay || introOverlay.style.display === 'none') return;
+                ctx.clearRect(0, 0, width, height);
+                stars.forEach(star => {
+                    star.opacity += star.speed * (Math.random() > 0.5 ? 1 : -1);
+                    star.opacity = Math.max(0.1, Math.min(1, star.opacity));
+                    ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                requestAnimationFrame(animateStars);
+            };
 
-        // Sequence timing
-        setTimeout(() => {
-            introCanvas.style.opacity = '1';
-        }, 500);
+            window.addEventListener('resize', resize);
+            resize();
+            animateStars();
 
-        setTimeout(() => {
-            introScene.style.opacity = '1';
-            introScene.style.transform = 'scale(1)';
-        }, 1500);
+            // Sequence timing
+            setTimeout(() => { if(introCanvas) introCanvas.style.opacity = '1'; }, 500);
+            setTimeout(() => { 
+                if(introScene) {
+                    introScene.style.opacity = '1';
+                    introScene.style.transform = 'scale(1)';
+                }
+            }, 1500);
 
-        // Beat drop effect
-        setTimeout(() => {
-            introOverlay.style.background = '#fff'; // Flash
-            introScene.style.transition = 'all 0.1s ease-out';
-            introScene.style.transform = 'scale(1.1)';
-            
+            // Beat drop effect
             setTimeout(() => {
-                introOverlay.style.background = '#000';
-                introScene.style.transform = 'scale(1)';
-                introMoon.style.opacity = '0';
-                introFinalLogo.style.opacity = '1';
+                if(introOverlay) introOverlay.style.background = '#fff'; // Flash
+                if(introScene) {
+                    introScene.style.transition = 'all 0.1s ease-out';
+                    introScene.style.transform = 'scale(1.1)';
+                }
                 
-                // Screen shake
-                introOverlay.style.animation = 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both';
-            }, 100);
-        }, 5500);
+                setTimeout(() => {
+                    if(introOverlay) {
+                        introOverlay.style.background = '#000';
+                        introOverlay.style.animation = 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both';
+                    }
+                    if(introScene) introScene.style.transform = 'scale(1)';
+                    if(introMoon) introMoon.style.opacity = '0';
+                    if(introFinalLogo) introFinalLogo.style.opacity = '1';
+                }, 100);
+            }, 5500);
 
-        // Final transition to auth screen
-        setTimeout(() => {
-            introOverlay.style.opacity = '0';
+            // Final transition to auth screen
             setTimeout(() => {
-                introOverlay.style.display = 'none';
-            }, 1000);
-        }, 8500);
-    }
+                if(introOverlay) {
+                    introOverlay.style.opacity = '0';
+                    setTimeout(() => {
+                        introOverlay.style.display = 'none';
+                    }, 1000);
+                }
+            }, 8500);
+        } catch (e) {
+            console.error("Intro Error:", e);
+            const overlay = document.getElementById('intro-overlay');
+            if (overlay) overlay.style.display = 'none';
+        }
+    };
+
+    runIntro();
 });
