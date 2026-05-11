@@ -1245,6 +1245,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1500);
 
             // Beat drop effect
+            const introSound = new Audio('https://res.cloudinary.com/dhhn1410c/video/upload/v1778488976/GEAR_5_jy1htl.mp3');
+            introSound.volume = 0.5;
+
             setTimeout(() => {
                 if(introOverlay) introOverlay.style.background = '#fff'; // Flash
                 if(introScene) {
@@ -1252,6 +1255,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     introScene.style.transform = 'scale(1.1)';
                 }
                 
+                // Play sound
+                introSound.play().catch(e => console.warn("Intro audio blocked:", e));
+
                 setTimeout(() => {
                     if(introOverlay) {
                         introOverlay.style.background = '#000';
