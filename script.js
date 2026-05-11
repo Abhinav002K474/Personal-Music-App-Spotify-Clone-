@@ -596,7 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (overlayArt) overlayArt.src = cover;
 
-        if (canvas) {
+        if (canvas && !isDataSaver) {
             // Setup Background Video
             if (video.src !== canvas) {
                 video.src = canvas;
@@ -707,6 +707,36 @@ document.addEventListener('DOMContentLoaded', () => {
         btnRepeat.style.opacity = isRepeat ? '1' : '0.6';
         btnRepeat.style.color = isRepeat ? 'var(--primary-blue)' : 'white';
         audio.loop = isRepeat;
+    };
+
+    // Data Saver Toggle
+    const btnDataSaver = document.getElementById('data-saver-btn');
+    window.isDataSaver = localStorage.getItem('isDataSaver') === 'true';
+    
+    const updateDataSaverUI = () => {
+        if(btnDataSaver) {
+            btnDataSaver.style.color = window.isDataSaver ? 'var(--primary-blue)' : 'white';
+            btnDataSaver.style.opacity = window.isDataSaver ? '1' : '0.6';
+            if(window.isDataSaver) {
+                btnDataSaver.classList.add('active-glow');
+            } else {
+                btnDataSaver.classList.remove('active-glow');
+            }
+        }
+    };
+    updateDataSaverUI();
+
+    if(btnDataSaver) btnDataSaver.onclick = () => {
+        const confirmMsg = window.isDataSaver ? "Turn off Data Saver and enable video covers?" : "Enable Data Saver? This will turn off video covers to save mobile data.";
+        if(confirm(confirmMsg)) {
+            window.isDataSaver = !window.isDataSaver;
+            localStorage.setItem('isDataSaver', window.isDataSaver);
+            updateDataSaverUI();
+            
+            // If playing, refresh current track view
+            const currentTrack = currentQueue[currentTrackIndex];
+            if(currentTrack) updateUI(currentTrack.title, currentTrack.artist, currentTrack.cover, currentTrack.canvas);
+        }
     };
 
     [btnPlay, btnPlayOverlay].forEach(btn => {

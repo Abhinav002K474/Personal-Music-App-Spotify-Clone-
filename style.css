@@ -848,3 +848,7 @@ body.stream-mode .exit-stream-btn {
     0% { transform: translate(0, 0) scale(1.2); opacity: 0.1; }
     100% { transform: translate(40px, -40px) scale(1) rotate(5deg); opacity: 0.4; }
 }
+
+.active-glow {
+    filter: drop-shadow(0 0 8px var(--primary-blue));
+}
