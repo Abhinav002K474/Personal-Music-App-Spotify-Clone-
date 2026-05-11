@@ -1190,37 +1190,50 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const ctx = introCanvas.getContext('2d');
-            let width, height, stars = [];
+            let width, height, clouds = [];
 
             const resize = () => {
                 width = introCanvas.width = window.innerWidth;
                 height = introCanvas.height = window.innerHeight;
-                stars = Array.from({ length: 400 }, () => ({
+                clouds = Array.from({ length: 15 }, () => ({
                     x: Math.random() * width,
                     y: Math.random() * height,
-                    size: Math.random() * 1.5,
-                    opacity: Math.random(),
-                    speed: 0.05 + Math.random() * 0.1
+                    radius: 200 + Math.random() * 300,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    opacity: 0.1 + Math.random() * 0.2,
+                    color: Math.random() > 0.5 ? 'rgba(147, 51, 234,' : 'rgba(79, 70, 229,'
                 }));
             };
 
-            const animateStars = () => {
+            const animateClouds = () => {
                 if (!introOverlay || introOverlay.style.display === 'none') return;
                 ctx.clearRect(0, 0, width, height);
-                stars.forEach(star => {
-                    star.opacity += star.speed * (Math.random() > 0.5 ? 1 : -1);
-                    star.opacity = Math.max(0.1, Math.min(1, star.opacity));
-                    ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                
+                clouds.forEach(cloud => {
+                    cloud.x += cloud.vx;
+                    cloud.y += cloud.vy;
+
+                    if (cloud.x < -cloud.radius) cloud.x = width + cloud.radius;
+                    if (cloud.x > width + cloud.radius) cloud.x = -cloud.radius;
+                    if (cloud.y < -cloud.radius) cloud.y = height + cloud.radius;
+                    if (cloud.y > height + cloud.radius) cloud.y = -cloud.radius;
+
+                    const grad = ctx.createRadialGradient(cloud.x, cloud.y, 0, cloud.x, cloud.y, cloud.radius);
+                    grad.addColorStop(0, cloud.color + cloud.opacity + ')');
+                    grad.addColorStop(1, 'rgba(0,0,0,0)');
+                    
+                    ctx.fillStyle = grad;
                     ctx.beginPath();
-                    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                    ctx.arc(cloud.x, cloud.y, cloud.radius, 0, Math.PI * 2);
                     ctx.fill();
                 });
-                requestAnimationFrame(animateStars);
+                requestAnimationFrame(animateClouds);
             };
 
             window.addEventListener('resize', resize);
             resize();
-            animateStars();
+            animateClouds();
 
             // Sequence timing
             setTimeout(() => { if(introCanvas) introCanvas.style.opacity = '1'; }, 500);
