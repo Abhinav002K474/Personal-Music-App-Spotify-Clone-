@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { "title": "Mockingbird Lyrics", "artist": "Eminem", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093560/Eminem_-_Mockingbird_Lyrics_bcn8fg.mp3", "cover": "zen_garden.png" },
         { "title": "Fairytale", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093560/Fairytale_lxzstg.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778438594/vidssave.com_Fairytale_-_AMV_-_Anime_MIX_720P_bvwxet.mp4" },
         { "title": "Perfect Lyrics", "artist": "Ed Sheeran", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093558/Ed_Sheeran_-_Perfect_Lyrics_yhbbdg.mp3", "cover": "zen_garden.png" },
-        { "title": "Love Me Like You Do Lyrics", "artist": "Ellie Goulding", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093558/Ellie_Goulding_-_Love_Me_Like_You_Do_Lyrics_x699mn.mp3", "cover": "midnight_rain.png" },
+        { "title": "Love Me Like You Do Lyrics", "artist": "Ellie Goulding", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093558/Ellie_Goulding_-_Love_Me_Like_You_Do_Lyrics_x699mn.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482299/vidssave.com_amu_ikuto___love_me_like_you_do_720P_lzsffp.mp4" },
         { "title": "Gangsta s Paradise feat. L.V. Official Music Video", "artist": "Coolio", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093556/Coolio_-_Gangsta_s_Paradise_feat._L.V._Official_Music_Video_vgpvl1.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778263902/AMV_-_Tokyo_revengers_-_gangster_paradise_Toman_vs_Valhalla_xkehvs.mp4" },
         { "title": "Royalty ft. Neoni Official Lyric Video", "artist": "Egzod Maestro Chives", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093556/Egzod_Maestro_Chives_-_Royalty_ft._Neoni_Official_Lyric_Video_zzklxh.mp3", "cover": "neon_beats.png" },
         { "title": "discord x my ordinary life mashup", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093554/discord_x_my_ordinary_life_slowed_reverb_full_mashup_ffoshx.mp3", "cover": "zen_garden.png" },
@@ -192,6 +192,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hasLoveStory) {
         const track = libraryTracks.find(t => t.title === "Love Story Lyrics");
         track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778217932/Love_story_...Follow_sliceofanime_0_for_more_..._pokemon_theghostofmaidenspeak_sadanimeedit_mds8xw.mp4";
+    }
+
+    const hasLoveMeLikeYouDo = libraryTracks.some(t => t.title === "Love Me Like You Do Lyrics");
+    if (hasLoveMeLikeYouDo) {
+        const track = libraryTracks.find(t => t.title === "Love Me Like You Do Lyrics");
+        track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482299/vidssave.com_amu_ikuto___love_me_like_you_do_720P_lzsffp.mp4";
     }
 
     const hasAThousandYears = libraryTracks.some(t => t.title === "A Thousand Years");
