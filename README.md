@@ -31,7 +31,7 @@ Stress Tune is a premium, high-fidelity music streaming platform designed with a
 - **Audio**: Web Audio API (AudioContext, BiquadFilterNodes, AnalyserNode).
 - **Visuals**: HTML5 Video Sync, Canvas API for mini-visualizers.
 - **Storage**: Browser LocalStorage for library persistence.
-- **Branding**: Powered by Phoenix.
+- **Branding**: Powered By Immortal Anime.
 
 ## 🛠️ Installation
 1. Clone the repository:
