@@ -12,15 +12,8 @@
 <body style="overflow: hidden;">
     <!-- Authentication Screen -->
     <div id="auth-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: #000; display: flex; align-items: center; justify-content: center; transition: all 0.5s ease-out;">
-            <!-- Joy Boy Logo (Nika Silhouette) -->
-            <div class="joy-boy-logo-wrapper" style="margin-bottom: 24px; position: relative; display: flex; justify-content: center;">
-                <svg width="100" height="100" viewBox="0 0 24 24" fill="var(--primary-blue)" style="filter: drop-shadow(0 0 20px var(--primary-blue));">
-                    <path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.47,10-10S17.53,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8,8 S16.41,20,12,20z" opacity="0.1"/>
-                    <path d="M13.5 13.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" opacity="0.05"/>
-                    <!-- Accurate Nika Silhouette -->
-                    <path d="M12 3c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm4.5 2c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-9 0c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm9 4c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-9 0c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm4.5 1c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm4.5 1c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-9 0c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z" />
-                </svg>
-            </div>
+        <div class="auth-container" style="text-align: center; width: 100%; max-width: 400px; padding: 40px; background: rgba(15, 15, 15, 0.8); border: 1px solid var(--glass-border); border-radius: 24px; backdrop-filter: blur(20px); box-shadow: 0 0 100px rgba(0, 229, 255, 0.1);">
+            <img src="logo.png" alt="PARADISE Logo" style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 24px; border: 2px solid var(--primary-blue); box-shadow: 0 0 30px var(--primary-blue-glow); object-fit: cover;">
             <h1 style="color: var(--primary-blue); font-size: 32px; font-weight: 800; margin-bottom: 4px; letter-spacing: -1px; text-shadow: 0 0 20px var(--primary-blue-glow);">PARADISE 音楽</h1>
             <p style="color: var(--text-white); font-size: 14px; font-weight: 600; margin-bottom: 24px; opacity: 0.8; letter-spacing: 1px;">Where Music Meets Anime</p>
             <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px;">ENCRYPTED ACCESS ONLY</p>
@@ -42,11 +35,8 @@
     <div class="app-container">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo-container" style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 12px;">
-                <svg width="56" height="56" viewBox="0 0 24 24" fill="var(--primary-blue)" style="filter: drop-shadow(0 0 15px var(--primary-blue));">
-                    <!-- Accurate Nika Silhouette -->
-                    <path d="M12 3c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm4.5 2c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-9 0c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm9 4c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-9 0c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm4.5 1c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm4.5 1c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-9 0c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z" />
-                </svg>
+            <div class="logo-container" style="display: flex; align-items: center; gap: 12px; margin-bottom: 40px;">
+                <img src="logo.png" alt="Logo" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--primary-blue); box-shadow: 0 0 10px var(--primary-blue-glow); object-fit: cover;">
                 <div class="logo">PARADISE 音楽</div>
             </div>
             
