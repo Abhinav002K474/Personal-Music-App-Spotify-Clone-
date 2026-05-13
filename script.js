@@ -136,8 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { "title": "My Demons", "artist": "Starset", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778431256/Starset-My_Demons_Lyrics_Video_u1952b.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778431420/beyblade-amv-my-demons-720-ytshorts.savetube.me_e2w4e9.mp4" },
         { "title": "Stay with me", "artist": "Heavenly Jumpstyle", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778434792/HEAVENLY_JUMPSTYLE_Lyrics_woamjr.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778434595/YTDown_Shorts_Resting-My-Eyes-Leon-Kennedy-Edit-HEAVEN_Media_9uZk7Ugr-Zc_002_720p_nf450q.mp4" },
         { "title": "Dynasty", "artist": "MIIA", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483126/MIIA_-_Dynasty_Lyrics_db8g63.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482821/YTDown_YouTube_Dynasty-AMV-Anime-Mix_Media_pmN_l7FuyIg_002_720p_vbrqdr.mp4" },
-        { "title": "Love is Gone", "artist": "SLANDER ft. Dylan Matthew", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483122/SLANDER_-_Love_Is_Gone_ft._Dylan_Matthew_Acoustic_j4pugd.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482360/vidssave.com_Love_Is_Gone_AMV_MIX_1080P_ivxwrs.mp4" },
-        { "title": "Infinity", "artist": "Jaymes Young", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483293/Jaymes_Young_-_Infinity_h8k3qg.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482714/vidssave.com_AMV_-_Infinity_%E1%B4%B4%E1%B4%B0_1080P_ka9jub.mp4" }
+        { "title": "Love is Gone", "artist": "SLANDER ft. Dylan Matthew", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483122/SLANDER_-_Love_Is_Gone_ft._Dylan_Matthew_Acoustic_j4pugd.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778482360/vidssave.com_Love_Is_Gone_AMV_MIX_1080P_ivxwrs.mp4" },
+        { "title": "Infinity", "artist": "Jaymes Young", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483293/Jaymes_Young_-_Infinity_h8k3qg.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778482714/vidssave.com_AMV_-_Infinity_%E1%B4%B4%E1%B4%B0_1080P_ka9jub.mp4" }
     ];
     let libraryTracks = JSON.parse(localStorage.getItem('stressTuneLibrary')) || defaultTracks;
 
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hasAnotherLove = libraryTracks.some(t => t.title === "Another Love Lyrics");
     if (hasAnotherLove) {
         const track = libraryTracks.find(t => t.title === "Another Love Lyrics");
-        track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778218884/Sanji_Pudding_Their_Story_-_Another_Love_AMV_-_Riddler_Thriller_1080p_h264_twghwl.mp4";
+        track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778218884/Sanji_Pudding_Their_Story_-_Another_Love_AMV_-_Riddler_Thriller_1080p_h264_twghwl.mp4";
     }
 
     const hasMortals = libraryTracks.some(t => t.title === "Mortals");
@@ -242,8 +242,11 @@ document.addEventListener('DOMContentLoaded', () => {
             "artist": "Alan Walker Mashup", 
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778231726/Alan_Walker_Mashup_Lyrics_Alone_X_Faded_X_Alone_Pt._2_X_On_My_Way..._alanwalker_fadedxaloneptii_afscdd.mp3", 
             "cover": "neon_beats.png",
-            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778231741/vidssave.com_ANIME_EYES_EDIT___THIS_IS_4K_ANIME_EYES___PEPEKACHU_1080P_izqkmk.mp4"
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778231741/vidssave.com_ANIME_EYES_EDIT___THIS_IS_4K_ANIME_EYES___PEPEKACHU_1080P_izqkmk.mp4"
         });
+    } else {
+        const track = libraryTracks.find(t => t.title === "Alone x Fadded");
+        track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778231741/vidssave.com_ANIME_EYES_EDIT___THIS_IS_4K_ANIME_EYES___PEPEKACHU_1080P_izqkmk.mp4";
     }
     const hasCourtesyCall = libraryTracks.some(t => t.title === "Courtesy Call");
     if (hasCourtesyCall) {
@@ -356,11 +359,11 @@ document.addEventListener('DOMContentLoaded', () => {
             "artist": "SLANDER ft. Dylan Matthew", 
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483122/SLANDER_-_Love_Is_Gone_ft._Dylan_Matthew_Acoustic_j4pugd.mp3", 
             "cover": "midnight_rain.png",
-            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482360/vidssave.com_Love_Is_Gone_AMV_MIX_1080P_ivxwrs.mp4"
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778482360/vidssave.com_Love_Is_Gone_AMV_MIX_1080P_ivxwrs.mp4"
         });
     } else {
         const track = libraryTracks.find(t => t.title === "Love is Gone");
-        track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482360/vidssave.com_Love_Is_Gone_AMV_MIX_1080P_ivxwrs.mp4";
+        track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778482360/vidssave.com_Love_Is_Gone_AMV_MIX_1080P_ivxwrs.mp4";
     }
 
     const hasInfinity = libraryTracks.some(t => t.title === "Infinity");
@@ -370,11 +373,11 @@ document.addEventListener('DOMContentLoaded', () => {
             "artist": "Jaymes Young", 
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483293/Jaymes_Young_-_Infinity_h8k3qg.mp3", 
             "cover": "zen_garden.png",
-            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482714/vidssave.com_AMV_-_Infinity_%E1%B4%B4%E1%B4%B0_1080P_ka9jub.mp4"
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778482714/vidssave.com_AMV_-_Infinity_%E1%B4%B4%E1%B4%B0_1080P_ka9jub.mp4"
         });
     } else {
         const track = libraryTracks.find(t => t.title === "Infinity");
-        track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482714/vidssave.com_AMV_-_Infinity_%E1%B4%B4%E1%B4%B0_1080P_ka9jub.mp4";
+        track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778482714/vidssave.com_AMV_-_Infinity_%E1%B4%B4%E1%B4%B0_1080P_ka9jub.mp4";
     }
 
     // Force migration: Remove any lingering profile images from song covers
