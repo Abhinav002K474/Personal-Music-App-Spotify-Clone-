@@ -587,6 +587,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Send Discord Notification if active
         sendDiscordNotification(title, artist, cover);
 
+        // Desktop browser notification (skip on mobile)
+        sendDesktopNotification(title, artist, cover);
+
         const overlayName = document.getElementById('overlay-name');
         const overlayArtist = document.getElementById('overlay-artist');
         if (overlayName) overlayName.innerText = title;
@@ -1220,6 +1223,35 @@ document.addEventListener('DOMContentLoaded', () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         }).catch(err => console.error("Discord Sync Error:", err));
+    };
+
+    // Desktop Now Playing Notification (non-mobile only)
+    function sendDesktopNotification(title, artist, cover) {
+        // Skip on mobile/touch devices
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+        if (isMobile) return;
+        if (!('Notification' in window)) return;
+
+        const fireNotif = () => {
+            const iconUrl = cover && cover.startsWith('http') ? cover : window.location.origin + '/' + cover;
+            const notif = new Notification('PARADISE 音楽 — Now Playing', {
+                body: `${title}\n${artist}`,
+                icon: iconUrl,
+                badge: 'https://res.cloudinary.com/dhocv2p3t/image/upload/v1778145351/deep_focus_m0z8m8.png',
+                silent: true,
+                tag: 'paradise-now-playing' // Replaces previous notification instead of stacking
+            });
+            // Auto-close after 4 seconds
+            setTimeout(() => notif.close(), 4000);
+        };
+
+        if (Notification.permission === 'granted') {
+            fireNotif();
+        } else if (Notification.permission !== 'denied') {
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') fireNotif();
+            });
+        }
     };
 
     renderHome();
