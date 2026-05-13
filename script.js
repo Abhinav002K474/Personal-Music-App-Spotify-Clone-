@@ -755,59 +755,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // ── CINEMA / STREAM MODE ──────────────────────────────────────────
-    const cinemaOverlay  = document.getElementById('cinema-overlay');
-    const cinemaVideo    = document.getElementById('cinema-video');
-    const cinemaTitle    = document.getElementById('cinema-title');
-    const cinemaArtist   = document.getElementById('cinema-artist');
 
-    window.enterCinemaMode = async () => {
-        const track = currentQueue[currentTrackIndex];
-        if (!track || !track.canvas) {
-            alert('No video available for this track. Play a track with a video cover first.');
-            return;
-        }
-
-        // Populate cinema video
-        cinemaVideo.src = track.canvas;
-        cinemaVideo.load();
-        cinemaVideo.play().catch(() => {});
-        if (cinemaTitle)  cinemaTitle.innerText  = track.title;
-        if (cinemaArtist) cinemaArtist.innerText = track.artist;
-
-        // Show cinema overlay
-        if (cinemaOverlay) cinemaOverlay.style.display = 'block';
-
-        // Request native fullscreen (user gesture is this click)
-        try {
-            const el = cinemaOverlay || document.documentElement;
-            if      (el.requestFullscreen)       await el.requestFullscreen();
-            else if (el.webkitRequestFullscreen) await el.webkitRequestFullscreen();
-            else if (el.mozRequestFullScreen)    await el.mozRequestFullScreen();
-            else if (el.msRequestFullscreen)     await el.msRequestFullscreen();
-        } catch (err) {
-            console.warn('Cinema fullscreen failed:', err);
-        }
-    };
-
-    window.exitCinemaMode = async () => {
-        if (document.fullscreenElement) {
-            try { await document.exitFullscreen(); } catch(e) {}
-        }
-        if (cinemaOverlay) cinemaOverlay.style.display = 'none';
-        if (cinemaVideo)  { cinemaVideo.pause(); cinemaVideo.src = ''; }
-    };
-
-    // Wire the Stream Mode button
-    if (btnStreamMode) btnStreamMode.onclick = () => window.enterCinemaMode();
-
-    // If user presses ESC, also hide the overlay
-    document.addEventListener('fullscreenchange', () => {
-        if (!document.fullscreenElement && cinemaOverlay && cinemaOverlay.style.display !== 'none') {
-            cinemaOverlay.style.display = 'none';
-            if (cinemaVideo) { cinemaVideo.pause(); cinemaVideo.src = ''; }
-        }
-    });
 
     [btnPlay, btnPlayOverlay].forEach(btn => {
         if(btn) btn.addEventListener('click', () => {
