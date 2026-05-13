@@ -394,6 +394,18 @@ document.addEventListener('DOMContentLoaded', () => {
         youngAndBeautiful.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778681313/YTDown_YouTube_Nezuko-AMV-Young-And-Beautiful_Media_Y4Wvr0SHpgo_001_720p_t8n74r.mp4";
     }
 
+    // Patch canvas for "Rise Up Lyrics"
+    const riseUp = libraryTracks.find(t => t.title === "Rise Up Lyrics" || t.title === "Rise Up");
+    if (riseUp) {
+        riseUp.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778683202/YTDown_YouTube_AMV-Rise-Up-Anime-Mix_Media_SQgphp0w_TY_002_720p_s6slh5.mp4";
+    }
+
+    // Patch canvas for "Mockingbird Lyrics" (Eminem)
+    const mockingbird = libraryTracks.find(t => t.title === "Mockingbird Lyrics" || t.title === "Mockingbird");
+    if (mockingbird) {
+        mockingbird.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778683201/vidssave.com_Spy_x_Family_-_Mockingbird_AMV_1080P_f6t6qr.mp4";
+    }
+
     localStorage.setItem('stressTuneLibrary', JSON.stringify(libraryTracks));
 
 
