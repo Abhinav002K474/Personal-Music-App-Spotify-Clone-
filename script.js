@@ -772,25 +772,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    if (btnStreamMode) btnStreamMode.onclick = () => {
-        toggleFullscreen(true);
+    if (btnStreamMode) btnStreamMode.onclick = async () => {
         if (nowPlayingOverlay && nowPlayingOverlay.style.display === 'none') {
             toggleNowPlaying();
         }
+        
+        // Target the overlay for fullscreen to ensure a clean movie experience
+        try {
+            if (nowPlayingOverlay.requestFullscreen) {
+                await nowPlayingOverlay.requestFullscreen();
+            } else if (nowPlayingOverlay.webkitRequestFullscreen) {
+                await nowPlayingOverlay.webkitRequestFullscreen();
+            } else if (nowPlayingOverlay.msRequestFullscreen) {
+                await nowPlayingOverlay.msRequestFullscreen();
+            }
+        } catch (err) {
+            console.warn("Fullscreen request failed:", err);
+        }
+
         if (exitStreamBtn) exitStreamBtn.style.display = 'block';
+        // Hide standard close button in movie mode
+        if (closeOverlayBtn) closeOverlayBtn.style.display = 'none';
+        // Hide EQ panel in movie mode
+        const eqPanel = document.querySelector('.eq-panel');
+        if (eqPanel) eqPanel.style.display = 'none';
     };
 
-    if (exitStreamBtn) exitStreamBtn.onclick = (e) => {
+    if (exitStreamBtn) exitStreamBtn.onclick = async (e) => {
         e.stopPropagation();
-        toggleFullscreen(false);
+        if (document.fullscreenElement) {
+            await document.exitFullscreen();
+        }
         toggleNowPlaying();
         exitStreamBtn.style.display = 'none';
+        if (closeOverlayBtn) closeOverlayBtn.style.display = 'block';
+        const eqPanel = document.querySelector('.eq-panel');
+        if (eqPanel) eqPanel.style.display = 'flex';
     };
 
     document.addEventListener('fullscreenchange', () => {
         if (!document.fullscreenElement) {
-            // User exited fullscreen via ESC key
             if (exitStreamBtn) exitStreamBtn.style.display = 'none';
+            if (closeOverlayBtn) closeOverlayBtn.style.display = 'block';
+            const eqPanel = document.querySelector('.eq-panel');
+            if (eqPanel) eqPanel.style.display = 'flex';
         }
     });
 

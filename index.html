@@ -308,7 +308,10 @@
         </footer>
     </div>
     <!-- Now Playing Overlay (Full Screen) -->
-    <div id="now-playing-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; overflow-y: auto; background: black;">
+    <div id="now-playing-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; overflow-y: auto; background: black; -ms-overflow-style: none; scrollbar-width: none;">
+        <style>
+            #now-playing-overlay::-webkit-scrollbar { display: none; }
+        </style>
         <!-- Canvas Background -->
         <video id="overlay-video" loop muted playsinline preload="auto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; object-fit: cover; filter: brightness(0.4) blur(2px); transition: opacity 0.5s ease;"></video>
         
