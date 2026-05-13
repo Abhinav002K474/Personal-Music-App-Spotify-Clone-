@@ -773,27 +773,23 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (btnStreamMode) btnStreamMode.onclick = async () => {
+        // 1. Force Native Fullscreen first (User Gesture)
         const docEl = document.documentElement;
-        
-        // Request fullscreen on documentElement for maximum browser UI hiding
         try {
             if (docEl.requestFullscreen) {
                 await docEl.requestFullscreen();
-            } else if (docEl.webkitRequestFullscreen) { /* Safari */
+            } else if (docEl.webkitRequestFullscreen) {
                 await docEl.webkitRequestFullscreen();
-            } else if (docEl.msRequestFullscreen) { /* IE11 */
-                await docEl.msRequestFullscreen();
-            } else if (docEl.mozRequestFullScreen) { /* Firefox */
+            } else if (docEl.mozRequestFullScreen) {
                 await docEl.mozRequestFullScreen();
+            } else if (docEl.msRequestFullscreen) {
+                await docEl.msRequestFullscreen();
             }
         } catch (err) {
-            console.warn("Fullscreen request failed:", err);
-            // Fallback for some mobile browsers
-            try {
-                if (nowPlayingOverlay.requestFullscreen) await nowPlayingOverlay.requestFullscreen();
-            } catch (e) {}
+            console.error("Fullscreen failed:", err);
         }
 
+        // 2. Then trigger UI changes
         if (nowPlayingOverlay && nowPlayingOverlay.style.display === 'none') {
             toggleNowPlaying();
         }
