@@ -773,27 +773,33 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (btnStreamMode) btnStreamMode.onclick = async () => {
-        if (nowPlayingOverlay && nowPlayingOverlay.style.display === 'none') {
-            toggleNowPlaying();
-        }
+        const docEl = document.documentElement;
         
-        // Target the overlay for fullscreen to ensure a clean movie experience
+        // Request fullscreen on documentElement for maximum browser UI hiding
         try {
-            if (nowPlayingOverlay.requestFullscreen) {
-                await nowPlayingOverlay.requestFullscreen();
-            } else if (nowPlayingOverlay.webkitRequestFullscreen) {
-                await nowPlayingOverlay.webkitRequestFullscreen();
-            } else if (nowPlayingOverlay.msRequestFullscreen) {
-                await nowPlayingOverlay.msRequestFullscreen();
+            if (docEl.requestFullscreen) {
+                await docEl.requestFullscreen();
+            } else if (docEl.webkitRequestFullscreen) { /* Safari */
+                await docEl.webkitRequestFullscreen();
+            } else if (docEl.msRequestFullscreen) { /* IE11 */
+                await docEl.msRequestFullscreen();
+            } else if (docEl.mozRequestFullScreen) { /* Firefox */
+                await docEl.mozRequestFullScreen();
             }
         } catch (err) {
             console.warn("Fullscreen request failed:", err);
+            // Fallback for some mobile browsers
+            try {
+                if (nowPlayingOverlay.requestFullscreen) await nowPlayingOverlay.requestFullscreen();
+            } catch (e) {}
+        }
+
+        if (nowPlayingOverlay && nowPlayingOverlay.style.display === 'none') {
+            toggleNowPlaying();
         }
 
         if (exitStreamBtn) exitStreamBtn.style.display = 'block';
-        // Hide standard close button in movie mode
         if (closeOverlayBtn) closeOverlayBtn.style.display = 'none';
-        // Hide EQ panel in movie mode
         const eqPanel = document.querySelector('.eq-panel');
         if (eqPanel) eqPanel.style.display = 'none';
     };
