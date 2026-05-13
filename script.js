@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { "title": "LET THE WORLD BURN Official Lyric Video", "artist": "Chris Grey", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093547/Chris_Grey_-_LET_THE_WORLD_BURN_Official_Lyric_Video_k9hoxo.mp3", "cover": "zen_garden.png" },
         { "title": "Broken Angel Lyrics Ft.Helena Im so lonely", "artist": "Arash", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093545/Arash_-_Broken_Angel_Lyrics_Ft.Helena_Im_so_lonely_broken_angel_xvxhwn.mp3", "cover": "midnight_rain.png" },
         { "title": "Let Me Down Slowly", "artist": "Alec Benjamin", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093543/Alec_Benjamin_-_Let_Me_Down_Slowly_kcvram.mp3", "cover": "zen_garden.png" },
-        { "title": "The Nights Lyrics my father told me", "artist": "Avicii", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093542/Avicii_-_The_Nights_Lyrics_my_father_told_me_e5svqx.mp3", "cover": "neon_beats.png" },
+        { "title": "The Nights Lyrics my father told me", "artist": "Avicii", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093542/Avicii_-_The_Nights_Lyrics_my_father_told_me_e5svqx.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778683695/vidssave.com_One_piece-MV_Avicii-The_Nights_720P_ye2hqn.mp4" },
         { "title": "Moral Of The Story Lyrics 1", "artist": "Ashe", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093541/Ashe_-_Moral_Of_The_Story_Lyrics_1_a8zmg3.mp3", "cover": "zen_garden.png" },
         { "title": "I Wanna Be Yours Instrumental Best part looped", "artist": "Arctic Monkeys", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093541/Arctic_Monkeys_-_I_Wanna_Be_Yours_Instrumental_Best_part_looped_z7ljqh.mp3", "cover": "midnight_rain.png" },
         { "title": "End Of Me Pseudo Video", "artist": "Ashes Remain", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093539/Ashes_Remain_-_End_Of_Me_Pseudo_Video_lktk4s.mp3", "cover": "zen_garden.png" },
@@ -404,6 +404,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mockingbird = libraryTracks.find(t => t.title === "Mockingbird Lyrics" || t.title === "Mockingbird");
     if (mockingbird) {
         mockingbird.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778683201/vidssave.com_Spy_x_Family_-_Mockingbird_AMV_1080P_f6t6qr.mp4";
+    }
+
+    // Patch canvas for "The Nights Lyrics my father told me" (Avicii)
+    const theNights = libraryTracks.find(t => t.title === "The Nights Lyrics my father told me" || t.title === "The Nights");
+    if (theNights) {
+        theNights.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778683695/vidssave.com_One_piece-MV_Avicii-The_Nights_720P_ye2hqn.mp4";
     }
 
     localStorage.setItem('stressTuneLibrary', JSON.stringify(libraryTracks));
