@@ -377,7 +377,63 @@
         </div>
     </div>
 
-    <!-- Cast Portal Modal -->
+    <!-- CINEMA / STREAM MODE Overlay -->
+    <div id="cinema-overlay" style="
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 9999;
+        background: #000;
+        overflow: hidden;
+    ">
+        <!-- Full-bleed cinema video -->
+        <video id="cinema-video" loop muted playsinline preload="auto" style="
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        "></video>
+
+        <!-- Subtle gradient at bottom for text readability -->
+        <div style="
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 35%;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+            z-index: 2;
+        "></div>
+
+        <!-- Song info at bottom -->
+        <div style="
+            position: absolute;
+            bottom: 60px; left: 50px;
+            z-index: 3;
+        ">
+            <h1 id="cinema-title" style="font-size: 36px; font-weight: 800; color: white; margin: 0; text-shadow: 0 2px 20px rgba(0,0,0,0.8);"></h1>
+            <p id="cinema-artist" style="font-size: 18px; color: rgba(255,255,255,0.7); margin: 8px 0 0 0;"></p>
+        </div>
+
+        <!-- Exit button top-right -->
+        <button id="exit-cinema-btn" onclick="window.exitCinemaMode()" style="
+            position: absolute;
+            top: 24px; right: 24px;
+            z-index: 10;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.2s ease;
+        ">✕ EXIT STREAM MODE</button>
+    </div>
+
     <div id="cast-portal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 320px; background: rgba(15, 15, 15, 0.9); border: 1px solid var(--glass-border); border-radius: 24px; backdrop-filter: blur(30px); padding: 24px; z-index: 10000; box-shadow: 0 0 100px rgba(0, 229, 255, 0.2);">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
             <div style="color: white; font-weight: 700; font-size: 16px;">Cast to Device</div>

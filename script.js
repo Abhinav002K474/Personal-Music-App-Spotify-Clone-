@@ -755,69 +755,57 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Stream Mode logic (Full Screen)
-    const toggleFullscreen = async (entering) => {
+    // ── CINEMA / STREAM MODE ──────────────────────────────────────────
+    const cinemaOverlay  = document.getElementById('cinema-overlay');
+    const cinemaVideo    = document.getElementById('cinema-video');
+    const cinemaTitle    = document.getElementById('cinema-title');
+    const cinemaArtist   = document.getElementById('cinema-artist');
+
+    window.enterCinemaMode = async () => {
+        const track = currentQueue[currentTrackIndex];
+        if (!track || !track.canvas) {
+            alert('No video available for this track. Play a track with a video cover first.');
+            return;
+        }
+
+        // Populate cinema video
+        cinemaVideo.src = track.canvas;
+        cinemaVideo.load();
+        cinemaVideo.play().catch(() => {});
+        if (cinemaTitle)  cinemaTitle.innerText  = track.title;
+        if (cinemaArtist) cinemaArtist.innerText = track.artist;
+
+        // Show cinema overlay
+        if (cinemaOverlay) cinemaOverlay.style.display = 'block';
+
+        // Request native fullscreen (user gesture is this click)
         try {
-            if (entering) {
-                if (!document.fullscreenElement) {
-                    await document.documentElement.requestFullscreen();
-                }
-            } else {
-                if (document.fullscreenElement) {
-                    await document.exitFullscreen();
-                }
-            }
+            const el = cinemaOverlay || document.documentElement;
+            if      (el.requestFullscreen)       await el.requestFullscreen();
+            else if (el.webkitRequestFullscreen) await el.webkitRequestFullscreen();
+            else if (el.mozRequestFullScreen)    await el.mozRequestFullScreen();
+            else if (el.msRequestFullscreen)     await el.msRequestFullscreen();
         } catch (err) {
-            console.warn("Fullscreen toggle failed:", err);
+            console.warn('Cinema fullscreen failed:', err);
         }
     };
 
-    if (btnStreamMode) btnStreamMode.onclick = async () => {
-        // 1. Force Native Fullscreen first (User Gesture)
-        const docEl = document.documentElement;
-        try {
-            if (docEl.requestFullscreen) {
-                await docEl.requestFullscreen();
-            } else if (docEl.webkitRequestFullscreen) {
-                await docEl.webkitRequestFullscreen();
-            } else if (docEl.mozRequestFullScreen) {
-                await docEl.mozRequestFullScreen();
-            } else if (docEl.msRequestFullscreen) {
-                await docEl.msRequestFullscreen();
-            }
-        } catch (err) {
-            console.error("Fullscreen failed:", err);
-        }
-
-        // 2. Then trigger UI changes
-        if (nowPlayingOverlay && nowPlayingOverlay.style.display === 'none') {
-            toggleNowPlaying();
-        }
-
-        if (exitStreamBtn) exitStreamBtn.style.display = 'block';
-        if (closeOverlayBtn) closeOverlayBtn.style.display = 'none';
-        const eqPanel = document.querySelector('.eq-panel');
-        if (eqPanel) eqPanel.style.display = 'none';
-    };
-
-    if (exitStreamBtn) exitStreamBtn.onclick = async (e) => {
-        e.stopPropagation();
+    window.exitCinemaMode = async () => {
         if (document.fullscreenElement) {
-            await document.exitFullscreen();
+            try { await document.exitFullscreen(); } catch(e) {}
         }
-        toggleNowPlaying();
-        exitStreamBtn.style.display = 'none';
-        if (closeOverlayBtn) closeOverlayBtn.style.display = 'block';
-        const eqPanel = document.querySelector('.eq-panel');
-        if (eqPanel) eqPanel.style.display = 'flex';
+        if (cinemaOverlay) cinemaOverlay.style.display = 'none';
+        if (cinemaVideo)  { cinemaVideo.pause(); cinemaVideo.src = ''; }
     };
 
+    // Wire the Stream Mode button
+    if (btnStreamMode) btnStreamMode.onclick = () => window.enterCinemaMode();
+
+    // If user presses ESC, also hide the overlay
     document.addEventListener('fullscreenchange', () => {
-        if (!document.fullscreenElement) {
-            if (exitStreamBtn) exitStreamBtn.style.display = 'none';
-            if (closeOverlayBtn) closeOverlayBtn.style.display = 'block';
-            const eqPanel = document.querySelector('.eq-panel');
-            if (eqPanel) eqPanel.style.display = 'flex';
+        if (!document.fullscreenElement && cinemaOverlay && cinemaOverlay.style.display !== 'none') {
+            cinemaOverlay.style.display = 'none';
+            if (cinemaVideo) { cinemaVideo.pause(); cinemaVideo.src = ''; }
         }
     });
 
