@@ -388,6 +388,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
+    // Patch canvas for "Young and Beautiful 1" (Lana Del Rey) for existing localStorage users
+    const youngAndBeautiful = libraryTracks.find(t => t.title === "Young and Beautiful 1");
+    if (youngAndBeautiful) {
+        youngAndBeautiful.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778681313/YTDown_YouTube_Nezuko-AMV-Young-And-Beautiful_Media_Y4Wvr0SHpgo_001_720p_t8n74r.mp4";
+    }
+
     localStorage.setItem('stressTuneLibrary', JSON.stringify(libraryTracks));
 
 
