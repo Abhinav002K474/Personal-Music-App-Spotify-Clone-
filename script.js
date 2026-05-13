@@ -689,6 +689,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnShuffle = document.getElementById('btn-shuffle');
     const btnRepeat = document.getElementById('btn-repeat');
     const btnCast = document.getElementById('btn-cast');
+    const btnStreamMode = document.getElementById('stream-mode-btn');
+    const exitStreamBtn = document.getElementById('exit-stream-overlay-btn');
 
     let isShuffle = false;
     let isRepeat = false;
@@ -752,6 +754,45 @@ document.addEventListener('DOMContentLoaded', () => {
             if(currentTrack) updateUI(currentTrack.title, currentTrack.artist, currentTrack.cover, currentTrack.canvas);
         }
     };
+
+    // Stream Mode logic (Full Screen)
+    const toggleFullscreen = async (entering) => {
+        try {
+            if (entering) {
+                if (!document.fullscreenElement) {
+                    await document.documentElement.requestFullscreen();
+                }
+            } else {
+                if (document.fullscreenElement) {
+                    await document.exitFullscreen();
+                }
+            }
+        } catch (err) {
+            console.warn("Fullscreen toggle failed:", err);
+        }
+    };
+
+    if (btnStreamMode) btnStreamMode.onclick = () => {
+        toggleFullscreen(true);
+        if (nowPlayingOverlay && nowPlayingOverlay.style.display === 'none') {
+            toggleNowPlaying();
+        }
+        if (exitStreamBtn) exitStreamBtn.style.display = 'block';
+    };
+
+    if (exitStreamBtn) exitStreamBtn.onclick = (e) => {
+        e.stopPropagation();
+        toggleFullscreen(false);
+        toggleNowPlaying();
+        exitStreamBtn.style.display = 'none';
+    };
+
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+            // User exited fullscreen via ESC key
+            if (exitStreamBtn) exitStreamBtn.style.display = 'none';
+        }
+    });
 
     [btnPlay, btnPlayOverlay].forEach(btn => {
         if(btn) btn.addEventListener('click', () => {
