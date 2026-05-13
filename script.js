@@ -639,7 +639,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 centerVideo.style.display = 'block';
             }
 
-            // Sync Logic: Ensure center video follows background video
+            // Sync Logic
             const syncVideos = () => {
                 if (centerVideo && !centerVideo.paused && Math.abs(video.currentTime - centerVideo.currentTime) > 0.5) {
                     centerVideo.currentTime = video.currentTime;
@@ -647,31 +647,33 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             video.onplaying = () => {
-                if(centerVideo && centerVideo.paused) centerVideo.play().catch(() => {});
+                if (centerVideo && centerVideo.paused) centerVideo.play().catch(() => {});
             };
             video.onpause = () => {
-                if(centerVideo) centerVideo.pause();
+                if (centerVideo) centerVideo.pause();
             };
             video.onseeking = () => {
-                if(centerVideo) centerVideo.currentTime = video.currentTime;
+                if (centerVideo) centerVideo.currentTime = video.currentTime;
             };
-            
-            // Use a less frequent interval for periodic sync to prevent UI thread blocking
+
+            // Periodic sync
             if (window.videoSyncInterval) clearInterval(window.videoSyncInterval);
             window.videoSyncInterval = setInterval(syncVideos, 500);
 
-            // Start playing both videos
-            const startVideos = () => {
-                video.play().catch(() => {});
-                if(centerVideo) centerVideo.play().catch(() => {});
-            };
-            
-            if (video.readyState >= 2) {
-                startVideos();
-            } else {
-                video.oncanplay = startVideos;
+            // Start background video independently
+            video.play().catch(() => {});
+
+            // Start center video independently — don't wait for background
+            if (centerVideo) {
+                if (centerVideo.readyState >= 2) {
+                    centerVideo.play().catch(() => {});
+                } else {
+                    centerVideo.oncanplay = () => {
+                        centerVideo.play().catch(() => {});
+                    };
+                }
             }
-            
+
             // Hide Static Art
             if (overlayArt) overlayArt.style.display = 'none';
             overlay.style.backgroundImage = 'none';
