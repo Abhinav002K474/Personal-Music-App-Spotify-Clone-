@@ -662,13 +662,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Sync Logic
             const syncVideos = () => {
-                if (centerVideo && !centerVideo.paused && Math.abs(video.currentTime - centerVideo.currentTime) > 0.5) {
+                if (centerVideo && !centerVideo.paused && Math.abs(video.currentTime - centerVideo.currentTime) > 0.3) {
                     centerVideo.currentTime = video.currentTime;
                 }
             };
 
             video.onplaying = () => {
-                if (centerVideo && centerVideo.paused) centerVideo.play().catch(() => {});
+                if (centerVideo) {
+                    centerVideo.currentTime = video.currentTime; // Snap sync instantly
+                    if (centerVideo.paused) centerVideo.play().catch(() => {});
+                }
             };
             video.onpause = () => {
                 if (centerVideo) centerVideo.pause();
@@ -677,19 +680,21 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (centerVideo) centerVideo.currentTime = video.currentTime;
             };
 
-            // Periodic sync
+            // Periodic sync (Faster for perfect alignment)
             if (window.videoSyncInterval) clearInterval(window.videoSyncInterval);
-            window.videoSyncInterval = setInterval(syncVideos, 500);
+            window.videoSyncInterval = setInterval(syncVideos, 100);
 
             // Start background video independently
             video.play().catch(() => {});
 
-            // Start center video independently — don't wait for background
+            // Start center video independently — snap time immediately
             if (centerVideo) {
+                centerVideo.currentTime = video.currentTime;
                 if (centerVideo.readyState >= 2) {
                     centerVideo.play().catch(() => {});
                 } else {
                     centerVideo.oncanplay = () => {
+                        centerVideo.currentTime = video.currentTime;
                         centerVideo.play().catch(() => {});
                     };
                 }
