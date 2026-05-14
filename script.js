@@ -662,15 +662,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Sync Logic
             const syncVideos = () => {
-                if (centerVideo && !centerVideo.paused && Math.abs(video.currentTime - centerVideo.currentTime) > 0.3) {
+                if (centerVideo && !centerVideo.paused && !video.paused && Math.abs(video.currentTime - centerVideo.currentTime) > 0.5) {
                     centerVideo.currentTime = video.currentTime;
                 }
             };
 
             video.onplaying = () => {
-                if (centerVideo) {
-                    centerVideo.currentTime = video.currentTime; // Snap sync instantly
-                    if (centerVideo.paused) centerVideo.play().catch(() => {});
+                if (centerVideo && centerVideo.paused) {
+                    centerVideo.play().catch(() => {});
                 }
             };
             video.onpause = () => {
@@ -680,23 +679,24 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (centerVideo) centerVideo.currentTime = video.currentTime;
             };
 
-            // Periodic sync (Faster for perfect alignment)
+            // Periodic sync
             if (window.videoSyncInterval) clearInterval(window.videoSyncInterval);
-            window.videoSyncInterval = setInterval(syncVideos, 100);
+            window.videoSyncInterval = setInterval(syncVideos, 250); // Faster than original but safer than 100ms
 
             // Start background video independently
             video.play().catch(() => {});
 
-            // Start center video independently — snap time immediately
+            // Start center video independently with readyState check
             if (centerVideo) {
-                centerVideo.currentTime = video.currentTime;
-                if (centerVideo.readyState >= 2) {
+                const tryPlayCenter = () => {
+                    centerVideo.currentTime = video.currentTime;
                     centerVideo.play().catch(() => {});
+                };
+
+                if (centerVideo.readyState >= 2) {
+                    tryPlayCenter();
                 } else {
-                    centerVideo.oncanplay = () => {
-                        centerVideo.currentTime = video.currentTime;
-                        centerVideo.play().catch(() => {});
-                    };
+                    centerVideo.oncanplay = () => tryPlayCenter();
                 }
             }
 
