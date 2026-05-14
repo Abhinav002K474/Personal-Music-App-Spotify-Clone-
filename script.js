@@ -421,11 +421,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         mockingbird.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778683201/vidssave.com_Spy_x_Family_-_Mockingbird_AMV_1080P_f6t6qr.mp4";
     }
 
-    // Patch canvas for "The Nights Lyrics my father told me" (Avicii)
-    const theNights = libraryTracks.find(t => t.title === "The Nights Lyrics my father told me" || t.title === "The Nights");
-    if (theNights) {
-        theNights.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778683695/vidssave.com_One_piece-MV_Avicii-The_Nights_720P_ye2hqn.mp4";
-    }
+    // Robust Patch for "The Nights" (Avicii) - Handles any title variation
+    libraryTracks.forEach(track => {
+        if (track.title.toLowerCase().includes("the nights")) {
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778683695/vidssave.com_One_piece-MV_Avicii-The_Nights_720P_ye2hqn.mp4";
+        }
+    });
 
     localStorage.setItem('stressTuneLibrary', JSON.stringify(libraryTracks));
 
