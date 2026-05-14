@@ -1,4 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // ── DISCORD ACTIVITY INITIALIZATION ────────────────────────────────
+    const CLIENT_ID = '1304328735904497795';
+    let discordSdk = null;
+
+    if (window.discordSdk) {
+        try {
+            discordSdk = new window.discordSdk.DiscordSDK(CLIENT_ID);
+            await discordSdk.ready();
+            console.log("Discord SDK is ready");
+        } catch (err) {
+            console.error("Discord SDK initialization failed:", err);
+        }
+    }
+    // ────────────────────────────────────────────────────────────────────
+
     const playBtn = document.querySelector('.play-btn');
     const progressBar = document.querySelector('.progress-fill');
     const homeView = document.getElementById('home-view');
