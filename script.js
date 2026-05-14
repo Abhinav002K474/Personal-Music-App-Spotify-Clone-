@@ -663,7 +663,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Stable Sync Logic
             video.onplaying = () => {
-                if (centerVideo && centerVideo.paused) centerVideo.play().catch(() => {});
+                if (centerVideo) {
+                    centerVideo.currentTime = video.currentTime; // Initial snap for perfect phase
+                    if (centerVideo.paused) centerVideo.play().catch(() => {});
+                }
             };
             video.onpause = () => {
                 if (centerVideo) centerVideo.pause();
