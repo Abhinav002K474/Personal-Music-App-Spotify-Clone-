@@ -678,6 +678,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 centerVideo.play().catch(() => {});
             }
 
+            // Gentle Drift Sync (Checks every 5s, only fixes if drift > 1.5s)
+            if (window.videoSyncInterval) clearInterval(window.videoSyncInterval);
+            window.videoSyncInterval = setInterval(() => {
+                if (centerVideo && !centerVideo.paused && !video.paused) {
+                    if (Math.abs(video.currentTime - centerVideo.currentTime) > 1.5) {
+                        centerVideo.currentTime = video.currentTime;
+                    }
+                }
+            }, 5000);
+
             // Hide Static Art
             if (overlayArt) overlayArt.style.display = 'none';
             overlay.style.backgroundImage = 'none';
