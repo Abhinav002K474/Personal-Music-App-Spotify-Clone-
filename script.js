@@ -661,17 +661,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 centerVideo.style.display = 'block';
             }
 
-            // Sync Logic
-            const syncVideos = () => {
-                if (centerVideo && !centerVideo.paused && !video.paused && Math.abs(video.currentTime - centerVideo.currentTime) > 0.5) {
-                    centerVideo.currentTime = video.currentTime;
-                }
-            };
-
+            // Stable Sync Logic
             video.onplaying = () => {
-                if (centerVideo && centerVideo.paused) {
-                    centerVideo.play().catch(() => {});
-                }
+                if (centerVideo && centerVideo.paused) centerVideo.play().catch(() => {});
             };
             video.onpause = () => {
                 if (centerVideo) centerVideo.pause();
@@ -680,25 +672,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (centerVideo) centerVideo.currentTime = video.currentTime;
             };
 
-            // Periodic sync
-            if (window.videoSyncInterval) clearInterval(window.videoSyncInterval);
-            window.videoSyncInterval = setInterval(syncVideos, 250); // Faster than original but safer than 100ms
-
-            // Start background video independently
+            // Start videos
             video.play().catch(() => {});
-
-            // Start center video independently with readyState check
             if (centerVideo) {
-                const tryPlayCenter = () => {
-                    centerVideo.currentTime = video.currentTime;
-                    centerVideo.play().catch(() => {});
-                };
-
-                if (centerVideo.readyState >= 2) {
-                    tryPlayCenter();
-                } else {
-                    centerVideo.oncanplay = () => tryPlayCenter();
-                }
+                centerVideo.play().catch(() => {});
             }
 
             // Hide Static Art
