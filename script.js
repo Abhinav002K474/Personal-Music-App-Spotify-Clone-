@@ -93,12 +93,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "This Song Saved My Life", "artist": "Simple Plan", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093603/Simple_Plan_-_This_Song_Saved_My_Life_su9dpe.mp3", "cover": "midnight_rain.png" },
         { "title": "Love Me Not Lyrics", "artist": "Ravyn Lenae", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093602/Ravyn_Lenae_-_Love_Me_Not_Lyrics_hywg7p.mp3", "cover": "midnight_rain.png" },
         { "title": "Rise", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093601/Rise_vd0c0o.mp3", "cover": "zen_garden.png" },
-        { "title": "Dandelions Lyrics", "artist": "Ruth B.", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093597/Ruth_B._-_Dandelions_Lyrics_ro6pjb.mp3", "cover": "neon_beats.png" },
+        { "title": "Dandelions Lyrics", "artist": "Ruth B.", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093597/Ruth_B._-_Dandelions_Lyrics_ro6pjb.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779095683/Dandelions_-_AMV_-_Anime_MV_xvlg0y.mp4" },
         { "title": "APT. Official Music Video", "artist": "ROSE Bruno Mars", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093597/ROSE_Bruno_Mars_-_APT._Official_Music_Video_zdi0j1.mp3", "cover": "zen_garden.png" },
         { "title": "KINGS QUEENS", "artist": "Qin shi huang vs Hades", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093594/Qin_shi_huang_vs_Hades_KINGS_QUEENS_mpcpoh.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778215631/Classroom_of_the_Elite_III_AMV_Kings_Queens_-_Luc%D1%87_%D3%87%D1%94%CE%B1rt%E1%83%A6_720p_h264_bqgpfe.mp4" },
         { "title": "Grateful Copyright Free No.54", "artist": "NEFFEX", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093591/NEFFEX_-_Grateful_Copyright_Free_No.54_n1znzm.mp3", "cover": "neon_beats.png" },
         { "title": "House of Memories", "artist": "Panic At The Disco", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093589/Panic_At_The_Disco_-_House_of_Memories_jhan2s.mp3", "cover": "midnight_rain.png" },
-        { "title": "Unforgettable freestyle lyrics", "artist": "PnB Rock", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093589/PnB_Rock_-_Unforgettable_freestyle_lyrics_l5qwwj.mp3", "cover": "midnight_rain.png" },
+        { "title": "Unforgettable freestyle lyrics", "artist": "PnB Rock", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093589/PnB_Rock_-_Unforgettable_freestyle_lyrics_l5qwwj.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779095663/Pnb_Rock_-_Unforgettable_Freestyle_AMV_EDIT_Free_Preset_Edit_By_Galaxy_Edit_z_pnbrocktypebeat_dkv6wo.mp4" },
         { "title": "Passenger Let Her Go Official Video", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093588/Passenger_Let_Her_Go_Official_Video_mcvfge.mp3", "cover": "zen_garden.png" },
         { "title": "Courtesy Call", "artist": "Nightcore", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093587/Nightcore_-_Courtesy_Call_yrf5kr.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778232193/vidssave.com_Kalos_League_Showdown_AMV_Courtesy_Call_-_Pokemon_XYZ_1080P_gzmf5b.mp4" },
         { "title": "Animals Lyrics", "artist": "Maroon 5", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093586/Maroon_5_-_Animals_Lyrics_xewnpl.mp3", "cover": "zen_garden.png" },
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "End Of Me Pseudo Video", "artist": "Ashes Remain", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093539/Ashes_Remain_-_End_Of_Me_Pseudo_Video_lktk4s.mp3", "cover": "zen_garden.png" },
         { "title": "2 Phut Hon phao Lyrics kaiz Remix", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093539/2_Phut_Hon_-_phao_Lyrics_kaiz_Remix_phut_Hon_remix_lyrics_TikTok_Song_Sub._English_-_Lyrics_d1a3ex.mp3", "cover": "neon_beats.png" },
         { "title": "Moral Of The Story Lyrics", "artist": "Ashe", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093536/Ashe_-_Moral_Of_The_Story_Lyrics_pjdv1o.mp3", "cover": "zen_garden.png" },
-        { "title": "I Wanna Be Yours Lyrics", "artist": "Arctic Monkeys", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093533/Arctic_Monkeys_-_I_Wanna_Be_Yours_Lyrics_tool3t.mp3", "cover": "midnight_rain.png" },
+        { "title": "I Wanna Be Yours Lyrics", "artist": "Arctic Monkeys", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093533/Arctic_Monkeys_-_I_Wanna_Be_Yours_Lyrics_tool3t.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779094469/I_WANNA_BE_YOURS_AMV_lhzb07.mp4" },
         { "title": "Alone Pt. II Lyrics", "artist": "Alan Walker Ava Max", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093533/Alan_Walker_Ava_Max_-_Alone_Pt._II_Lyrics_nr1wnq.mp3", "cover": "zen_garden.png" },
         { "title": "On My Way", "artist": "Alan Walker Sabrina Carpenter Farruko", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093529/Alan_Walker_Sabrina_Carpenter_Farruko_-_On_My_Way_t6nwnc.mp3", "cover": "neon_beats.png" },
         { "title": "Faded", "artist": "Alan Walker", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093529/Alan_Walker_-_Faded_rqjfr9.mp3", "cover": "zen_garden.png" },
@@ -419,6 +419,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     const mockingbird = libraryTracks.find(t => t.title === "Mockingbird Lyrics" || t.title === "Mockingbird");
     if (mockingbird) {
         mockingbird.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778683201/vidssave.com_Spy_x_Family_-_Mockingbird_AMV_1080P_f6t6qr.mp4";
+    }
+
+    // Patch canvas for "I Wanna Be Yours Lyrics"
+    const iWannaBeYours = libraryTracks.find(t => t.title === "I Wanna Be Yours Lyrics" || t.title === "I Wanna Be Yours");
+    if (iWannaBeYours) {
+        iWannaBeYours.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779094469/I_WANNA_BE_YOURS_AMV_lhzb07.mp4";
+    }
+
+    // Patch canvas for "Dandelions Lyrics"
+    const dandelions = libraryTracks.find(t => t.title === "Dandelions Lyrics" || t.title === "Dandelions");
+    if (dandelions) {
+        dandelions.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779095683/Dandelions_-_AMV_-_Anime_MV_xvlg0y.mp4";
+    }
+
+    // Patch canvas for "Unforgettable freestyle lyrics"
+    const unforgettable = libraryTracks.find(t => t.title === "Unforgettable freestyle lyrics" || t.title === "Unforgettable");
+    if (unforgettable) {
+        unforgettable.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779095663/Pnb_Rock_-_Unforgettable_Freestyle_AMV_EDIT_Free_Preset_Edit_By_Galaxy_Edit_z_pnbrocktypebeat_dkv6wo.mp4";
     }
 
     // Robust Patch for "The Nights" (Avicii) - Handles any title variation
