@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "Summertime Sadness Official Music Video", "artist": "Lana Del Rey", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093571/Lana_Del_Rey_-_Summertime_Sadness_Official_Music_Video_ju5dqe.mp3", "cover": "midnight_rain.png" },
         { "title": "Die With A Smile", "artist": "Lady Gaga Bruno Mars", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093571/Lady_Gaga_Bruno_Mars_-_Die_With_A_Smile_hskjah.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778217207/Die_With_A_Smile_Eren_X_Mikasa_AMV_-_ToastLmao_1080p_h264_mgn6x0.mp4" },
         { "title": "Somewhere Only We Know Lyrics", "artist": "Keane", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093571/Keane_-_Somewhere_Only_We_Know_Lyrics_ivjhnl.mp3", "cover": "neon_beats.png" },
-        { "title": "Heat Waves Full Version", "artist": "Glass animals x HighCloud Cover", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093566/Heat_Waves_-_Glass_animals_x_HighCloud_Cover_Full_Version_v19c1e.mp3", "cover": "midnight_rain.png" },
+        { "title": "Heat Waves Full Version", "artist": "Glass animals x HighCloud Cover", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093566/Heat_Waves_-_Glass_animals_x_HighCloud_Cover_Full_Version_v19c1e.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779198119/Heat_Waves_-_AMV_-_Anime_MV_h8pxs0.mp4" },
         { "title": "The Phoenix Part 2 of 11", "artist": "Fall Out Boy", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093565/Fall_Out_Boy_-_The_Phoenix_Official_Video_-_Part_2_of_11_xsllmm.mp3", "cover": "midnight_rain.png" },
         { "title": "Mockingbird Lyrics", "artist": "Eminem", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093560/Eminem_-_Mockingbird_Lyrics_bcn8fg.mp3", "cover": "zen_garden.png" },
         { "title": "Fairytale", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093560/Fairytale_lxzstg.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778438594/vidssave.com_Fairytale_-_AMV_-_Anime_MIX_720P_bvwxet.mp4" },
@@ -437,6 +437,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const unforgettable = libraryTracks.find(t => t.title === "Unforgettable freestyle lyrics" || t.title === "Unforgettable");
     if (unforgettable) {
         unforgettable.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779095663/Pnb_Rock_-_Unforgettable_Freestyle_AMV_EDIT_Free_Preset_Edit_By_Galaxy_Edit_z_pnbrocktypebeat_dkv6wo.mp4";
+    }
+
+    // Patch canvas for "Heat Waves Full Version"
+    const heatWaves = libraryTracks.find(t => t.title === "Heat Waves Full Version" || t.title === "Heat Waves");
+    if (heatWaves) {
+        heatWaves.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779198119/Heat_Waves_-_AMV_-_Anime_MV_h8pxs0.mp4";
     }
 
     // Robust Patch for "The Nights" (Avicii) - Handles any title variation
