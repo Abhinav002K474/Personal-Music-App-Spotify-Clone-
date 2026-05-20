@@ -1052,94 +1052,101 @@ document.addEventListener('DOMContentLoaded', async () => {
             authError.style.display = 'none';
         };
     }
-    // Cast Portal Logic (Real-Time Discovery Integration)
+    // Cast Portal Logic (Real-Time Discovery Integration via Google Cast API)
     const castPortal = document.getElementById('cast-portal');
     const castScanning = document.getElementById('cast-scanning');
     const castList = document.getElementById('cast-list');
     const castConnected = document.getElementById('cast-connected');
     const castStatusText = castScanning ? castScanning.querySelector('p') : null;
-    
-    let presentationRequest = null;
-    try {
-        if ('PresentationRequest' in window) {
-            presentationRequest = new PresentationRequest(['https://personal-music-app-spotify-clone.vercel.app']);
-        }
-    } catch (e) { console.log("Presentation API not supported"); }
 
-    window.toggleCastPortal = async () => {
-        if (!castPortal) return;
-        
-        const isHidden = castPortal.style.display === 'none';
-        if (isHidden) {
-            castPortal.style.display = 'block';
-            castScanning.style.display = 'block';
-            castList.style.display = 'none';
-            castConnected.style.display = 'none';
-            if(castStatusText) castStatusText.innerText = "Scanning WiFi for available devices...";
+    let castSession = null;
+    let currentMediaSession = null;
 
-            // Attempt Actual Browser Discovery
-            if (presentationRequest) {
-                presentationRequest.getAvailability()
-                    .then(availability => {
-                        console.log("Device availability:", availability.value);
-                        if (availability.value) {
-                            if(castStatusText) castStatusText.innerText = "Devices found! Preparing connection...";
-                            setTimeout(() => {
-                                castScanning.style.display = 'none';
-                                castList.style.display = 'flex';
-                            }, 1500);
-                        } else {
-                            // Fallback to high-fidelity mock if no physical devices are broadcasted
-                            setTimeout(() => {
-                                if(castStatusText) castStatusText.innerText = "Searching for nearby Stress-Link devices...";
-                                setTimeout(() => {
-                                    castScanning.style.display = 'none';
-                                    castList.style.display = 'flex';
-                                }, 2000);
-                            }, 1000);
-                        }
-                    })
-                    .catch(() => {
-                        // General fallback
-                        setTimeout(() => {
-                            castScanning.style.display = 'none';
-                            castList.style.display = 'flex';
-                        }, 2500);
-                    });
-            } else {
-                // Simulation for non-supported browsers
-                setTimeout(() => {
-                    castScanning.style.display = 'none';
-                    castList.style.display = 'flex';
-                }, 2500);
-            }
-        } else {
-            castPortal.style.display = 'none';
+    window.__onGCastApiAvailable = function(isAvailable) {
+        if (isAvailable) {
+            initializeCastApi();
         }
     };
 
-    window.connectDevice = (name) => {
-        const password = prompt(`Enter casting password for ${name}:`);
-        if (password === null || password.trim() === "") return; // Cancel if no password
-
-        castList.style.display = 'none';
-        castScanning.style.display = 'block';
-        if(castStatusText) castStatusText.innerText = `Establishing high-fidelity link to ${name}...`;
+    function initializeCastApi() {
+        cast.framework.CastContext.getInstance().setOptions({
+            receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+            autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+        });
         
-        // If real API is available, try to start a session
-        if (presentationRequest) {
-            presentationRequest.start()
-                .then(connection => {
-                    console.log("Connected to " + connection.url);
-                    finalizeConnection(name);
-                })
-                .catch(err => {
-                    console.log("Remote cast failed, using virtual link:", err);
-                    finalizeConnection(name); // Fallback to virtual link if user cancels or fails
-                });
-        } else {
-            finalizeConnection(name);
+        const context = cast.framework.CastContext.getInstance();
+        context.addEventListener(cast.framework.CastContextEventType.SESSION_STATE_CHANGED, function(event) {
+            switch (event.sessionState) {
+                case cast.framework.SessionState.SESSION_STARTED:
+                case cast.framework.SessionState.SESSION_RESUMED:
+                    castSession = context.getCurrentSession();
+                    const deviceName = castSession.getCastDevice().friendlyName || "TV";
+                    
+                    // Show connected UI
+                    if (castPortal) castPortal.style.display = 'block';
+                    if (castScanning) castScanning.style.display = 'none';
+                    if (castList) castList.style.display = 'none';
+                    if (castConnected) castConnected.style.display = 'block';
+                    document.getElementById('connected-device-name').innerText = deviceName;
+                    document.querySelectorAll('#btn-cast').forEach(btn => btn.style.color = 'var(--primary-blue)');
+                    
+                    if (window.updateCastDisplay) window.updateCastDisplay();
+                    loadMediaIntoCast();
+                    break;
+                case cast.framework.SessionState.SESSION_ENDED:
+                    castSession = null;
+                    currentMediaSession = null;
+                    if (castPortal) castPortal.style.display = 'none';
+                    document.querySelectorAll('#btn-cast').forEach(btn => btn.style.color = 'white');
+                    break;
+            }
+        });
+    }
+
+    window.toggleCastPortal = async () => {
+        if (typeof cast === 'undefined' || !cast.framework) {
+            alert("Google Cast is not available in this browser. Please use Chrome/Edge.");
+            return;
         }
+
+        cast.framework.CastContext.getInstance().requestSession().then(
+            function() {
+                console.log("Cast session started successfully");
+            },
+            function(errorCode) {
+                console.log('Error starting cast session: ' + errorCode);
+            }
+        );
+    };
+
+    function loadMediaIntoCast() {
+        if (!castSession) return;
+        if (currentTrackIndex === -1 || !currentQueue[currentTrackIndex]) return;
+        
+        const track = currentQueue[currentTrackIndex];
+        let mediaInfo = new chrome.cast.media.MediaInfo(track.url, 'audio/mp3');
+        let metadata = new chrome.cast.media.MusicTrackMediaMetadata();
+        metadata.title = track.title;
+        metadata.artist = track.artist;
+        const coverUrl = track.cover.startsWith('http') ? track.cover : window.location.origin + '/' + track.cover;
+        metadata.images = [new chrome.cast.Image(coverUrl)];
+        mediaInfo.metadata = metadata;
+        
+        let request = new chrome.cast.media.LoadRequest(mediaInfo);
+        
+        if (audio && !audio.paused) {
+            request.currentTime = audio.currentTime;
+        }
+        
+        castSession.loadMedia(request).then(
+            function() { console.log('Media loaded on cast device'); },
+            function(errorCode) { console.log('Error loading media: ' + errorCode); }
+        );
+    }
+
+    window.connectDevice = (name) => {
+        // Fallback for UI if clicked from the old mock list
+        window.toggleCastPortal();
     };
 
     window.updateCastDisplay = () => {
@@ -1152,34 +1159,26 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('cast-title').innerText = track.title;
             document.getElementById('cast-artist').innerText = track.artist;
             castNowPlaying.style.display = 'flex';
+            loadMediaIntoCast(); // update the actual cast device
         } else {
             castNowPlaying.style.display = 'none';
         }
     };
 
-    const finalizeConnection = (name) => {
-        setTimeout(() => {
-            castScanning.style.display = 'none';
-            castConnected.style.display = 'block';
-            document.getElementById('connected-device-name').innerText = name;
-            document.querySelectorAll('#btn-cast').forEach(btn => btn.style.color = 'var(--primary-blue)');
-            
-            if (window.updateCastDisplay) window.updateCastDisplay();
-
-            // Sync Audio state if possible
-            if(audio) audio.play();
-        }, 2000);
-    }
-
     window.disconnectDevice = () => {
-        castConnected.style.display = 'none';
-        castList.style.display = 'flex';
+        if (castSession) {
+            cast.framework.CastContext.getInstance().endCurrentSession(true);
+        }
+        if (castConnected) castConnected.style.display = 'none';
+        if (castList) castList.style.display = 'flex';
         document.querySelectorAll('#btn-cast').forEach(btn => btn.style.color = 'white');
         if(castStatusText) castStatusText.innerText = "Scanning WiFi for available devices...";
     };
 
     const closeCast = document.getElementById('close-cast');
-    if(closeCast) closeCast.onclick = () => castPortal.style.display = 'none';
+    if(closeCast) closeCast.onclick = () => {
+        if (castPortal) castPortal.style.display = 'none';
+    };
 
     const setupEQControls = () => {
         const bassSliders = [document.getElementById('eq-bass'), document.getElementById('eq-bass-side')];
