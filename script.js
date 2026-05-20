@@ -1124,10 +1124,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (currentTrackIndex === -1 || !currentQueue[currentTrackIndex]) return;
         
         const track = currentQueue[currentTrackIndex];
-        let mediaInfo = new chrome.cast.media.MediaInfo(track.url, 'audio/mp3');
-        let metadata = new chrome.cast.media.MusicTrackMediaMetadata();
+        const isVideo = !!track.canvas && !window.isDataSaver;
+        const mediaUrl = isVideo ? track.canvas : track.url;
+        const mediaType = isVideo ? 'video/mp4' : 'audio/mp3';
+        
+        let mediaInfo = new chrome.cast.media.MediaInfo(mediaUrl, mediaType);
+        
+        let metadata = isVideo ? new chrome.cast.media.GenericMediaMetadata() : new chrome.cast.media.MusicTrackMediaMetadata();
         metadata.title = track.title;
-        metadata.artist = track.artist;
+        if (metadata.artist !== undefined) metadata.artist = track.artist;
+        if (metadata.subtitle !== undefined) metadata.subtitle = track.artist;
+        
         const coverUrl = track.cover.startsWith('http') ? track.cover : window.location.origin + '/' + track.cover;
         metadata.images = [new chrome.cast.Image(coverUrl)];
         mediaInfo.metadata = metadata;
