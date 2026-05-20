@@ -1124,17 +1124,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (currentTrackIndex === -1 || !currentQueue[currentTrackIndex]) return;
         
         const track = currentQueue[currentTrackIndex];
-        const isVideo = !!track.canvas && !window.isDataSaver;
-        const mediaUrl = isVideo ? track.canvas : track.url;
-        const mediaType = isVideo ? 'video/mp4' : 'audio/mp3';
-        
-        let mediaInfo = new chrome.cast.media.MediaInfo(mediaUrl, mediaType);
-        
-        let metadata = isVideo ? new chrome.cast.media.GenericMediaMetadata() : new chrome.cast.media.MusicTrackMediaMetadata();
+        let mediaUrl = track.url;
+        let mimeType = 'audio/mp3';
+
+        if (track.canvas && !window.isDataSaver) {
+            mediaUrl = track.canvas;
+            mimeType = 'video/mp4';
+        }
+
+        let mediaInfo = new chrome.cast.media.MediaInfo(mediaUrl, mimeType);
+        let metadata = new chrome.cast.media.MusicTrackMediaMetadata();
         metadata.title = track.title;
-        if (metadata.artist !== undefined) metadata.artist = track.artist;
-        if (metadata.subtitle !== undefined) metadata.subtitle = track.artist;
-        
+        metadata.artist = track.artist;
         const coverUrl = track.cover.startsWith('http') ? track.cover : window.location.origin + '/' + track.cover;
         metadata.images = [new chrome.cast.Image(coverUrl)];
         mediaInfo.metadata = metadata;
@@ -1162,7 +1163,28 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         if (currentTrackIndex !== -1 && currentQueue[currentTrackIndex]) {
             const track = currentQueue[currentTrackIndex];
-            document.getElementById('cast-art').src = track.cover;
+            const castArt = document.getElementById('cast-art');
+            const castVideo = document.getElementById('cast-video');
+
+            if (track.canvas && !window.isDataSaver) {
+                if (castArt) castArt.style.display = 'none';
+                if (castVideo) {
+                    castVideo.src = track.canvas;
+                    castVideo.style.display = 'block';
+                    castVideo.play().catch(e => console.log(e));
+                }
+            } else {
+                if (castVideo) {
+                    castVideo.pause();
+                    castVideo.src = '';
+                    castVideo.style.display = 'none';
+                }
+                if (castArt) {
+                    castArt.src = track.cover;
+                    castArt.style.display = 'block';
+                }
+            }
+
             document.getElementById('cast-title').innerText = track.title;
             document.getElementById('cast-artist').innerText = track.artist;
             castNowPlaying.style.display = 'flex';
