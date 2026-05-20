@@ -648,6 +648,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const playerArt = document.getElementById('player-art');
         if (playerArt) playerArt.src = cover;
 
+        if (window.updateCastDisplay) window.updateCastDisplay();
+
         // Send Discord Notification if active
         sendDiscordNotification(title, artist, cover);
 
@@ -1117,6 +1119,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
 
     window.connectDevice = (name) => {
+        const password = prompt(`Enter casting password for ${name}:`);
+        if (password === null || password.trim() === "") return; // Cancel if no password
+
         castList.style.display = 'none';
         castScanning.style.display = 'block';
         if(castStatusText) castStatusText.innerText = `Establishing high-fidelity link to ${name}...`;
@@ -1137,6 +1142,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
+    window.updateCastDisplay = () => {
+        const castNowPlaying = document.getElementById('cast-now-playing');
+        if (!castNowPlaying) return;
+        
+        if (currentTrackIndex !== -1 && currentQueue[currentTrackIndex]) {
+            const track = currentQueue[currentTrackIndex];
+            document.getElementById('cast-art').src = track.cover;
+            document.getElementById('cast-title').innerText = track.title;
+            document.getElementById('cast-artist').innerText = track.artist;
+            castNowPlaying.style.display = 'flex';
+        } else {
+            castNowPlaying.style.display = 'none';
+        }
+    };
+
     const finalizeConnection = (name) => {
         setTimeout(() => {
             castScanning.style.display = 'none';
@@ -1144,6 +1164,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('connected-device-name').innerText = name;
             document.querySelectorAll('#btn-cast').forEach(btn => btn.style.color = 'var(--primary-blue)');
             
+            if (window.updateCastDisplay) window.updateCastDisplay();
+
             // Sync Audio state if possible
             if(audio) audio.play();
         }, 2000);
