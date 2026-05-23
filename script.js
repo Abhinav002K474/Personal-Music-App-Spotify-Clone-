@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "Eenie Meenie Lyrics", "artist": "Sean Kingston Justin Bieber", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093604/Sean_Kingston_Justin_Bieber_-_Eenie_Meenie_Lyrics_ez7b6c.mp3", "cover": "zen_garden.png" },
         { "title": "Last One Standing HQ", "artist": "Simple Plan", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093603/Simple_Plan_-_Last_One_Standing_HQ_lvtrgc.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778329581/YTDown_YouTube_SAO-AMV-Kirito-Tribute-Last-One-Standing_Media_rJvH7oOSRBQ_001_720p_ezytk3.mp4" },
         { "title": "This Song Saved My Life", "artist": "Simple Plan", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093603/Simple_Plan_-_This_Song_Saved_My_Life_su9dpe.mp3", "cover": "midnight_rain.png" },
-        { "title": "Love Me Not Lyrics", "artist": "Ravyn Lenae", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093602/Ravyn_Lenae_-_Love_Me_Not_Lyrics_hywg7p.mp3", "cover": "midnight_rain.png" },
+        { "title": "Love Me Not Lyrics", "artist": "Ravyn Lenae", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093602/Ravyn_Lenae_-_Love_Me_Not_Lyrics_hywg7p.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779544700/YTDown_YouTube_Love-Me-Not-A-Silent-Voice-AMV_Media_QFEiHhoaD1U_002_720p_hgg34f.mp4" },
         { "title": "Rise", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093601/Rise_vd0c0o.mp3", "cover": "zen_garden.png" },
         { "title": "Dandelions Lyrics", "artist": "Ruth B.", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093597/Ruth_B._-_Dandelions_Lyrics_ro6pjb.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779095683/Dandelions_-_AMV_-_Anime_MV_xvlg0y.mp4" },
         { "title": "APT. Official Music Video", "artist": "ROSE Bruno Mars", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093597/ROSE_Bruno_Mars_-_APT._Official_Music_Video_zdi0j1.mp3", "cover": "zen_garden.png" },
@@ -449,6 +449,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     libraryTracks.forEach(track => {
         if (track.title.toLowerCase().includes("the nights")) {
             track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778683695/vidssave.com_One_piece-MV_Avicii-The_Nights_720P_ye2hqn.mp4";
+        }
+    });
+
+    // Robust Patch for "Love Me Not" (Ravyn Lenae) - Handles any title variation
+    libraryTracks.forEach(track => {
+        if (track.title.toLowerCase().includes("love me not")) {
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779544700/YTDown_YouTube_Love-Me-Not-A-Silent-Voice-AMV_Media_QFEiHhoaD1U_002_720p_hgg34f.mp4";
         }
     });
 
