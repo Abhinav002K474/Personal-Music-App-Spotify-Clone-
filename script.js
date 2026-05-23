@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "Awake and Alive Official Audio", "artist": "Skillet", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093608/Skillet_-_Awake_and_Alive_Official_Audio_zcymmq.mp3", "cover": "zen_garden.png" },
         { "title": "Perfect Official Video HD", "artist": "Simple Plan", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093608/Simple_Plan_-_Perfect_Official_Video_HD_pr8iqb.mp3", "cover": "neon_beats.png" },
         { "title": "Welcome To My Life Official Video", "artist": "Simple Plan", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093608/Simple_Plan_-_Welcome_To_My_Life_Official_Video_ragvye.mp3", "cover": "zen_garden.png" },
-        { "title": "Not Gonna Die OFFICIAL MUSIC VIDEO", "artist": "Skillet", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093608/Skillet_-_Not_Gonna_Die_OFFICIAL_MUSIC_VIDEO_n1fprj.mp3", "cover": "midnight_rain.png" },
+        { "title": "Not Gonna Die OFFICIAL MUSIC VIDEO", "artist": "Skillet", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093608/Skillet_-_Not_Gonna_Die_OFFICIAL_MUSIC_VIDEO_n1fprj.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779544948/YTDown_YouTube_Beyblade-Kai-not-gonna-die-Amv_Media_8VwC-2bEF1U_002_720p_ls6fya.mp4" },
         { "title": "Eenie Meenie Lyrics", "artist": "Sean Kingston Justin Bieber", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093604/Sean_Kingston_Justin_Bieber_-_Eenie_Meenie_Lyrics_ez7b6c.mp3", "cover": "zen_garden.png" },
         { "title": "Last One Standing HQ", "artist": "Simple Plan", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093603/Simple_Plan_-_Last_One_Standing_HQ_lvtrgc.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778329581/YTDown_YouTube_SAO-AMV-Kirito-Tribute-Last-One-Standing_Media_rJvH7oOSRBQ_001_720p_ezytk3.mp4" },
         { "title": "This Song Saved My Life", "artist": "Simple Plan", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093603/Simple_Plan_-_This_Song_Saved_My_Life_su9dpe.mp3", "cover": "midnight_rain.png" },
@@ -456,6 +456,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     libraryTracks.forEach(track => {
         if (track.title.toLowerCase().includes("love me not")) {
             track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779544700/YTDown_YouTube_Love-Me-Not-A-Silent-Voice-AMV_Media_QFEiHhoaD1U_002_720p_hgg34f.mp4";
+        }
+    });
+
+    // Robust Patch for "Not Gonna Die" (Skillet) - Handles any title variation
+    libraryTracks.forEach(track => {
+        if (track.title.toLowerCase().includes("not gonna die")) {
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779544948/YTDown_YouTube_Beyblade-Kai-not-gonna-die-Amv_Media_8VwC-2bEF1U_002_720p_ls6fya.mp4";
         }
     });
 
