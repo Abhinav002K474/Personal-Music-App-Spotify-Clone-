@@ -153,7 +153,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "Dynasty", "artist": "MIIA", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483126/MIIA_-_Dynasty_Lyrics_db8g63.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482821/YTDown_YouTube_Dynasty-AMV-Anime-Mix_Media_pmN_l7FuyIg_002_720p_vbrqdr.mp4" },
         { "title": "Love is Gone", "artist": "SLANDER ft. Dylan Matthew", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483122/SLANDER_-_Love_Is_Gone_ft._Dylan_Matthew_Acoustic_j4pugd.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778482360/vidssave.com_Love_Is_Gone_AMV_MIX_1080P_ivxwrs.mp4" },
         { "title": "Infinity", "artist": "Jaymes Young", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483293/Jaymes_Young_-_Infinity_h8k3qg.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778482714/vidssave.com_AMV_-_Infinity_%E1%B4%B4%E1%B4%B0_1080P_ka9jub.mp4" },
-        { "title": "Warriors", "artist": "Imagine Dragons", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1779546594/Imagine_Dragons_-_Warriors_Lyrics_kq7uoe.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779546708/YTDown_YouTube_Beyblade-Burst-AMV-Shu-Kurenai-Warriors_Media_oZGFW0kKQZg_002_720p_tyzvjn.mp4" }
+        { "title": "Warriors", "artist": "Imagine Dragons", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1779546594/Imagine_Dragons_-_Warriors_Lyrics_kq7uoe.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779546708/YTDown_YouTube_Beyblade-Burst-AMV-Shu-Kurenai-Warriors_Media_oZGFW0kKQZg_002_720p_tyzvjn.mp4" },
+        { "title": "Monsters", "artist": "Skillet", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1779547135/Skillet_-_Monster_Lyrics_so9wtg.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779546613/YTDown_YouTube_Beyblade-amv-Kai-vs-Tyson-I-feel-like-a-_Media_H_2gXjAGUJg_001_480p_jxbtvc.mp4" }
     ];
     let libraryTracks = JSON.parse(localStorage.getItem('stressTuneLibrary')) || defaultTracks;
 
@@ -409,6 +410,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         const track = libraryTracks.find(t => t.title.toLowerCase().includes("warriors"));
         track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1779546594/Imagine_Dragons_-_Warriors_Lyrics_kq7uoe.mp3";
         track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779546708/YTDown_YouTube_Beyblade-Burst-AMV-Shu-Kurenai-Warriors_Media_oZGFW0kKQZg_002_720p_tyzvjn.mp4";
+    }
+
+    const hasMonsters = libraryTracks.some(t => t.title.toLowerCase().includes("monster"));
+    if (!hasMonsters) {
+        libraryTracks.push({
+            "title": "Monsters",
+            "artist": "Skillet",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1779547135/Skillet_-_Monster_Lyrics_so9wtg.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779546613/YTDown_YouTube_Beyblade-amv-Kai-vs-Tyson-I-feel-like-a-_Media_H_2gXjAGUJg_001_480p_jxbtvc.mp4"
+        });
+    } else {
+        const track = libraryTracks.find(t => t.title.toLowerCase().includes("monster"));
+        track.title = "Monsters";
+        track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1779547135/Skillet_-_Monster_Lyrics_so9wtg.mp3";
+        track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779546613/YTDown_YouTube_Beyblade-amv-Kai-vs-Tyson-I-feel-like-a-_Media_H_2gXjAGUJg_001_480p_jxbtvc.mp4";
     }
 
     // Force migration: Remove any lingering profile images from song covers
