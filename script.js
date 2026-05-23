@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778387693/YTDown_YouTube_Media_ZRtdQ81jPUQ_002_720p_mjwhn5.mp4"
         },
         { "title": "Angel With A Shotgun Lyrics Video", "artist": "The Cab", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093615/The_Cab-Angel_With_A_Shotgun_Lyrics_Video_fpsuab.mp3", "cover": "neon_beats.png" },
-        { "title": "The Resistance Official Lyric Video", "artist": "Skillet", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093611/Skillet_-_The_Resistance_Official_Lyric_Video_tabkgg.mp3", "cover": "midnight_rain.png" },
+        { "title": "The Resistance Official Lyric Video", "artist": "Skillet", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093611/Skillet_-_The_Resistance_Official_Lyric_Video_tabkgg.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779546652/YTDown_YouTube_Beyblade-Burst-AMV-Resistance_Media_fj8p1pJmMLo_001_720p_b5z4xe.mp4" },
         { "title": "Awake and Alive Official Audio", "artist": "Skillet", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093608/Skillet_-_Awake_and_Alive_Official_Audio_zcymmq.mp3", "cover": "zen_garden.png" },
         { "title": "Perfect Official Video HD", "artist": "Simple Plan", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093608/Simple_Plan_-_Perfect_Official_Video_HD_pr8iqb.mp3", "cover": "neon_beats.png" },
         { "title": "Welcome To My Life Official Video", "artist": "Simple Plan", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093608/Simple_Plan_-_Welcome_To_My_Life_Official_Video_ragvye.mp3", "cover": "zen_garden.png" },
@@ -479,6 +479,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     libraryTracks.forEach(track => {
         if (track.title.toLowerCase().includes("not gonna die")) {
             track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779544948/YTDown_YouTube_Beyblade-Kai-not-gonna-die-Amv_Media_8VwC-2bEF1U_002_720p_ls6fya.mp4";
+        }
+    });
+
+    // Robust Patch for "The Resistance" (Skillet) - Handles any title variation
+    libraryTracks.forEach(track => {
+        if (track.title.toLowerCase().includes("the resistance")) {
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779546652/YTDown_YouTube_Beyblade-Burst-AMV-Resistance_Media_fj8p1pJmMLo_001_720p_b5z4xe.mp4";
         }
     });
 
