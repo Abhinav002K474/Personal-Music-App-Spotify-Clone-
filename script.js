@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "Last One Standing HQ", "artist": "Simple Plan", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093603/Simple_Plan_-_Last_One_Standing_HQ_lvtrgc.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778329581/YTDown_YouTube_SAO-AMV-Kirito-Tribute-Last-One-Standing_Media_rJvH7oOSRBQ_001_720p_ezytk3.mp4" },
         { "title": "This Song Saved My Life", "artist": "Simple Plan", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093603/Simple_Plan_-_This_Song_Saved_My_Life_su9dpe.mp3", "cover": "midnight_rain.png" },
         { "title": "Love Me Not Lyrics", "artist": "Ravyn Lenae", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093602/Ravyn_Lenae_-_Love_Me_Not_Lyrics_hywg7p.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779544700/YTDown_YouTube_Love-Me-Not-A-Silent-Voice-AMV_Media_QFEiHhoaD1U_002_720p_hgg34f.mp4" },
-        { "title": "Rise", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093601/Rise_vd0c0o.mp3", "cover": "zen_garden.png" },
+        { "title": "Rise", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093601/Rise_vd0c0o.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779889021/YTDown_YouTube_Tensei-Shitara-Slime-Datta-Ken-AMV-Rise-_Media_ruCbOOnrXb8_002_720p_pwytjn.mp4" },
         { "title": "Dandelions Lyrics", "artist": "Ruth B.", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093597/Ruth_B._-_Dandelions_Lyrics_ro6pjb.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779095683/Dandelions_-_AMV_-_Anime_MV_xvlg0y.mp4" },
         { "title": "APT. Official Music Video", "artist": "ROSE Bruno Mars", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093597/ROSE_Bruno_Mars_-_APT._Official_Music_Video_zdi0j1.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779709552/vidssave.com_ROS%C3%89_Bruno_Mars_-_APT._Official_Music_Video_720p_zbgy5p.mp4" },
         { "title": "KINGS QUEENS", "artist": "Qin shi huang vs Hades", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093594/Qin_shi_huang_vs_Hades_KINGS_QUEENS_mpcpoh.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778215631/Classroom_of_the_Elite_III_AMV_Kings_Queens_-_Luc%D1%87_%D3%87%D1%94%CE%B1rt%E1%83%A6_720p_h264_bqgpfe.mp4" },
@@ -464,6 +464,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const youngAndBeautiful = libraryTracks.find(t => t.title === "Young and Beautiful 1");
     if (youngAndBeautiful) {
         youngAndBeautiful.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778681313/YTDown_YouTube_Nezuko-AMV-Young-And-Beautiful_Media_Y4Wvr0SHpgo_001_720p_t8n74r.mp4";
+    }
+
+    // Patch canvas for "Rise" (Unknown Artist)
+    const riseTrack = libraryTracks.find(t => t.title === "Rise" && t.artist === "Unknown Artist");
+    if (riseTrack) {
+        riseTrack.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779889021/YTDown_YouTube_Tensei-Shitara-Slime-Datta-Ken-AMV-Rise-_Media_ruCbOOnrXb8_002_720p_pwytjn.mp4";
     }
 
     // Patch canvas for "Rise Up Lyrics"
