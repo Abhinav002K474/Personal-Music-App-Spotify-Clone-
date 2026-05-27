@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "Grateful Copyright Free No.54", "artist": "NEFFEX", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093591/NEFFEX_-_Grateful_Copyright_Free_No.54_n1znzm.mp3", "cover": "neon_beats.png" },
         { "title": "House of Memories", "artist": "Panic At The Disco", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093589/Panic_At_The_Disco_-_House_of_Memories_jhan2s.mp3", "cover": "midnight_rain.png" },
         { "title": "Unforgettable freestyle lyrics", "artist": "PnB Rock", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093589/PnB_Rock_-_Unforgettable_freestyle_lyrics_l5qwwj.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779095663/Pnb_Rock_-_Unforgettable_Freestyle_AMV_EDIT_Free_Preset_Edit_By_Galaxy_Edit_z_pnbrocktypebeat_dkv6wo.mp4" },
-        { "title": "Passenger Let Her Go Official Video", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093588/Passenger_Let_Her_Go_Official_Video_mcvfge.mp3", "cover": "zen_garden.png" },
+        { "title": "Passenger Let Her Go Official Video", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093588/Passenger_Let_Her_Go_Official_Video_mcvfge.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779888108/vidssave.com_Let_Her_Go_-_Hyouka_720P_cg4jy4.mp4" },
         { "title": "Courtesy Call", "artist": "Nightcore", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093587/Nightcore_-_Courtesy_Call_yrf5kr.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778232193/vidssave.com_Kalos_League_Showdown_AMV_Courtesy_Call_-_Pokemon_XYZ_1080P_gzmf5b.mp4" },
         { "title": "Animals Lyrics", "artist": "Maroon 5", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093586/Maroon_5_-_Animals_Lyrics_xewnpl.mp3", "cover": "zen_garden.png" },
         { "title": "Rumors Copyright Free No.12", "artist": "NEFFEX", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093584/NEFFEX_-_Rumors_Copyright_Free_No.12_puohps.mp3", "cover": "midnight_rain.png" },
@@ -470,6 +470,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const riseTrack = libraryTracks.find(t => t.title === "Rise" && t.artist === "Unknown Artist");
     if (riseTrack) {
         riseTrack.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779889021/YTDown_YouTube_Tensei-Shitara-Slime-Datta-Ken-AMV-Rise-_Media_ruCbOOnrXb8_002_720p_pwytjn.mp4";
+    }
+
+    // Patch canvas for "Passenger Let Her Go Official Video"
+    const letHerGo = libraryTracks.find(t => t.title.toLowerCase().includes("let her go"));
+    if (letHerGo) {
+        letHerGo.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779888108/vidssave.com_Let_Her_Go_-_Hyouka_720P_cg4jy4.mp4";
     }
 
     // Patch canvas for "Rise Up Lyrics"
