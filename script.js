@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "League of Legends", "artist": "Legends Never Die ft. Against The Current", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093576/Legends_Never_Die_ft._Against_The_Current_OFFICIAL_AUDIO_Worlds_2017_-_League_of_Legends_lc63y8.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778345464/vidssave.com_Legends_Never_Die___Ezio_Auditore___Assassin_s_Creed___GMV_1080p_bjgz4d.mp4" },
         { "title": "Stereo Hearts Lyrics Heart Stereo", "artist": "Gym Class Heroes", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093574/Gym_Class_Heroes_-_Stereo_Hearts_Lyrics_Heart_Stereo_lrv1cb.mp3", "cover": "neon_beats.png" },
         { "title": "On The Floor ft. Pitbull", "artist": "Jennifer Lopez", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093574/Jennifer_Lopez_-_On_The_Floor_ft._Pitbull_xw6kz0.mp3", "cover": "zen_garden.png" },
-        { "title": "Summertime Sadness Official Music Video", "artist": "Lana Del Rey", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093571/Lana_Del_Rey_-_Summertime_Sadness_Official_Music_Video_ju5dqe.mp3", "cover": "midnight_rain.png" },
+        { "title": "Summertime Sadness Official Music Video", "artist": "Lana Del Rey", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093571/Lana_Del_Rey_-_Summertime_Sadness_Official_Music_Video_ju5dqe.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779888076/vidssave.com_AMV_Anime_mix_-_Summertime_Sadness_HD_720P_jrfi7a.mp4" },
         { "title": "Die With A Smile", "artist": "Lady Gaga Bruno Mars", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093571/Lady_Gaga_Bruno_Mars_-_Die_With_A_Smile_hskjah.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778217207/Die_With_A_Smile_Eren_X_Mikasa_AMV_-_ToastLmao_1080p_h264_mgn6x0.mp4" },
         { "title": "Somewhere Only We Know Lyrics", "artist": "Keane", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093571/Keane_-_Somewhere_Only_We_Know_Lyrics_ivjhnl.mp3", "cover": "neon_beats.png" },
         { "title": "Heat Waves Full Version", "artist": "Glass animals x HighCloud Cover", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093566/Heat_Waves_-_Glass_animals_x_HighCloud_Cover_Full_Version_v19c1e.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779198119/Heat_Waves_-_AMV_-_Anime_MV_h8pxs0.mp4" },
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "Carry On Detective Pikachu Official Video", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778159311/Carry_On_from_the_Original_Motion_Picture_POK%C3%89MON_Detective_Pikachu_Official_Video_izizw7.mp3", "cover": "midnight_rain.png" },
         { "title": "Another Love Lyrics", "artist": "Tom Odell", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778159299/Tom_Odell_-_Another_Love_Lyrics_a6ewel.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778218884/Sanji_Pudding_Their_Story_-_Another_Love_AMV_-_Riddler_Thriller_1080p_h264_twghwl.mp4" },
         { "title": "Atlantis Lyrics", "artist": "Seafret", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778159299/Seafret_-_Atlantis_Lyrics_vg7dhz.mp3", "cover": "neon_beats.png" },
-        { "title": "Sad Song", "artist": "We The Kings ft. Elena Coats", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778179435/We_The_Kings_-_Sad_Song_Lyric_Video_ft._Elena_Coats_y2vbxu.mp3", "cover": "https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg" },
+        { "title": "Sad Song", "artist": "We The Kings ft. Elena Coats", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778179435/We_The_Kings_-_Sad_Song_Lyric_Video_ft._Elena_Coats_y2vbxu.mp3", "cover": "https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779888030/vidssave.com_AMV_-_Sad_Song_%E1%B4%B4%E1%B4%B0_720P_v2xdqt.mp4" },
         { "title": "Hikaru Nara", "artist": "Goose house", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778215441/Hikaru_Nara_-_Goose_House_Romaji_Espa%C3%B1ol_English_Color_Coded_jehopo.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778216563/Your_Lie_in_April_OP_Opening_Theme_-_Hikaru_Nara_-_AniClipsCollection_720p_h264_okikjc.mp4" },
         { "title": "Mortals", "artist": "Warriyo ft. Laura Brehm", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778231345/Warriyo_-_Mortals_ft._Laura_Brehm_o8vhwd.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778231291/vidssave.com_Hayato_Awakening___Garena_Free_Fire_720P_ysgs64.mp4" },
         { "title": "Alone x Fadded", "artist": "Alan Walker Mashup", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778231726/Alan_Walker_Mashup_Lyrics_Alone_X_Faded_X_Alone_Pt._2_X_On_My_Way..._alanwalker_fadedxaloneptii_afscdd.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778231741/vidssave.com_ANIME_EYES_EDIT___THIS_IS_4K_ANIME_EYES___PEPEKACHU_1080P_izqkmk.mp4" },
@@ -168,7 +168,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Ensure the new songs are added if not present
     const hasSadSong = libraryTracks.some(t => t.title === "Sad Song");
     if (!hasSadSong) {
-        libraryTracks.push({ "title": "Sad Song", "artist": "We The Kings ft. Elena Coats", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778179435/We_The_Kings_-_Sad_Song_Lyric_Video_ft._Elena_Coats_y2vbxu.mp3", "cover": "https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg" });
+        libraryTracks.push({ 
+            "title": "Sad Song", 
+            "artist": "We The Kings ft. Elena Coats", 
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778179435/We_The_Kings_-_Sad_Song_Lyric_Video_ft._Elena_Coats_y2vbxu.mp3", 
+            "cover": "https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779888030/vidssave.com_AMV_-_Sad_Song_%E1%B4%B4%E1%B4%B0_720P_v2xdqt.mp4"
+        });
+    } else {
+        const track = libraryTracks.find(t => t.title === "Sad Song");
+        if (track) {
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779888030/vidssave.com_AMV_-_Sad_Song_%E1%B4%B4%E1%B4%B0_720P_v2xdqt.mp4";
+        }
     }
 
     const hasLineWithoutHook = libraryTracks.some(t => t.title.includes("Line Without a Hook"));
@@ -513,6 +524,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (heatWaves) {
         heatWaves.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779198119/Heat_Waves_-_AMV_-_Anime_MV_h8pxs0.mp4";
     }
+
+    // Robust Patch for "Summertime Sadness" (Lana Del Rey) - Handles any title variation
+    libraryTracks.forEach(track => {
+        if (track.title.toLowerCase().includes("summertime sadness")) {
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779888076/vidssave.com_AMV_Anime_mix_-_Summertime_Sadness_HD_720P_jrfi7a.mp4";
+        }
+    });
 
     // Robust Patch for "The Nights" (Avicii) - Handles any title variation
     libraryTracks.forEach(track => {
