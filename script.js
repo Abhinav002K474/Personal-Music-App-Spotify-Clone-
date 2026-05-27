@@ -71,6 +71,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Load from storage or use defaults
     const defaultTracks = [
+        { 
+            "title": "Someone You Loved", 
+            "artist": "Lewis Capaldi", 
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1779888678/Lewis_Capaldi_-_Someone_You_Loved_Lyrics_bcrgau.mp3", 
+            "cover": "midnight_rain.png", 
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779888291/YTDown_YouTube_Media_N-uPKh23-40_002_720p_nhibvs.mp4" 
+        },
         { "title": "Line Without a Hook", "artist": "Ricky Montgomery", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093595/Ricky_Montgomery_-_Line_Without_a_Hook_Lyrics_cyfzbv.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778180350/videoplayback_sopenc.mp4" },
         { "title": "Another Love Official Video", "artist": "Tom Odell", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093621/Tom_Odell_-_Another_Love_Official_Video_wdkyta.mp3", "cover": "zen_garden.png" },
         { "title": "Into Your Arms feat. Ava Max Official Music Video", "artist": "Witt Lowry", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093619/Witt_Lowry_-_Into_Your_Arms_feat._Ava_Max_Official_Music_Video_ploleq.mp3", "cover": "midnight_rain.png" },
@@ -426,6 +433,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         track.title = "Monsters";
         track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1779547135/Skillet_-_Monster_Lyrics_so9wtg.mp3";
         track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779546613/YTDown_YouTube_Beyblade-amv-Kai-vs-Tyson-I-feel-like-a-_Media_H_2gXjAGUJg_001_480p_jxbtvc.mp4";
+    }
+
+    const hasSomeoneYouLoved = libraryTracks.some(t => t.title.toLowerCase().includes("someone you loved") || t.title.toLowerCase().includes("some you loved"));
+    if (!hasSomeoneYouLoved) {
+        libraryTracks.push({
+            "title": "Someone You Loved",
+            "artist": "Lewis Capaldi",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1779888678/Lewis_Capaldi_-_Someone_You_Loved_Lyrics_bcrgau.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779888291/YTDown_YouTube_Media_N-uPKh23-40_002_720p_nhibvs.mp4"
+        });
+    } else {
+        const track = libraryTracks.find(t => t.title.toLowerCase().includes("someone you loved") || t.title.toLowerCase().includes("some you loved"));
+        track.title = "Someone You Loved";
+        track.artist = "Lewis Capaldi";
+        track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1779888678/Lewis_Capaldi_-_Someone_You_Loved_Lyrics_bcrgau.mp3";
+        track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779888291/YTDown_YouTube_Media_N-uPKh23-40_002_720p_nhibvs.mp4";
     }
 
     // Force migration: Remove any lingering profile images from song covers
