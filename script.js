@@ -161,7 +161,35 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "Love is Gone", "artist": "SLANDER ft. Dylan Matthew", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483122/SLANDER_-_Love_Is_Gone_ft._Dylan_Matthew_Acoustic_j4pugd.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778482360/vidssave.com_Love_Is_Gone_AMV_MIX_1080P_ivxwrs.mp4" },
         { "title": "Infinity", "artist": "Jaymes Young", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483293/Jaymes_Young_-_Infinity_h8k3qg.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778482714/vidssave.com_AMV_-_Infinity_%E1%B4%B4%E1%B4%B0_1080P_ka9jub.mp4" },
         { "title": "Warriors", "artist": "Imagine Dragons", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1779546594/Imagine_Dragons_-_Warriors_Lyrics_kq7uoe.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779546708/YTDown_YouTube_Beyblade-Burst-AMV-Shu-Kurenai-Warriors_Media_oZGFW0kKQZg_002_720p_tyzvjn.mp4" },
-        { "title": "Monsters", "artist": "Skillet", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1779547135/Skillet_-_Monster_Lyrics_so9wtg.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779546613/YTDown_YouTube_Beyblade-amv-Kai-vs-Tyson-I-feel-like-a-_Media_H_2gXjAGUJg_001_480p_jxbtvc.mp4" }
+        { "title": "Monsters", "artist": "Skillet", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1779547135/Skillet_-_Monster_Lyrics_so9wtg.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779546613/YTDown_YouTube_Beyblade-amv-Kai-vs-Tyson-I-feel-like-a-_Media_H_2gXjAGUJg_001_480p_jxbtvc.mp4" },
+        {
+            "title": "That's so True",
+            "artist": "Gracie Abrams",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1780835555/Gracie_Abrams_-_Thats_So_True_Lyrics_vdk0ni.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780835141/vidssave.com_That_s_so_true_-_Anime_mix_AMV_EDIT_720P_glojlt.mp4"
+        },
+        {
+            "title": "Sweater Weather",
+            "artist": "The Neighbourhood",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1780835203/The_Neighbourhood_-_Sweater_Weather_Lyrics_rvb1eg.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780835064/Berserk_AMV_After_Dark_x_Sweater_Weather_sj4e84.mp4"
+        },
+        {
+            "title": "Play Date",
+            "artist": "Melanie Martinez",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1780835226/Melanie_Martinez_-_Play_Date_Lyrics_wnscjy.mp3",
+            "cover": "zen_garden.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780835943/vidssave.com_Play_Date_AMV_-_Anime_MV_720P_nmbdzh.mp4"
+        },
+        {
+            "title": "Bloody Mary",
+            "artist": "Lady Gaga",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1780835197/Lady_Gaga_-_Bloody_Mary_ofcdeb.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780835103/vidssave.com_Wednesday_Dance_-_Lady_Gaga_-_Bloody_Mary_720p_kigppu.mp4"
+        }
     ];
     let libraryTracks = JSON.parse(localStorage.getItem('stressTuneLibrary')) || defaultTracks;
 
@@ -566,6 +594,54 @@ document.addEventListener('DOMContentLoaded', async () => {
             track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1779709552/vidssave.com_ROS%C3%89_Bruno_Mars_-_APT._Official_Music_Video_720p_zbgy5p.mp4";
         }
     });
+
+    // Check and add Gracie Abrams - That's so True
+    const hasThatsSoTrue = libraryTracks.some(t => t.title === "That's so True");
+    if (!hasThatsSoTrue) {
+        libraryTracks.push({
+            "title": "That's so True",
+            "artist": "Gracie Abrams",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1780835555/Gracie_Abrams_-_Thats_So_True_Lyrics_vdk0ni.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780835141/vidssave.com_That_s_so_true_-_Anime_mix_AMV_EDIT_720P_glojlt.mp4"
+        });
+    }
+
+    // Check and add The Neighbourhood - Sweater Weather
+    const hasSweaterWeather = libraryTracks.some(t => t.title === "Sweater Weather");
+    if (!hasSweaterWeather) {
+        libraryTracks.push({
+            "title": "Sweater Weather",
+            "artist": "The Neighbourhood",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1780835203/The_Neighbourhood_-_Sweater_Weather_Lyrics_rvb1eg.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780835064/Berserk_AMV_After_Dark_x_Sweater_Weather_sj4e84.mp4"
+        });
+    }
+
+    // Check and add Melanie Martinez - Play Date
+    const hasPlayDate = libraryTracks.some(t => t.title === "Play Date");
+    if (!hasPlayDate) {
+        libraryTracks.push({
+            "title": "Play Date",
+            "artist": "Melanie Martinez",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1780835226/Melanie_Martinez_-_Play_Date_Lyrics_wnscjy.mp3",
+            "cover": "zen_garden.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780835943/vidssave.com_Play_Date_AMV_-_Anime_MV_720P_nmbdzh.mp4"
+        });
+    }
+
+    // Check and add Lady Gaga - Bloody Mary
+    const hasBloodyMary = libraryTracks.some(t => t.title === "Bloody Mary");
+    if (!hasBloodyMary) {
+        libraryTracks.push({
+            "title": "Bloody Mary",
+            "artist": "Lady Gaga",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1780835197/Lady_Gaga_-_Bloody_Mary_ofcdeb.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780835103/vidssave.com_Wednesday_Dance_-_Lady_Gaga_-_Bloody_Mary_720p_kigppu.mp4"
+        });
+    }
 
     localStorage.setItem('stressTuneLibrary', JSON.stringify(libraryTracks));
 
