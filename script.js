@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             "artist": "The Neighbourhood",
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1780835203/The_Neighbourhood_-_Sweater_Weather_Lyrics_rvb1eg.mp3",
             "cover": "neon_beats.png",
-            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780835064/Berserk_AMV_After_Dark_x_Sweater_Weather_sj4e84.mp4"
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780934192/AMV_-_Sweater_Weather_James_Harris_-_Anime_Mix_-_Yuki._640p_dwum1a.mp4"
         },
         {
             "title": "Play Date",
@@ -615,8 +615,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             "artist": "The Neighbourhood",
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1780835203/The_Neighbourhood_-_Sweater_Weather_Lyrics_rvb1eg.mp3",
             "cover": "neon_beats.png",
-            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780835064/Berserk_AMV_After_Dark_x_Sweater_Weather_sj4e84.mp4"
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780934192/AMV_-_Sweater_Weather_James_Harris_-_Anime_Mix_-_Yuki._640p_dwum1a.mp4"
         });
+    } else {
+        const track = libraryTracks.find(t => t.title === "Sweater Weather");
+        if (track) {
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1780934192/AMV_-_Sweater_Weather_James_Harris_-_Anime_Mix_-_Yuki._640p_dwum1a.mp4";
+        }
     }
 
     // Check and add Melanie Martinez - Play Date
