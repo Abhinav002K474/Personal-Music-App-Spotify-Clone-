@@ -1265,25 +1265,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     let isRepeat = false;
 
     const playNext = () => {
-        if (currentQueue.length === 0) return;
-        if (currentQueue === goldenPlaylistQueue) {
-            // Navigate within golden playlist
-            const curGoldenIdx = goldenPlaylistQueue.findIndex((_, i) => libraryTracks.indexOf(goldenPlaylistQueue[i]) === currentTrackIndex);
-            const nextGoldenIdx = isShuffle ? Math.floor(Math.random() * goldenPlaylistQueue.length) : (Math.max(curGoldenIdx, 0) + 1) % goldenPlaylistQueue.length;
+        const isPlaylistActive = playlistView && playlistView.style.display !== 'none';
+        if (currentQueue === goldenPlaylistQueue || isPlaylistActive) {
+            if (goldenPlaylistQueue.length === 0) {
+                goldenPlaylistQueue = getGoldenTracks();
+            }
+            if (goldenPlaylistQueue.length === 0) return;
+            
+            // Find current song in goldenPlaylistQueue
+            let curGoldenIdx = goldenPlaylistQueue.findIndex(t => t.title === (currentQueue[currentTrackIndex]?.title));
+            const nextGoldenIdx = isShuffle ? Math.floor(Math.random() * goldenPlaylistQueue.length) : (Math.max(curGoldenIdx, -1) + 1) % goldenPlaylistQueue.length;
             window.playPlaylistTrack(nextGoldenIdx);
         } else {
+            if (currentQueue.length === 0) return;
             currentTrackIndex = isShuffle ? Math.floor(Math.random() * currentQueue.length) : (currentTrackIndex + 1) % currentQueue.length;
             playLibraryTrack(currentTrackIndex);
         }
     };
 
     const playPrev = () => {
-        if (currentQueue.length === 0) return;
-        if (currentQueue === goldenPlaylistQueue) {
-            const curGoldenIdx = goldenPlaylistQueue.findIndex((_, i) => libraryTracks.indexOf(goldenPlaylistQueue[i]) === currentTrackIndex);
-            const prevGoldenIdx = (Math.max(curGoldenIdx, 0) - 1 + goldenPlaylistQueue.length) % goldenPlaylistQueue.length;
+        const isPlaylistActive = playlistView && playlistView.style.display !== 'none';
+        if (currentQueue === goldenPlaylistQueue || isPlaylistActive) {
+            if (goldenPlaylistQueue.length === 0) {
+                goldenPlaylistQueue = getGoldenTracks();
+            }
+            if (goldenPlaylistQueue.length === 0) return;
+            
+            let curGoldenIdx = goldenPlaylistQueue.findIndex(t => t.title === (currentQueue[currentTrackIndex]?.title));
+            const prevGoldenIdx = isShuffle ? Math.floor(Math.random() * goldenPlaylistQueue.length) : (Math.max(curGoldenIdx, 0) - 1 + goldenPlaylistQueue.length) % goldenPlaylistQueue.length;
             window.playPlaylistTrack(prevGoldenIdx);
         } else {
+            if (currentQueue.length === 0) return;
             currentTrackIndex = (currentTrackIndex - 1 + currentQueue.length) % currentQueue.length;
             playLibraryTrack(currentTrackIndex);
         }
