@@ -200,6 +200,60 @@ document.addEventListener('DOMContentLoaded', async () => {
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1780835197/Lady_Gaga_-_Bloody_Mary_ofcdeb.mp3",
             "cover": "midnight_rain.png",
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780835103/vidssave.com_Wednesday_Dance_-_Lady_Gaga_-_Bloody_Mary_720p_kigppu.mp4"
+        },
+        {
+            "title": "Pokemon Season 1 Opening",
+            "artist": "Pokémon",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781268669/Pok%C3%A9mon_Season_1_Opening_in_Tamil_jngk1k.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781203417/vidssave.com_Pok%C3%A9mon_Season_1_Opening_in_Tamil_360P_lz7ly2.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        },
+        {
+            "title": "Spectacular Spider Man Opening",
+            "artist": "The Spectacular Spider-Man",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781202505/Spectacular_Spider-Man_Music_Video_rewrmi.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781203293/vidssave.com_Spectacular_Spider-Man_Music_Video_720P_oumz3b.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        },
+        {
+            "title": "Kickbatoski \"Thadaladi\"",
+            "artist": "Kick Buttowski",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781202485/Kick_Buttowski_Intro_mi5luu.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781203346/vidssave.com_Kick_Buttowski_Intro_720P_hflsfk.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        },
+        {
+            "title": "Doremon 1979 Opening",
+            "artist": "Doraemon",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781269856/Doraemon_1979_1st_Opening_Theme_in_Tamil_With_Lyrics_dsopxr.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781269825/Doraemon_1979_Opening_Theme_Song_HD_enqlpo.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        },
+        {
+            "title": "Doremon New Song",
+            "artist": "Doraemon",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781202955/Doraemon_New_Intro_Song_in_Tamil_uysqjm.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781203370/vidssave.com_Doraemon_New_Intro_Song_in_Tamil_720P_zisfkw.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        },
+        {
+            "title": "Yokai Watch",
+            "artist": "Yo-kai Watch",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781270348/%E5%A6%96%E6%80%AA%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E5%85%AC%E5%BC%8F%E3%82%AA%E3%83%BC%E3%83%97%E3%83%8B%E3%83%B3%E3%82%B0%E7%AC%AC1%E5%BC%BE_%E3%82%B2%E3%83%A9%E3%82%B2%E3%83%A9%E3%83%9D%E3%83%BC%E3%81%AE%E3%81%86%E3%81%9F%E5%A6%96Tube_dhoq9z.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781203391/vidssave.com_%E5%A6%96%E6%80%AA%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E5%85%AC%E5%BC%8F_%E3%82%AA%E3%83%BC%E3%83%97%E3%83%8B%E3%83%B3%E3%82%B0%E7%AC%AC1%E5%BC%BE_%E3%82%B2%E3%83%A9%E3%82%B2%E3%83%A9%E3%83%9D%E3%83%BC%E3%81%AE%E3%81%86%E3%81%9F_%E5%A6%96Tube_720P_firsfn.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
         }
     ];
     let libraryTracks = JSON.parse(localStorage.getItem('stressTuneLibrary')) || defaultTracks;
@@ -667,6 +721,79 @@ document.addEventListener('DOMContentLoaded', async () => {
         localStorage.setItem('stressTuneOldenDaysReset', 'true');
     }
 
+    // Add and ensure Olden Days only tracks
+    const newOldenDaysSongs = [
+        {
+            "title": "Pokemon Season 1 Opening",
+            "artist": "Pokémon",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781268669/Pok%C3%A9mon_Season_1_Opening_in_Tamil_jngk1k.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781203417/vidssave.com_Pok%C3%A9mon_Season_1_Opening_in_Tamil_360P_lz7ly2.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        },
+        {
+            "title": "Spectacular Spider Man Opening",
+            "artist": "The Spectacular Spider-Man",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781202505/Spectacular_Spider-Man_Music_Video_rewrmi.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781203293/vidssave.com_Spectacular_Spider-Man_Music_Video_720P_oumz3b.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        },
+        {
+            "title": "Kickbatoski \"Thadaladi\"",
+            "artist": "Kick Buttowski",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781202485/Kick_Buttowski_Intro_mi5luu.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781203346/vidssave.com_Kick_Buttowski_Intro_720P_hflsfk.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        },
+        {
+            "title": "Doremon 1979 Opening",
+            "artist": "Doraemon",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781269856/Doraemon_1979_1st_Opening_Theme_in_Tamil_With_Lyrics_dsopxr.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781269825/Doraemon_1979_Opening_Theme_Song_HD_enqlpo.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        },
+        {
+            "title": "Doremon New Song",
+            "artist": "Doraemon",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781202955/Doraemon_New_Intro_Song_in_Tamil_uysqjm.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781203370/vidssave.com_Doraemon_New_Intro_Song_in_Tamil_720P_zisfkw.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        },
+        {
+            "title": "Yokai Watch",
+            "artist": "Yo-kai Watch",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781270348/%E5%A6%96%E6%80%AA%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E5%85%AC%E5%BC%8F%E3%82%AA%E3%83%BC%E3%83%97%E3%83%8B%E3%83%B3%E3%82%B0%E7%AC%AC1%E5%BC%BE_%E3%82%B2%E3%83%A9%E3%82%B2%E3%83%A9%E3%83%9D%E3%83%BC%E3%81%AE%E3%81%86%E3%81%9F%E5%A6%96Tube_dhoq9z.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781203391/vidssave.com_%E5%A6%96%E6%80%AA%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E5%85%AC%E5%BC%8F_%E3%82%AA%E3%83%BC%E3%83%97%E3%83%8B%E3%83%B3%E3%82%B0%E7%AC%AC1%E5%BC%BE_%E3%82%B2%E3%83%A9%E3%82%B2%E3%83%A9%E3%83%9D%E3%83%BC%E3%81%AE%E3%81%86%E3%81%9F_%E5%A6%96Tube_720P_firsfn.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        }
+    ];
+
+    newOldenDaysSongs.forEach(newTrack => {
+        const hasTrack = libraryTracks.some(t => t.title === newTrack.title);
+        if (!hasTrack) {
+            libraryTracks.push(newTrack);
+        } else {
+            const track = libraryTracks.find(t => t.title === newTrack.title);
+            track.url = newTrack.url;
+            track.canvas = newTrack.canvas;
+            track.cover = newTrack.cover;
+            track.artist = newTrack.artist;
+            track.inGoldenDays = true;
+            track.onlyGoldenDays = true;
+        }
+    });
+
     localStorage.setItem('stressTuneLibrary', JSON.stringify(libraryTracks));
 
 
@@ -686,7 +813,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (homeGrid) {
             // Show all tracks from 'Music I 💙' on the home screen
-            homeGrid.innerHTML = libraryTracks.map((track, index) => {
+            homeGrid.innerHTML = libraryTracks.filter(track => !track.onlyGoldenDays).map((track, index) => {
                 const originalIndex = libraryTracks.indexOf(track);
                 const isGolden = track.inGoldenDays;
                 return `
@@ -728,8 +855,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         const libCount = document.getElementById('lib-track-count');
         
         const filteredTracks = libraryTracks.filter(track => 
-            track.title.toLowerCase().includes(query.toLowerCase()) || 
-            track.artist.toLowerCase().includes(query.toLowerCase())
+            !track.onlyGoldenDays && (
+                track.title.toLowerCase().includes(query.toLowerCase()) || 
+                track.artist.toLowerCase().includes(query.toLowerCase())
+            )
         );
 
         if (libCount) libCount.innerText = `${filteredTracks.length} Tracks`;
@@ -782,8 +911,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             const filtered = libraryTracks.filter(track => 
-                track.title.toLowerCase().includes(query) || 
-                track.artist.toLowerCase().includes(query)
+                !track.onlyGoldenDays && (
+                    track.title.toLowerCase().includes(query) || 
+                    track.artist.toLowerCase().includes(query)
+                )
             );
 
             searchTracklist.innerHTML = filtered.map((track, index) => {
@@ -848,7 +979,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderLibrary(); // Update highlights
     };
 
-    window.playAllLibrary = () => { if (libraryTracks.length > 0) playLibraryTrack(0); };
+    window.playAllLibrary = () => {
+        const firstPlayableIndex = libraryTracks.findIndex(t => !t.onlyGoldenDays);
+        if (firstPlayableIndex !== -1) playLibraryTrack(firstPlayableIndex);
+    };
 
     // ── OLDEN DAYS GOLDEN DAYS PLAYLIST ENGINE ──────────────────────────────
 
@@ -958,6 +1092,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     window.toggleGoldenDaysTrack = (index, event) => {
         if (event) event.stopPropagation();
+        if (libraryTracks[index].onlyGoldenDays) {
+            alert("This classic theme is permanently pinned to the Olden Days playlist!");
+            return;
+        }
         libraryTracks[index].inGoldenDays = !libraryTracks[index].inGoldenDays;
         saveLibrary();
         // Re-render all active views
