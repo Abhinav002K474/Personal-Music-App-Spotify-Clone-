@@ -85,6 +85,9 @@
                 <a href="#" class="nav-item" id="nav-library">
                     <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg> Music I 💙
                 </a>
+                <a href="#" class="nav-item" id="nav-golden-days">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 12m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0"></path><circle cx="12" cy="12" r="3"></circle></svg> <span class="golden-text">Olden Days 📀</span>
+                </a>
             </nav>
 
             <div class="sidebar-eq" style="margin-top: auto; padding: 24px; background: rgba(255,255,255,0.02); border-top: 1px solid var(--glass-border); border-radius: 20px 20px 0 0;">
@@ -156,34 +159,30 @@
 
             <!-- Playlist View (Hidden by default) -->
             <div id="playlist-view" style="display: none;">
-                <div class="playlist-header" style="display: flex; gap: 32px; align-items: flex-end; margin-bottom: 40px;">
-                    <img id="playlist-art" src="https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg" alt="Playlist Art" style="width: 232px; height: 232px; border-radius: var(--radius-lg); box-shadow: 0 12px 48px rgba(0,0,0,0.7);">
+                <div class="playlist-header">
+                    <img id="playlist-art" src="https://res.cloudinary.com/dhocv2p3t/image/upload/v1778179316/download_b4rtyo.jpg" alt="Playlist Art" class="playlist-art-large">
                     <div class="playlist-info">
-                        <p style="font-weight: 700; font-size: 14px; margin-bottom: 8px;">PLAYLIST</p>
+                        <p id="playlist-tagline" style="font-weight: 700; font-size: 14px; margin-bottom: 8px; color: var(--primary-blue);">PLAYLIST</p>
                         <h1 id="playlist-name" style="font-size: 72px; font-weight: 800; margin-bottom: 16px; letter-spacing: -2px;">Deep Focus</h1>
-                        <p style="color: var(--text-secondary);">The ultimate sonic sanctuary for your mind.</p>
+                        <p id="playlist-desc" style="color: var(--text-secondary);">The ultimate sonic sanctuary for your mind.</p>
+                        <div style="display: flex; align-items: center; gap: 16px; margin-top: 24px;">
+                            <button class="btn-primary" id="playlist-play-all-btn" onclick="playAllPlaylist()">PLAY ALL</button>
+                            <button class="btn-secondary" id="playlist-sort-btn" onclick="sortPlaylistAlphabetically()">SORT A-Z</button>
+                            <div class="search-box" style="position: relative; margin-left: auto; width: 300px;">
+                                <input type="text" id="playlist-search" placeholder="Search in playlist..." style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 12px 16px 12px 40px; border-radius: 20px; color: white; outline: none; transition: all 0.3s ease;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            </div>
+                            <span id="playlist-track-count" style="color: var(--text-secondary); font-weight: 500; min-width: 80px;">0 Tracks</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="song-list-controls" style="display: flex; align-items: center; gap: 32px; margin-bottom: 32px;">
-                    <div class="play-btn" style="width: 56px; height: 56px; display: flex; align-items: center; justify-content: center;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                    </div>
-                    <button class="icon-btn" style="opacity: 0.6; color: white;">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                    </button>
-                    <button class="icon-btn" style="opacity: 0.6; color: white;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-                    </button>
-                </div>
-
-                <table style="width: 100%; border-collapse: collapse; color: var(--text-secondary);">
+                <table class="song-table">
                     <thead>
-                        <tr style="border-bottom: 1px solid var(--glass-border); text-align: left; font-size: 12px; letter-spacing: 1px;">
-                            <th style="padding: 12px; width: 40px;">#</th>
+                        <tr style="border-bottom: 1px solid var(--glass-border); text-align: left; font-size: 12px; letter-spacing: 1px; color: var(--text-secondary);">
+                            <th style="padding: 12px; width: 60px; text-align: center;">#</th>
                             <th style="padding: 12px;">TITLE</th>
-                            <th style="padding: 12px;">ALBUM</th>
-                            <th style="padding: 12px; width: 100px;">DURATION</th>
+                            <th style="padding: 12px; text-align: right; width: 100px;">DURATION</th>
                         </tr>
                     </thead>
                     <tbody id="tracklist-body">

@@ -863,3 +863,42 @@ body.stream-mode .exit-stream-btn {
 .active-glow {
     filter: drop-shadow(0 0 8px var(--primary-blue));
 }
+
+/* Golden Playlist Sidebar Item Styles */
+#nav-golden-days.active {
+    color: #FFD700 !important;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+#nav-golden-days:hover {
+    color: #FFE875 !important;
+}
+.golden-text {
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+#nav-golden-days.active .nav-icon {
+    stroke: #FFD700 !important;
+}
+#nav-golden-days:hover .nav-icon {
+    stroke: #FFE875 !important;
+}
+#nav-golden-days .nav-icon {
+    transition: stroke 0.3s ease;
+}
+
+/* Playlist Add/Remove Button Styles */
+.playlist-toggle-btn {
+    opacity: 0.4;
+    transition: all 0.2s ease;
+}
+.playlist-toggle-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+.playlist-toggle-btn.in-playlist {
+    opacity: 1;
+    color: #FFD700;
+}
+

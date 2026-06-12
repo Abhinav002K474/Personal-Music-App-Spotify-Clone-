@@ -64,6 +64,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderLibrary(); 
     });
 
+    const navGoldenDays = document.getElementById('nav-golden-days');
+    if(navGoldenDays) {
+        navGoldenDays.addEventListener('click', (e) => {
+            e.preventDefault();
+            showView('playlist-view');
+            renderPlaylist();
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            navGoldenDays.classList.add('active');
+        });
+    }
+
     // Persistent Storage
     const saveLibrary = () => {
         localStorage.setItem('stressTuneLibrary', JSON.stringify(libraryTracks));
@@ -648,6 +659,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    // Reset/Initialize Olden Days playlist to be empty by default
+    if (!localStorage.getItem('stressTuneOldenDaysReset')) {
+        libraryTracks.forEach(track => {
+            track.inGoldenDays = false;
+        });
+        localStorage.setItem('stressTuneOldenDaysReset', 'true');
+    }
+
     localStorage.setItem('stressTuneLibrary', JSON.stringify(libraryTracks));
 
 
@@ -669,6 +688,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Show all tracks from 'Music I 💙' on the home screen
             homeGrid.innerHTML = libraryTracks.map((track, index) => {
                 const originalIndex = libraryTracks.indexOf(track);
+                const isGolden = track.inGoldenDays;
                 return `
                     <div class="card" onclick="playLibraryTrack(${originalIndex})">
                         <div style="position: relative; overflow: hidden; border-radius: var(--radius-md);">
@@ -676,6 +696,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <div class="card-play-btn" style="position: absolute; bottom: 12px; right: 12px; width: 48px; height: 48px; border-radius: 50%; background: var(--primary-blue); display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; box-shadow: 0 8px 24px rgba(0,0,0,0.5); z-index: 2;">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="black"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                             </div>
+                            <button onclick="toggleGoldenDaysTrack(${originalIndex}, event)" class="icon-btn playlist-toggle-btn ${isGolden ? 'in-playlist' : ''}" title="${isGolden ? 'Remove from Olden Days' : 'Add to Olden Days'}" style="position: absolute; top: 8px; right: 8px; width: 32px; height: 32px; background: rgba(0,0,0,0.6); border-radius: 50%; backdrop-filter: blur(4px);">
+                                <span style="font-size: 14px;">${isGolden ? '📀' : '➕'}</span>
+                            </button>
                         </div>
                         <div class="card-title" style="margin-top: 16px;">${track.title}</div>
                         <div class="card-subtitle">${track.artist}</div>
@@ -714,6 +737,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         libraryTracklist.innerHTML = filteredTracks.map((track, index) => {
             const originalIndex = libraryTracks.indexOf(track);
             const isPlayingRow = (currentTrackIndex === originalIndex && currentQueue === libraryTracks);
+            const isGolden = track.inGoldenDays;
             return `
                 <tr class="song-row ${isPlayingRow ? 'playing' : ''}">
                     <td class="index">${index + 1}</td>
@@ -725,7 +749,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                     </td>
                     <td class="duration">
-                        <button onclick="renameTrack(${originalIndex}, event)" class="icon-btn" style="display: inline-flex; margin-right: 15px; opacity: 0.6;" title="Rename Track">
+                        <button onclick="toggleGoldenDaysTrack(${originalIndex}, event)" class="icon-btn playlist-toggle-btn ${isGolden ? 'in-playlist' : ''}" title="${isGolden ? 'Remove from Olden Days' : 'Add to Olden Days'}" style="display: inline-flex; margin-right: 8px;">
+                            <span style="font-size: 14px;">${isGolden ? '📀' : '➕'}</span>
+                        </button>
+                        <button onclick="renameTrack(${originalIndex}, event)" class="icon-btn" style="display: inline-flex; margin-right: 8px; opacity: 0.6;" title="Rename Track">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                         </button>
                         3:45
@@ -762,6 +789,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             searchTracklist.innerHTML = filtered.map((track, index) => {
                 const originalIndex = libraryTracks.indexOf(track);
                 const isPlayingRow = (currentTrackIndex === originalIndex && currentQueue === libraryTracks);
+                const isGolden = track.inGoldenDays;
                 return `
                     <tr class="song-row ${isPlayingRow ? 'playing' : ''}">
                         <td class="index">${index + 1}</td>
@@ -772,7 +800,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 <div class="song-artist">${track.artist}</div>
                             </div>
                         </td>
-                        <td class="duration">3:45</td>
+                        <td class="duration">
+                            <button onclick="toggleGoldenDaysTrack(${originalIndex}, event)" class="icon-btn playlist-toggle-btn ${isGolden ? 'in-playlist' : ''}" title="${isGolden ? 'Remove from Olden Days' : 'Add to Olden Days'}" style="display: inline-flex; margin-right: 8px;">
+                                <span style="font-size: 14px;">${isGolden ? '📀' : '➕'}</span>
+                            </button>
+                            3:45
+                        </td>
                     </tr>
                 `;
             }).join('');
@@ -817,10 +850,144 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     window.playAllLibrary = () => { if (libraryTracks.length > 0) playLibraryTrack(0); };
 
+    // ── OLDEN DAYS GOLDEN DAYS PLAYLIST ENGINE ──────────────────────────────
+
+    let goldenPlaylistQueue = [];
+    let isPlaylistSorted = false;
+
+    const getGoldenTracks = () => libraryTracks.filter(t => t.inGoldenDays);
+
+    const renderPlaylist = (query = "") => {
+        let goldenTracks = getGoldenTracks();
+        
+        if (isPlaylistSorted) {
+            goldenTracks.sort((a, b) => a.title.localeCompare(b.title));
+        }
+
+        const filtered = query
+            ? goldenTracks.filter(t =>
+                t.title.toLowerCase().includes(query.toLowerCase()) ||
+                t.artist.toLowerCase().includes(query.toLowerCase())
+              )
+            : goldenTracks;
+
+        // Update header
+        const nameEl = document.getElementById('playlist-name');
+        const taglineEl = document.getElementById('playlist-tagline');
+        const descEl = document.getElementById('playlist-desc');
+        const artEl = document.getElementById('playlist-art');
+        const countEl = document.getElementById('playlist-track-count');
+
+        if (nameEl) nameEl.innerHTML = '<span style="background:linear-gradient(90deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Olden days are Golden Days</span>';
+        if (taglineEl) { taglineEl.innerText = 'YOUR CLASSICS'; taglineEl.style.color = '#FFD700'; }
+        if (descEl) descEl.innerText = 'Timeless classics — from Perfect to Faded, these are the songs that defined an era.';
+        if (artEl) { artEl.src = 'olden_days_cover.png'; artEl.style.borderRadius = 'var(--radius-lg)'; artEl.style.boxShadow = '0 12px 60px rgba(255,215,0,0.3)'; }
+        if (countEl) countEl.innerText = `${filtered.length} Tracks`;
+
+        // Render tracks
+        const tracklistBody = document.getElementById('tracklist-body');
+        if (!tracklistBody) return;
+        goldenPlaylistQueue = filtered;
+
+        if (filtered.length === 0) {
+            tracklistBody.innerHTML = `<tr><td colspan="3" style="padding: 40px; text-align: center; color: var(--text-secondary);">${query ? 'No tracks match your search.' : 'No tracks in Olden Days yet. Add songs using the ➕ button!'}</td></tr>`;
+            return;
+        }
+
+        tracklistBody.innerHTML = filtered.map((track, index) => {
+            const originalIndex = libraryTracks.indexOf(track);
+            const isPlayingRow = (currentTrackIndex === originalIndex && currentQueue === goldenPlaylistQueue);
+            return `
+                <tr class="song-row ${isPlayingRow ? 'playing' : ''}">
+                    <td class="index" style="text-align:center;">${index + 1}</td>
+                    <td class="title-cell" onclick="playPlaylistTrack(${index})">
+                        <img src="${track.cover}" class="small-art">
+                        <div>
+                            <div class="song-title">${track.title}</div>
+                            <div class="song-artist">${track.artist}</div>
+                        </div>
+                    </td>
+                    <td class="duration" style="text-align:right;">
+                        <button onclick="toggleGoldenDaysTrack(${originalIndex}, event)" class="icon-btn playlist-toggle-btn in-playlist" title="Remove from Olden Days" style="display: inline-flex;">
+                            <span style="font-size:14px;">📀</span>
+                        </button>
+                        3:45
+                    </td>
+                </tr>
+            `;
+        }).join('');
+    };
+
+    window.playPlaylistTrack = (index) => {
+        if (index < 0 || index >= goldenPlaylistQueue.length) return;
+        currentQueue = goldenPlaylistQueue;
+        const track = goldenPlaylistQueue[index];
+        currentTrackIndex = libraryTracks.indexOf(track);
+        playTrack(track.url, track.title, track.artist, track.cover, track.canvas);
+        const searchInput = document.getElementById('playlist-search');
+        renderPlaylist(searchInput ? searchInput.value : "");
+    };
+
+    window.playAllPlaylist = () => {
+        if (goldenPlaylistQueue.length === 0) return;
+        currentQueue = goldenPlaylistQueue;
+        const track = goldenPlaylistQueue[0];
+        currentTrackIndex = libraryTracks.indexOf(track);
+        playTrack(track.url, track.title, track.artist, track.cover, track.canvas);
+        const searchInput = document.getElementById('playlist-search');
+        renderPlaylist(searchInput ? searchInput.value : "");
+    };
+
+    window.sortPlaylistAlphabetically = () => {
+        isPlaylistSorted = !isPlaylistSorted;
+        const sortBtn = document.getElementById('playlist-sort-btn');
+        if (sortBtn) {
+            if (isPlaylistSorted) {
+                sortBtn.innerText = 'SORTED A-Z';
+                sortBtn.style.borderColor = '#FFD700';
+                sortBtn.style.color = '#FFD700';
+            } else {
+                sortBtn.innerText = 'SORT A-Z';
+                sortBtn.style.borderColor = 'var(--glass-border)';
+                sortBtn.style.color = 'white';
+            }
+        }
+        const searchInput = document.getElementById('playlist-search');
+        renderPlaylist(searchInput ? searchInput.value : "");
+    };
+
+    window.toggleGoldenDaysTrack = (index, event) => {
+        if (event) event.stopPropagation();
+        libraryTracks[index].inGoldenDays = !libraryTracks[index].inGoldenDays;
+        saveLibrary();
+        // Re-render all active views
+        renderLibrary();
+        renderHome();
+        const playlistView = document.getElementById('playlist-view');
+        if (playlistView && playlistView.style.display !== 'none') {
+            const searchInput = document.getElementById('playlist-search');
+            renderPlaylist(searchInput ? searchInput.value : "");
+        }
+        // Re-render search if open
+        const globalSearchInput = document.getElementById('global-search');
+        if (globalSearchInput && globalSearchInput.value) {
+            globalSearchInput.dispatchEvent(new Event('input'));
+        }
+    };
+
+    // Playlist search input handler
+    const playlistSearchInput = document.getElementById('playlist-search');
+    if (playlistSearchInput) {
+        playlistSearchInput.addEventListener('input', (e) => {
+            renderPlaylist(e.target.value);
+        });
+    }
+
     window.showPlaylist = (name) => {
         showView('playlist-view');
         document.getElementById('playlist-name').innerText = name;
     };
+    // ────────────────────────────────────────────────────────────────────────
 
     window.playTrack = (url, title, artist, cover, canvas) => {
         if (url === '#') return;
@@ -834,6 +1001,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // Update highlights across views
         renderLibrary();
+        const playlistViewEl = document.getElementById('playlist-view');
+        if (playlistViewEl && playlistViewEl.style.display !== 'none') renderPlaylist();
     };
 
     const updateUI = (title, artist, cover, canvas) => {
@@ -959,14 +1128,27 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const playNext = () => {
         if (currentQueue.length === 0) return;
-        currentTrackIndex = isShuffle ? Math.floor(Math.random() * currentQueue.length) : (currentTrackIndex + 1) % currentQueue.length;
-        playLibraryTrack(currentTrackIndex);
+        if (currentQueue === goldenPlaylistQueue) {
+            // Navigate within golden playlist
+            const curGoldenIdx = goldenPlaylistQueue.findIndex((_, i) => libraryTracks.indexOf(goldenPlaylistQueue[i]) === currentTrackIndex);
+            const nextGoldenIdx = isShuffle ? Math.floor(Math.random() * goldenPlaylistQueue.length) : (Math.max(curGoldenIdx, 0) + 1) % goldenPlaylistQueue.length;
+            window.playPlaylistTrack(nextGoldenIdx);
+        } else {
+            currentTrackIndex = isShuffle ? Math.floor(Math.random() * currentQueue.length) : (currentTrackIndex + 1) % currentQueue.length;
+            playLibraryTrack(currentTrackIndex);
+        }
     };
 
     const playPrev = () => {
         if (currentQueue.length === 0) return;
-        currentTrackIndex = (currentTrackIndex - 1 + currentQueue.length) % currentQueue.length;
-        playLibraryTrack(currentTrackIndex);
+        if (currentQueue === goldenPlaylistQueue) {
+            const curGoldenIdx = goldenPlaylistQueue.findIndex((_, i) => libraryTracks.indexOf(goldenPlaylistQueue[i]) === currentTrackIndex);
+            const prevGoldenIdx = (Math.max(curGoldenIdx, 0) - 1 + goldenPlaylistQueue.length) % goldenPlaylistQueue.length;
+            window.playPlaylistTrack(prevGoldenIdx);
+        } else {
+            currentTrackIndex = (currentTrackIndex - 1 + currentQueue.length) % currentQueue.length;
+            playLibraryTrack(currentTrackIndex);
+        }
     };
 
     if(btnNext) btnNext.onclick = playNext;
