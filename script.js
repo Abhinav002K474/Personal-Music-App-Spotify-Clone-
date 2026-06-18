@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         {
             "title": "Bye Bye",
             "artist": "NSYNC",
-            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781719130/Bye_Bye_Bye_Opening_Scene_DEADPOOL_WOLVERINE_2024_Movie_CLIP_HD_lyvwtf.mp3",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781789193/Bye_Bye_Bye_Opening_Scene_DEADPOOL_WOLVERINE_2024_Movie_CLIP_HD_bmtdvr.mp3",
             "cover": "neon_beats.png",
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781718947/vidssave.com_Bye_Bye_Bye_Opening_Scene___DEADPOOL_WOLVERINE_2024_Movie_CLIP_HD_1080P_zt1cdq.mp4"
         },
@@ -801,10 +801,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         libraryTracks.push({
             "title": "Bye Bye",
             "artist": "NSYNC",
-            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781719130/Bye_Bye_Bye_Opening_Scene_DEADPOOL_WOLVERINE_2024_Movie_CLIP_HD_lyvwtf.mp3",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781789193/Bye_Bye_Bye_Opening_Scene_DEADPOOL_WOLVERINE_2024_Movie_CLIP_HD_bmtdvr.mp3",
             "cover": "neon_beats.png",
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781718947/vidssave.com_Bye_Bye_Bye_Opening_Scene___DEADPOOL_WOLVERINE_2024_Movie_CLIP_HD_1080P_zt1cdq.mp4"
         });
+    } else {
+        const track = libraryTracks.find(t => t.title === "Bye Bye");
+        if (track) {
+            track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781789193/Bye_Bye_Bye_Opening_Scene_DEADPOOL_WOLVERINE_2024_Movie_CLIP_HD_bmtdvr.mp3";
+        }
     }
 
     // Reset/Initialize Olden Days playlist to be empty by default
