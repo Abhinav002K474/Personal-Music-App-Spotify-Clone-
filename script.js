@@ -282,6 +282,24 @@ document.addEventListener('DOMContentLoaded', async () => {
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781203391/vidssave.com_%E5%A6%96%E6%80%AA%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E5%85%AC%E5%BC%8F_%E3%82%AA%E3%83%BC%E3%83%97%E3%83%8B%E3%83%B3%E3%82%B0%E7%AC%AC1%E5%BC%BE_%E3%82%B2%E3%83%A9%E3%82%B2%E3%83%A9%E3%83%9D%E3%83%BC%E3%81%AE%E3%81%86%E3%81%9F_%E5%A6%96Tube_720P_firsfn.mp4",
             "inGoldenDays": true,
             "onlyGoldenDays": true
+        },
+        {
+            "title": "Ben 10",
+            "artist": "Ben 10",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781786867/Ben_10_title_song_Tamil_jw1b4s.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781785163/vidssave.com_Ben_10_title_song_Tamil_360P_lopht9.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        },
+        {
+            "title": "Phineas and Ferb Opening",
+            "artist": "Phineas and Ferb",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781787275/Phineas_and_Ferb_-_Intro_%E0%AE%A4%E0%AE%AE%E0%AE%B4Tamil_qknjtn.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781787311/vidssave.com_Phineas_and_Ferb_-_Intro_%E0%AE%A4%E0%AE%BF%E0%AE%B4%E0%AF%8D_Tamil_720P_ldxv5g.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
         }
     ];
     let libraryTracks = JSON.parse(localStorage.getItem('stressTuneLibrary')) || defaultTracks;
@@ -850,6 +868,24 @@ document.addEventListener('DOMContentLoaded', async () => {
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781270348/%E5%A6%96%E6%80%AA%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E5%85%AC%E5%BC%8F%E3%82%AA%E3%83%BC%E3%83%97%E3%83%8B%E3%83%B3%E3%82%B0%E7%AC%AC1%E5%BC%BE_%E3%82%B2%E3%83%A9%E3%82%B2%E3%83%A9%E3%83%9D%E3%83%BC%E3%81%AE%E3%81%86%E3%81%9F%E5%A6%96Tube_dhoq9z.mp3",
             "cover": "olden_days_cover.png",
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781203391/vidssave.com_%E5%A6%96%E6%80%AA%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E5%85%AC%E5%BC%8F_%E3%82%AA%E3%83%BC%E3%83%97%E3%83%8B%E3%83%B3%E3%82%B0%E7%AC%AC1%E5%BC%BE_%E3%82%B2%E3%83%A9%E3%82%B2%E3%83%A9%E3%83%9D%E3%83%BC%E3%81%AE%E3%81%86%E3%81%9F_%E5%A6%96Tube_720P_firsfn.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        },
+        {
+            "title": "Ben 10",
+            "artist": "Ben 10",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781786867/Ben_10_title_song_Tamil_jw1b4s.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781785163/vidssave.com_Ben_10_title_song_Tamil_360P_lopht9.mp4",
+            "inGoldenDays": true,
+            "onlyGoldenDays": true
+        },
+        {
+            "title": "Phineas and Ferb Opening",
+            "artist": "Phineas and Ferb",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781787275/Phineas_and_Ferb_-_Intro_%E0%AE%A4%E0%AE%AE%E0%AE%B4Tamil_qknjtn.mp3",
+            "cover": "olden_days_cover.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781787311/vidssave.com_Phineas_and_Ferb_-_Intro_%E0%AE%A4%E0%AE%BF%E0%AE%B4%E0%AF%8D_Tamil_720P_ldxv5g.mp4",
             "inGoldenDays": true,
             "onlyGoldenDays": true
         }
