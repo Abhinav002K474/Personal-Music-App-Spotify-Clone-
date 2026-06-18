@@ -202,6 +202,34 @@ document.addEventListener('DOMContentLoaded', async () => {
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780835103/vidssave.com_Wednesday_Dance_-_Lady_Gaga_-_Bloody_Mary_720p_kigppu.mp4"
         },
         {
+            "title": "Attack on Titan",
+            "artist": "Ai Higuchi",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781786111/%E3%83%92%E3%82%B0%E3%83%81%E3%82%A2%E3%82%A4_%E6%82%AA%E9%AD%94%E3%81%AE%E5%AD%90_%E3%82%A2%E3%83%8B%E3%83%A1%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%ABVer._Ai_Higuchi_Akuma_no_Ko_Anime_Special_Ver._1_arjzam.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781786069/vidssave.com_%E3%83%92%E3%82%B0%E3%83%81%E3%82%A2%E3%82%A4___%E6%82%AA%E9%AD%94%E3%81%AE%E5%AD%90_%E3%82%A2%E3%83%8B%E3%83%A1%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%ABVer.___Ai_Higuchi_Akuma_no_Ko_Anime_Special_Ver._720p_1_bmjsc0.mp4"
+        },
+        {
+            "title": "Bink's Sake",
+            "artist": "One Piece",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781786090/One_Piece_OST_-_Binks_no_Sake_Strawhat_Version_Lyrics_xsovfc.mp3",
+            "cover": "zen_garden.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781786171/vidssave.com_one_piece_binks_no_sake_sub_espanol_romajiamv_720P_qy8zep.mp4"
+        },
+        {
+            "title": "Waka Waka",
+            "artist": "Shakira",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781719136/Shakira_-_Waka_Waka_This_Time_for_Africa_The_Official_2010_FIFA_World_Cup_Song_i208vx.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781719013/vidssave.com_Shakira_-_Waka_Waka_This_Time_for_Africa_The_Official_2010_FIFA_World_Cup_Song_720P_huw1tm.mp4"
+        },
+        {
+            "title": "Bye Bye",
+            "artist": "NSYNC",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781719130/Bye_Bye_Bye_Opening_Scene_DEADPOOL_WOLVERINE_2024_Movie_CLIP_HD_lyvwtf.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781718947/vidssave.com_Bye_Bye_Bye_Opening_Scene___DEADPOOL_WOLVERINE_2024_Movie_CLIP_HD_1080P_zt1cdq.mp4"
+        },
+        {
             "title": "Pokemon Season 1 Opening",
             "artist": "Pokémon",
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781268669/Pok%C3%A9mon_Season_1_Opening_in_Tamil_jngk1k.mp3",
@@ -710,6 +738,54 @@ document.addEventListener('DOMContentLoaded', async () => {
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1780835197/Lady_Gaga_-_Bloody_Mary_ofcdeb.mp3",
             "cover": "midnight_rain.png",
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1780835103/vidssave.com_Wednesday_Dance_-_Lady_Gaga_-_Bloody_Mary_720p_kigppu.mp4"
+        });
+    }
+
+    // Check and add Attack on Titan
+    const hasAttackOnTitan = libraryTracks.some(t => t.title === "Attack on Titan");
+    if (!hasAttackOnTitan) {
+        libraryTracks.push({
+            "title": "Attack on Titan",
+            "artist": "Ai Higuchi",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781786111/%E3%83%92%E3%82%B0%E3%83%81%E3%82%A2%E3%82%A4_%E6%82%AA%E9%AD%94%E3%81%AE%E5%AD%90_%E3%82%A2%E3%83%8B%E3%83%A1%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%ABVer._Ai_Higuchi_Akuma_no_Ko_Anime_Special_Ver._1_arjzam.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781786069/vidssave.com_%E3%83%92%E3%82%B0%E3%83%81%E3%82%A2%E3%82%A4___%E6%82%AA%E9%AD%94%E3%81%AE%E5%AD%90_%E3%82%A2%E3%83%8B%E3%83%A1%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%ABVer.___Ai_Higuchi_Akuma_no_Ko_Anime_Special_Ver._720p_1_bmjsc0.mp4"
+        });
+    }
+
+    // Check and add Bink's Sake
+    const hasBinksSake = libraryTracks.some(t => t.title === "Bink's Sake");
+    if (!hasBinksSake) {
+        libraryTracks.push({
+            "title": "Bink's Sake",
+            "artist": "One Piece",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781786090/One_Piece_OST_-_Binks_no_Sake_Strawhat_Version_Lyrics_xsovfc.mp3",
+            "cover": "zen_garden.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781786171/vidssave.com_one_piece_binks_no_sake_sub_espanol_romajiamv_720P_qy8zep.mp4"
+        });
+    }
+
+    // Check and add Waka Waka
+    const hasWakaWaka = libraryTracks.some(t => t.title === "Waka Waka");
+    if (!hasWakaWaka) {
+        libraryTracks.push({
+            "title": "Waka Waka",
+            "artist": "Shakira",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781719136/Shakira_-_Waka_Waka_This_Time_for_Africa_The_Official_2010_FIFA_World_Cup_Song_i208vx.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781719013/vidssave.com_Shakira_-_Waka_Waka_This_Time_for_Africa_The_Official_2010_FIFA_World_Cup_Song_720P_huw1tm.mp4"
+        });
+    }
+
+    // Check and add Bye Bye
+    const hasByeBye = libraryTracks.some(t => t.title === "Bye Bye");
+    if (!hasByeBye) {
+        libraryTracks.push({
+            "title": "Bye Bye",
+            "artist": "NSYNC",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781719130/Bye_Bye_Bye_Opening_Scene_DEADPOOL_WOLVERINE_2024_Movie_CLIP_HD_lyvwtf.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781718947/vidssave.com_Bye_Bye_Bye_Opening_Scene___DEADPOOL_WOLVERINE_2024_Movie_CLIP_HD_1080P_zt1cdq.mp4"
         });
     }
 
