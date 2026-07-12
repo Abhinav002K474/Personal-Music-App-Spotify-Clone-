@@ -230,6 +230,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781790106/vidssave.com_DEADPOOL_WOLVERINE_2024_Bye_Bye_Bye_Opening_Scene_-_Movie_CLIP_HD_720P_m5zw9c.mp4"
         },
         {
+            "title": "Warrior Inside",
+            "artist": "Beyblade",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1783859747/Beyblade_AMV_-_Warrior_Inside_a6r7rs.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1783859784/YTDown.com_YouTube_Beyblade-AMV-Warrior-Inside_Media_nn7lRc0_iAc_002_720p_zwnuwy.mp4"
+        },
+        {
             "title": "Pokemon Season 1 Opening",
             "artist": "Pokémon",
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781268669/Pok%C3%A9mon_Season_1_Opening_in_Tamil_jngk1k.mp3",
@@ -804,6 +811,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781719130/Bye_Bye_Bye_Opening_Scene_DEADPOOL_WOLVERINE_2024_Movie_CLIP_HD_lyvwtf.mp3",
             "cover": "neon_beats.png",
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1781718947/vidssave.com_Bye_Bye_Bye_Opening_Scene___DEADPOOL_WOLVERINE_2024_Movie_CLIP_HD_1080P_zt1cdq.mp4"
+        });
+    }
+
+    // Check and add Warrior Inside
+    const hasWarriorInside = libraryTracks.some(t => t.title === "Warrior Inside");
+    if (!hasWarriorInside) {
+        libraryTracks.push({
+            "title": "Warrior Inside",
+            "artist": "Beyblade",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1783859747/Beyblade_AMV_-_Warrior_Inside_a6r7rs.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1783859784/YTDown.com_YouTube_Beyblade-AMV-Warrior-Inside_Media_nn7lRc0_iAc_002_720p_zwnuwy.mp4"
         });
     }
 
