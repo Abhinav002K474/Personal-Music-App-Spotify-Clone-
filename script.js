@@ -237,6 +237,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1783859784/YTDown.com_YouTube_Beyblade-AMV-Warrior-Inside_Media_nn7lRc0_iAc_002_720p_zwnuwy.mp4"
         },
         {
+            "title": "Centuries",
+            "artist": "Fall Out Boy",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1783861599/Madara_Uchiha_AMV_-_Centuries_pgjail.mp3",
+            "cover": "zen_garden.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1783861621/YTDown.com_YouTube_Madara-Uchiha-AMV-Centuries_Media_esJOOQG42r0_001_720p_ql2ccn.mp4"
+        },
+        {
+            "title": "Believer",
+            "artist": "Imagine Dragons",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1783860831/Charizard_Greninja_Infernape_Lycanroc_AMV_-_Believer_jw8wfm.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1783860953/YTDown.com_YouTube_Charizard-Greninja-Infernape-Lycanroc-AM_Media_THflA-4Itaw_002_720p_r5vgl9.mp4"
+        },
+        {
             "title": "Pokemon Season 1 Opening",
             "artist": "Pokémon",
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781268669/Pok%C3%A9mon_Season_1_Opening_in_Tamil_jngk1k.mp3",
@@ -823,6 +837,30 @@ document.addEventListener('DOMContentLoaded', async () => {
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1783859747/Beyblade_AMV_-_Warrior_Inside_a6r7rs.mp3",
             "cover": "midnight_rain.png",
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1783859784/YTDown.com_YouTube_Beyblade-AMV-Warrior-Inside_Media_nn7lRc0_iAc_002_720p_zwnuwy.mp4"
+        });
+    }
+
+    // Check and add Centuries
+    const hasCenturies = libraryTracks.some(t => t.title === "Centuries");
+    if (!hasCenturies) {
+        libraryTracks.push({
+            "title": "Centuries",
+            "artist": "Fall Out Boy",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1783861599/Madara_Uchiha_AMV_-_Centuries_pgjail.mp3",
+            "cover": "zen_garden.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1783861621/YTDown.com_YouTube_Madara-Uchiha-AMV-Centuries_Media_esJOOQG42r0_001_720p_ql2ccn.mp4"
+        });
+    }
+
+    // Check and add Believer
+    const hasBeliever = libraryTracks.some(t => t.title === "Believer");
+    if (!hasBeliever) {
+        libraryTracks.push({
+            "title": "Believer",
+            "artist": "Imagine Dragons",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1783860831/Charizard_Greninja_Infernape_Lycanroc_AMV_-_Believer_jw8wfm.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1783860953/YTDown.com_YouTube_Charizard-Greninja-Infernape-Lycanroc-AM_Media_THflA-4Itaw_002_720p_r5vgl9.mp4"
         });
     }
 
