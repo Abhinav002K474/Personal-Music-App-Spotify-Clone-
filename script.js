@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "Unforgettable freestyle lyrics", "artist": "PnB Rock", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093589/PnB_Rock_-_Unforgettable_freestyle_lyrics_l5qwwj.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779095663/Pnb_Rock_-_Unforgettable_Freestyle_AMV_EDIT_Free_Preset_Edit_By_Galaxy_Edit_z_pnbrocktypebeat_dkv6wo.mp4" },
         { "title": "Passenger Let Her Go Official Video", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093588/Passenger_Let_Her_Go_Official_Video_mcvfge.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1779888108/vidssave.com_Let_Her_Go_-_Hyouka_720P_cg4jy4.mp4" },
         { "title": "Courtesy Call", "artist": "Nightcore", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093587/Nightcore_-_Courtesy_Call_yrf5kr.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778232193/vidssave.com_Kalos_League_Showdown_AMV_Courtesy_Call_-_Pokemon_XYZ_1080P_gzmf5b.mp4" },
-        { "title": "Animals Lyrics", "artist": "Maroon 5", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093586/Maroon_5_-_Animals_Lyrics_xewnpl.mp3", "cover": "zen_garden.png" },
+        { "title": "Animals Lyrics", "artist": "Maroon 5", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093586/Maroon_5_-_Animals_Lyrics_xewnpl.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1785575922/vidssave.com_Animals_-_AMV_Anime_Mix_720p_bpiafr.mp4" },
         { "title": "Rumors Copyright Free No.12", "artist": "NEFFEX", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093584/NEFFEX_-_Rumors_Copyright_Free_No.12_puohps.mp3", "cover": "midnight_rain.png" },
         { "title": "Night Changes", "artist": "One Direction", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093582/One_Direction_-_Night_Changes_tbdrhz.mp3", "cover": "zen_garden.png" },
         { "title": "Darkside", "artist": "NEONI", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778264297/NEONI_-_Darkside_Lyrics_soia8k.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778264000/vidssave.com_The_Eminence_in_Shadow_AMV_-_Darkside_1080P_uo8vq9.mp4" },
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "Perfect Lyrics", "artist": "Ed Sheeran", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093558/Ed_Sheeran_-_Perfect_Lyrics_yhbbdg.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482939/vidssave.com_Perfect_-_AMV_-_Anime_MV_720p60_wxckgb.mp4" },
         { "title": "Love Me Like You Do Lyrics", "artist": "Ellie Goulding", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093558/Ellie_Goulding_-_Love_Me_Like_You_Do_Lyrics_x699mn.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482299/vidssave.com_amu_ikuto___love_me_like_you_do_720P_lzsffp.mp4" },
         { "title": "Gangsta s Paradise feat. L.V. Official Music Video", "artist": "Coolio", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093556/Coolio_-_Gangsta_s_Paradise_feat._L.V._Official_Music_Video_vgpvl1.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778263902/AMV_-_Tokyo_revengers_-_gangster_paradise_Toman_vs_Valhalla_xkehvs.mp4" },
-        { "title": "Royalty ft. Neoni Official Lyric Video", "artist": "Egzod Maestro Chives", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093556/Egzod_Maestro_Chives_-_Royalty_ft._Neoni_Official_Lyric_Video_zzklxh.mp3", "cover": "neon_beats.png" },
+        { "title": "Royalty ft. Neoni Official Lyric Video", "artist": "Egzod Maestro Chives", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093556/Egzod_Maestro_Chives_-_Royalty_ft._Neoni_Official_Lyric_Video_zzklxh.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1785575408/vidssave.com_Royalty_-_AMV_Anime_Mix_720P_qppstz.mp4" },
         { "title": "discord x my ordinary life mashup", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093554/discord_x_my_ordinary_life_slowed_reverb_full_mashup_ffoshx.mp3", "cover": "zen_garden.png" },
         { "title": "Runaway Lyrics", "artist": "AURORA", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093550/AURORA_-_Runaway_Lyrics_ycromm.mp3", "cover": "midnight_rain.png" },
         { "title": "A Thousand Years", "artist": "Christina Perri", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093549/Christina_Perri_-_A_Thousand_Years_pbdqk7.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778217932/Love_story_...Follow_sliceofanime_0_for_more_..._pokemon_theghostofmaidenspeak_sadanimeedit_mds8xw.mp4" },
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "Broken Angel Lyrics Ft.Helena Im so lonely", "artist": "Arash", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093545/Arash_-_Broken_Angel_Lyrics_Ft.Helena_Im_so_lonely_broken_angel_xvxhwn.mp3", "cover": "midnight_rain.png" },
         { "title": "Let Me Down Slowly", "artist": "Alec Benjamin", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093543/Alec_Benjamin_-_Let_Me_Down_Slowly_kcvram.mp3", "cover": "zen_garden.png" },
         { "title": "The Nights Lyrics my father told me", "artist": "Avicii", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093542/Avicii_-_The_Nights_Lyrics_my_father_told_me_e5svqx.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778683695/vidssave.com_One_piece-MV_Avicii-The_Nights_720P_ye2hqn.mp4" },
-        { "title": "Moral Of The Story Lyrics 1", "artist": "Ashe", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093541/Ashe_-_Moral_Of_The_Story_Lyrics_1_a8zmg3.mp3", "cover": "zen_garden.png" },
+        { "title": "Moral Of The Story Lyrics 1", "artist": "Ashe", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093541/Ashe_-_Moral_Of_The_Story_Lyrics_1_a8zmg3.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1785576399/Moral_of_the_Story_-_AMV_-_Anime_MV_t6jyln.mp4" },
         { "title": "I Wanna Be Yours Instrumental Best part looped", "artist": "Arctic Monkeys", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093541/Arctic_Monkeys_-_I_Wanna_Be_Yours_Instrumental_Best_part_looped_z7ljqh.mp3", "cover": "midnight_rain.png" },
         { "title": "End Of Me Pseudo Video", "artist": "Ashes Remain", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093539/Ashes_Remain_-_End_Of_Me_Pseudo_Video_lktk4s.mp3", "cover": "zen_garden.png" },
         { "title": "2 Phut Hon phao Lyrics kaiz Remix", "artist": "Unknown Artist", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093539/2_Phut_Hon_-_phao_Lyrics_kaiz_Remix_phut_Hon_remix_lyrics_TikTok_Song_Sub._English_-_Lyrics_d1a3ex.mp3", "cover": "neon_beats.png" },
@@ -249,6 +249,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1783860831/Charizard_Greninja_Infernape_Lycanroc_AMV_-_Believer_jw8wfm.mp3",
             "cover": "neon_beats.png",
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1783860953/YTDown.com_YouTube_Charizard-Greninja-Infernape-Lycanroc-AM_Media_THflA-4Itaw_002_720p_r5vgl9.mp4"
+        },
+        {
+            "title": "Shameless",
+            "artist": "Camila Cabello",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1785574107/Camila_Cabello_-_Shameless_utlquw.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1785574164/vidssave.com_Shameless_-_Demon_Slayer_AMV_720P_i0k0qt.mp4"
+        },
+        {
+            "title": "Darkside 2",
+            "artist": "NEONI",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093581/NEONI_-_Darkside_Lyrics_mbp67u.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1785575094/vidssave.com_Darkside_AMV_Anime_Mix_720P_dscnqw.mp4"
         },
         {
             "title": "Pokemon Season 1 Opening",
@@ -863,6 +877,65 @@ document.addEventListener('DOMContentLoaded', async () => {
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1783860953/YTDown.com_YouTube_Charizard-Greninja-Infernape-Lycanroc-AM_Media_THflA-4Itaw_002_720p_r5vgl9.mp4"
         });
     }
+
+    // Check and add Shameless
+    const hasShameless = libraryTracks.some(t => t.title === "Shameless");
+    if (!hasShameless) {
+        libraryTracks.push({
+            "title": "Shameless",
+            "artist": "Camila Cabello",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1785574107/Camila_Cabello_-_Shameless_utlquw.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1785574164/vidssave.com_Shameless_-_Demon_Slayer_AMV_720P_i0k0qt.mp4"
+        });
+    } else {
+        const track = libraryTracks.find(t => t.title === "Shameless");
+        if (track) {
+            track.artist = "Camila Cabello";
+            track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1785574107/Camila_Cabello_-_Shameless_utlquw.mp3";
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1785574164/vidssave.com_Shameless_-_Demon_Slayer_AMV_720P_i0k0qt.mp4";
+        }
+    }
+
+    // Check and add Darkside 2
+    const hasDarkside2 = libraryTracks.some(t => t.title === "Darkside 2");
+    if (!hasDarkside2) {
+        libraryTracks.push({
+            "title": "Darkside 2",
+            "artist": "NEONI",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093581/NEONI_-_Darkside_Lyrics_mbp67u.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1785575094/vidssave.com_Darkside_AMV_Anime_Mix_720P_dscnqw.mp4"
+        });
+    } else {
+        const track = libraryTracks.find(t => t.title === "Darkside 2");
+        if (track) {
+            track.artist = "NEONI";
+            track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093581/NEONI_-_Darkside_Lyrics_mbp67u.mp3";
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1785575094/vidssave.com_Darkside_AMV_Anime_Mix_720P_dscnqw.mp4";
+        }
+    }
+
+    // Robust Patch for "Royalty ft. Neoni Official"
+    libraryTracks.forEach(track => {
+        if (track.title.toLowerCase().includes("royalty")) {
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1785575408/vidssave.com_Royalty_-_AMV_Anime_Mix_720P_qppstz.mp4";
+        }
+    });
+
+    // Robust Patch for "Animals Lyrics"
+    libraryTracks.forEach(track => {
+        if (track.title.toLowerCase().includes("animals")) {
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1785575922/vidssave.com_Animals_-_AMV_Anime_Mix_720p_bpiafr.mp4";
+        }
+    });
+
+    // Robust Patch for "Moral Of The Story"
+    libraryTracks.forEach(track => {
+        if (track.title.toLowerCase().includes("moral of the story")) {
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1785576399/Moral_of_the_Story_-_AMV_-_Anime_MV_t6jyln.mp4";
+        }
+    });
 
     // Reset/Initialize Olden Days playlist to be empty by default
     if (!localStorage.getItem('stressTuneOldenDaysReset')) {
