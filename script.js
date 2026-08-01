@@ -265,6 +265,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1785575094/vidssave.com_Darkside_AMV_Anime_Mix_720P_dscnqw.mp4"
         },
         {
+            "title": "Bumble Bee",
+            "artist": "Nightcore",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1785588159/Nightcore_Sweet_Little_Bumblebee_lyric_video_skehr5.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1785588186/vidssave.com_Nightcore___Sweet_Little_Bumblebee_lyric_video_720P_kgbncy.mp4"
+        },
+        {
             "title": "Pokemon Season 1 Opening",
             "artist": "Pokémon",
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781268669/Pok%C3%A9mon_Season_1_Opening_in_Tamil_jngk1k.mp3",
@@ -913,6 +920,25 @@ document.addEventListener('DOMContentLoaded', async () => {
             track.artist = "NEONI";
             track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093581/NEONI_-_Darkside_Lyrics_mbp67u.mp3";
             track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1785575094/vidssave.com_Darkside_AMV_Anime_Mix_720P_dscnqw.mp4";
+        }
+    }
+
+    // Check and add Bumble Bee
+    const hasBumbleBee = libraryTracks.some(t => t.title === "Bumble Bee");
+    if (!hasBumbleBee) {
+        libraryTracks.push({
+            "title": "Bumble Bee",
+            "artist": "Nightcore",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1785588159/Nightcore_Sweet_Little_Bumblebee_lyric_video_skehr5.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1785588186/vidssave.com_Nightcore___Sweet_Little_Bumblebee_lyric_video_720P_kgbncy.mp4"
+        });
+    } else {
+        const track = libraryTracks.find(t => t.title === "Bumble Bee");
+        if (track) {
+            track.artist = "Nightcore";
+            track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1785588159/Nightcore_Sweet_Little_Bumblebee_lyric_video_skehr5.mp3";
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1785588186/vidssave.com_Nightcore___Sweet_Little_Bumblebee_lyric_video_720P_kgbncy.mp4";
         }
     }
 
