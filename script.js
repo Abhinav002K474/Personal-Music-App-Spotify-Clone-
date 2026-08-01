@@ -1239,17 +1239,40 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
+    // ── MUSIC I 💙 ORDERED QUEUE ─────────────────────────────────────────────
+    // musicILoveQueue: all non-onlyGoldenDays tracks in their listed order
+    // musicILoveIdx: current position within that queue
+    let musicILoveQueue = [];
+    let musicILoveIdx = -1;
+    const QUEUE_MUSIC_I_LOVE = 'music_i_love';
+    const QUEUE_OLDEN_DAYS   = 'olden_days';
+    let activePlaylistId = null; // which playlist is currently driving playback
+
+    const buildMusicILoveQueue = () => libraryTracks.filter(t => !t.onlyGoldenDays);
+
     window.playLibraryTrack = (index) => {
-        currentQueue = libraryTracks;
+        // index is a libraryTracks index — map it to the Music I 💙 queue position
+        musicILoveQueue = buildMusicILoveQueue();
+        const queuePos = musicILoveQueue.findIndex(t => libraryTracks.indexOf(t) === index);
+        musicILoveIdx = queuePos !== -1 ? queuePos : 0;
+        activePlaylistId = QUEUE_MUSIC_I_LOVE;
+        currentQueue = musicILoveQueue;
         currentTrackIndex = index;
-        const track = currentQueue[index];
+        const track = musicILoveQueue[musicILoveIdx];
         playTrack(track.url, track.title, track.artist, track.cover, track.canvas);
-        renderLibrary(); // Update highlights
+        renderLibrary();
     };
 
     window.playAllLibrary = () => {
-        const firstPlayableIndex = libraryTracks.findIndex(t => !t.onlyGoldenDays);
-        if (firstPlayableIndex !== -1) playLibraryTrack(firstPlayableIndex);
+        musicILoveQueue = buildMusicILoveQueue();
+        if (musicILoveQueue.length === 0) return;
+        musicILoveIdx = 0;
+        activePlaylistId = QUEUE_MUSIC_I_LOVE;
+        currentQueue = musicILoveQueue;
+        currentTrackIndex = libraryTracks.indexOf(musicILoveQueue[0]);
+        const track = musicILoveQueue[0];
+        playTrack(track.url, track.title, track.artist, track.cover, track.canvas);
+        renderLibrary();
     };
 
     // ── OLDEN DAYS GOLDEN DAYS PLAYLIST ENGINE ──────────────────────────────
@@ -1323,8 +1346,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     window.playPlaylistTrack = (index) => {
         if (index < 0 || index >= goldenPlaylistQueue.length) return;
+        activePlaylistId = QUEUE_OLDEN_DAYS;
         currentQueue = goldenPlaylistQueue;
-        currentGoldenIdx = index; // Track position within golden playlist
+        currentGoldenIdx = index;
         const track = goldenPlaylistQueue[index];
         currentTrackIndex = libraryTracks.indexOf(track);
         playTrack(track.url, track.title, track.artist, track.cover, track.canvas);
@@ -1334,8 +1358,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     window.playAllPlaylist = () => {
         if (goldenPlaylistQueue.length === 0) return;
+        activePlaylistId = QUEUE_OLDEN_DAYS;
         currentQueue = goldenPlaylistQueue;
-        currentGoldenIdx = 0; // Start at first track
+        currentGoldenIdx = 0;
         const track = goldenPlaylistQueue[0];
         currentTrackIndex = libraryTracks.indexOf(track);
         playTrack(track.url, track.title, track.artist, track.cover, track.canvas);
@@ -1536,47 +1561,99 @@ document.addEventListener('DOMContentLoaded', async () => {
     let isRepeat = false;
 
     const playNext = () => {
-        const isPlaylistActive = playlistView && playlistView.style.display !== 'none';
-        if (currentQueue === goldenPlaylistQueue || isPlaylistActive) {
-            // Refresh queue if empty
+        if (isRepeat) { audio.currentTime = 0; audio.play(); return; }
+
+        // ── Olden Days playlist is driving ───────────────────────────────────
+        if (activePlaylistId === QUEUE_OLDEN_DAYS || currentQueue === goldenPlaylistQueue) {
             if (goldenPlaylistQueue.length === 0) {
                 goldenPlaylistQueue = getGoldenTracks();
                 currentGoldenIdx = -1;
             }
             if (goldenPlaylistQueue.length === 0) return;
-            // Use dedicated golden index — reliable regardless of libraryTracks size
-            const nextIdx = isShuffle
+
+            const nextGoldenIdx = isShuffle
                 ? Math.floor(Math.random() * goldenPlaylistQueue.length)
-                : (currentGoldenIdx + 1) % goldenPlaylistQueue.length;
-            window.playPlaylistTrack(nextIdx);
+                : currentGoldenIdx + 1;
+
+            if (nextGoldenIdx >= goldenPlaylistQueue.length) {
+                // Olden Days finished — wrap back to start of Music I 💙
+                musicILoveQueue = buildMusicILoveQueue();
+                if (musicILoveQueue.length === 0) return;
+                musicILoveIdx = 0;
+                activePlaylistId = QUEUE_MUSIC_I_LOVE;
+                currentQueue = musicILoveQueue;
+                currentTrackIndex = libraryTracks.indexOf(musicILoveQueue[0]);
+                const t = musicILoveQueue[0];
+                playTrack(t.url, t.title, t.artist, t.cover, t.canvas);
+                renderLibrary();
+            } else {
+                window.playPlaylistTrack(nextGoldenIdx);
+            }
+            return;
+        }
+
+        // ── Music I 💙 is driving ────────────────────────────────────────────
+        musicILoveQueue = buildMusicILoveQueue();
+        if (musicILoveQueue.length === 0) return;
+
+        const nextLibIdx = isShuffle
+            ? Math.floor(Math.random() * musicILoveQueue.length)
+            : musicILoveIdx + 1;
+
+        if (nextLibIdx >= musicILoveQueue.length) {
+            // Music I 💙 exhausted — transition to Olden Days
+            const oldenTracks = getGoldenTracks();
+            if (oldenTracks.length > 0) {
+                activePlaylistId = QUEUE_OLDEN_DAYS;
+                goldenPlaylistQueue = oldenTracks;
+                currentGoldenIdx = 0;
+                currentQueue = goldenPlaylistQueue;
+                const t = goldenPlaylistQueue[0];
+                currentTrackIndex = libraryTracks.indexOf(t);
+                playTrack(t.url, t.title, t.artist, t.cover, t.canvas);
+                const si = document.getElementById('playlist-search');
+                renderPlaylist(si ? si.value : '');
+            } else {
+                // No Olden Days tracks — wrap Music I 💙 back to start
+                musicILoveIdx = 0;
+                const t = musicILoveQueue[0];
+                currentTrackIndex = libraryTracks.indexOf(t);
+                playTrack(t.url, t.title, t.artist, t.cover, t.canvas);
+                renderLibrary();
+            }
         } else {
-            if (currentQueue.length === 0) return;
-            currentTrackIndex = isShuffle
-                ? Math.floor(Math.random() * currentQueue.length)
-                : (currentTrackIndex + 1) % currentQueue.length;
-            playLibraryTrack(currentTrackIndex);
+            musicILoveIdx = nextLibIdx;
+            currentQueue = musicILoveQueue;
+            const t = musicILoveQueue[musicILoveIdx];
+            currentTrackIndex = libraryTracks.indexOf(t);
+            playTrack(t.url, t.title, t.artist, t.cover, t.canvas);
+            renderLibrary();
         }
     };
 
     const playPrev = () => {
-        const isPlaylistActive = playlistView && playlistView.style.display !== 'none';
-        if (currentQueue === goldenPlaylistQueue || isPlaylistActive) {
-            // Refresh queue if empty
-            if (goldenPlaylistQueue.length === 0) {
-                goldenPlaylistQueue = getGoldenTracks();
-                currentGoldenIdx = 0;
-            }
+        // ── Olden Days playlist is driving ───────────────────────────────────
+        if (activePlaylistId === QUEUE_OLDEN_DAYS || currentQueue === goldenPlaylistQueue) {
             if (goldenPlaylistQueue.length === 0) return;
-            // Use dedicated golden index — reliable regardless of libraryTracks size
-            const prevIdx = isShuffle
+            const prevGoldenIdx = isShuffle
                 ? Math.floor(Math.random() * goldenPlaylistQueue.length)
                 : (currentGoldenIdx - 1 + goldenPlaylistQueue.length) % goldenPlaylistQueue.length;
-            window.playPlaylistTrack(prevIdx);
-        } else {
-            if (currentQueue.length === 0) return;
-            currentTrackIndex = (currentTrackIndex - 1 + currentQueue.length) % currentQueue.length;
-            playLibraryTrack(currentTrackIndex);
+            window.playPlaylistTrack(prevGoldenIdx);
+            return;
         }
+
+        // ── Music I 💙 is driving ────────────────────────────────────────────
+        musicILoveQueue = buildMusicILoveQueue();
+        if (musicILoveQueue.length === 0) return;
+        const prevIdx = isShuffle
+            ? Math.floor(Math.random() * musicILoveQueue.length)
+            : (musicILoveIdx - 1 + musicILoveQueue.length) % musicILoveQueue.length;
+        musicILoveIdx = prevIdx;
+        currentQueue = musicILoveQueue;
+        const t = musicILoveQueue[musicILoveIdx];
+        currentTrackIndex = libraryTracks.indexOf(t);
+        playTrack(t.url, t.title, t.artist, t.cover, t.canvas);
+        renderLibrary();
     };
 
     if(btnNext) btnNext.onclick = playNext;
@@ -1647,7 +1724,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.querySelectorAll('.progress-fill').forEach(bar => bar.style.width = progress + '%');
     });
 
-    audio.addEventListener('ended', () => { isRepeat ? audio.play() : playNext(); });
+    audio.addEventListener('ended', () => { playNext(); });
 
     // Audio Visualizer & EQ Logic
     let audioCtx, analyser, source, dataArray;
