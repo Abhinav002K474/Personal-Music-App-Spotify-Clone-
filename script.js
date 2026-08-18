@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "Hymn For The Weekend Lyrics", "artist": "Coldplay", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093549/Coldplay_-_Hymn_For_The_Weekend_Lyrics_bt19jp.mp3", "cover": "neon_beats.png" },
         { "title": "LET THE WORLD BURN Official Lyric Video", "artist": "Chris Grey", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093547/Chris_Grey_-_LET_THE_WORLD_BURN_Official_Lyric_Video_k9hoxo.mp3", "cover": "zen_garden.png" },
         { "title": "Broken Angel Lyrics Ft.Helena Im so lonely", "artist": "Arash", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093545/Arash_-_Broken_Angel_Lyrics_Ft.Helena_Im_so_lonely_broken_angel_xvxhwn.mp3", "cover": "midnight_rain.png" },
-        { "title": "Let Me Down Slowly", "artist": "Alec Benjamin", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093543/Alec_Benjamin_-_Let_Me_Down_Slowly_kcvram.mp3", "cover": "zen_garden.png" },
+        { "title": "Let Me Down Slowly", "artist": "Alec Benjamin", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093543/Alec_Benjamin_-_Let_Me_Down_Slowly_kcvram.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1787043078/vidssave.com_Let_Me_Down_Slowly_AMV_-_Anime_Mix_720P_1_bb6wy9.mp4" },
         { "title": "The Nights Lyrics my father told me", "artist": "Avicii", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093542/Avicii_-_The_Nights_Lyrics_my_father_told_me_e5svqx.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778683695/vidssave.com_One_piece-MV_Avicii-The_Nights_720P_ye2hqn.mp4" },
         { "title": "Moral Of The Story Lyrics 1", "artist": "Ashe", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093541/Ashe_-_Moral_Of_The_Story_Lyrics_1_a8zmg3.mp3", "cover": "zen_garden.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1785576399/Moral_of_the_Story_-_AMV_-_Anime_MV_t6jyln.mp4" },
         { "title": "I Wanna Be Yours Instrumental Best part looped", "artist": "Arctic Monkeys", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778093541/Arctic_Monkeys_-_I_Wanna_Be_Yours_Instrumental_Best_part_looped_z7ljqh.mp3", "cover": "midnight_rain.png" },
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { "title": "Mortals", "artist": "Warriyo ft. Laura Brehm", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778231345/Warriyo_-_Mortals_ft._Laura_Brehm_o8vhwd.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778231291/vidssave.com_Hayato_Awakening___Garena_Free_Fire_720P_ysgs64.mp4" },
         { "title": "Alone x Fadded", "artist": "Alan Walker Mashup", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778231726/Alan_Walker_Mashup_Lyrics_Alone_X_Faded_X_Alone_Pt._2_X_On_My_Way..._alanwalker_fadedxaloneptii_afscdd.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778231741/vidssave.com_ANIME_EYES_EDIT___THIS_IS_4K_ANIME_EYES___PEPEKACHU_1080P_izqkmk.mp4" },
         { "title": "Shatter Me", "artist": "Lindsey Stirling ft. Lzzy Hale", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778346095/Lindsey_Stirling_-_Shatter_Me_ft._Lzzy_Hale_Lyrics_wztopr.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778345854/YTDown_YouTube_Naofumi-_-Raphtalia-Shatter-Me-AMV_Media_ffiphpTEZS8_001_720p_qlou9a.mp4" },
-        { "title": "Royalty X Madara", "artist": "Madara Uchiha AMV", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778350313/vidssave.com_WAKE_UP_TO_REALITY_-_Madara_Uchiha_s_Words_-_Naruto_AMV_Edit_48KBPS_ah4y1q.webm", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/q_auto,f_auto,w_1280,c_limit/v1778350407/vidssave.com_WAKE_UP_TO_REALITY_-_Madara_Uchiha_s_Words_-_Naruto_AMV_Edit_2160P_bwgy18.mp4" },
+        { "title": "Royalty X Madara", "artist": "Madara Uchiha AMV", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778350313/vidssave.com_WAKE_UP_TO_REALITY_-_Madara_Uchiha_s_Words_-_Naruto_AMV_Edit_48KBPS_ah4y1q.webm", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778350407/vidssave.com_WAKE_UP_TO_REALITY_-_Madara_Uchiha_s_Words_-_Naruto_AMV_Edit_2160P_bwgy18.mp4" },
         { "title": "My Demons", "artist": "Starset", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778431256/Starset-My_Demons_Lyrics_Video_u1952b.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778431420/beyblade-amv-my-demons-720-ytshorts.savetube.me_e2w4e9.mp4" },
         { "title": "Stay with me", "artist": "Heavenly Jumpstyle", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778434792/HEAVENLY_JUMPSTYLE_Lyrics_woamjr.mp3", "cover": "neon_beats.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778434595/YTDown_Shorts_Resting-My-Eyes-Leon-Kennedy-Edit-HEAVEN_Media_9uZk7Ugr-Zc_002_720p_nf450q.mp4" },
         { "title": "Dynasty", "artist": "MIIA", "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1778483126/MIIA_-_Dynasty_Lyrics_db8g63.mp3", "cover": "midnight_rain.png", "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778482821/YTDown_YouTube_Dynasty-AMV-Anime-Mix_Media_pmN_l7FuyIg_002_720p_vbrqdr.mp4" },
@@ -270,6 +270,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1785588159/Nightcore_Sweet_Little_Bumblebee_lyric_video_skehr5.mp3",
             "cover": "neon_beats.png",
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1785588186/vidssave.com_Nightcore___Sweet_Little_Bumblebee_lyric_video_720P_kgbncy.mp4"
+        },
+        {
+            "title": "Caramelldansen HD Version (Swedish Original)",
+            "artist": "Caramella Girls",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1787040726/Caramella_Girls_-_Caramelldansen_HD_Version_Swedish_Original_guyspl.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1787040709/vidssave.com_Caramella_Girls_-_Caramelldansen_HD_Version_Swedish_Original_720p_hq9h82.mp4"
         },
         {
             "title": "Pokemon Season 1 Opening",
@@ -507,7 +514,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778345464/vidssave.com_Legends_Never_Die___Ezio_Auditore___Assassin_s_Creed___GMV_1080p_bjgz4d.mp4";
     }
 
-    const hasRoyaltyXMadara = libraryTracks.some(t => t.title.includes("Royalty X Madara"));
+    const hasRoyaltyXMadara = libraryTracks.some(t => {
+        const tLower = t.title.toLowerCase();
+        return (tLower.includes("madara") || tLower.includes("maadara")) && !tLower.includes("centuries");
+    });
     if (!hasRoyaltyXMadara) {
         libraryTracks.push({ 
             "title": "Royalty X Madara", 
@@ -516,6 +526,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             "cover": "neon_beats.png",
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1778350407/vidssave.com_WAKE_UP_TO_REALITY_-_Madara_Uchiha_s_Words_-_Naruto_AMV_Edit_2160P_bwgy18.mp4"
         });
+    } else {
+        const track = libraryTracks.find(t => {
+            const tLower = t.title.toLowerCase();
+            return (tLower.includes("madara") || tLower.includes("maadara")) && !tLower.includes("centuries");
+        });
+        if (track) {
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778350407/vidssave.com_WAKE_UP_TO_REALITY_-_Madara_Uchiha_s_Words_-_Naruto_AMV_Edit_2160P_bwgy18.mp4";
+        }
     }
     
     const hasYoasobi = libraryTracks.some(t => t.title.includes("YOASOBI アイドル"));
@@ -942,10 +960,38 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
+    // Check and add Caramella Girls - Caramelldansen
+    const hasCaramelldansen = libraryTracks.some(t => t.title.toLowerCase().includes("caramelldansen"));
+    if (!hasCaramelldansen) {
+        libraryTracks.push({
+            "title": "Caramelldansen HD Version (Swedish Original)",
+            "artist": "Caramella Girls",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1787040726/Caramella_Girls_-_Caramelldansen_HD_Version_Swedish_Original_guyspl.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1787040709/vidssave.com_Caramella_Girls_-_Caramelldansen_HD_Version_Swedish_Original_720p_hq9h82.mp4"
+        });
+    } else {
+        const track = libraryTracks.find(t => t.title.toLowerCase().includes("caramelldansen"));
+        if (track) {
+            track.artist = "Caramella Girls";
+            track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1787040726/Caramella_Girls_-_Caramelldansen_HD_Version_Swedish_Original_guyspl.mp3";
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1787040709/vidssave.com_Caramella_Girls_-_Caramelldansen_HD_Version_Swedish_Original_720p_hq9h82.mp4";
+        }
+    }
+
     // Robust Patch for "Royalty ft. Neoni Official"
     libraryTracks.forEach(track => {
-        if (track.title.toLowerCase().includes("royalty")) {
+        const titleLower = track.title.toLowerCase();
+        if (titleLower.includes("royalty") && !titleLower.includes("madara") && !titleLower.includes("maadara")) {
             track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1785575408/vidssave.com_Royalty_-_AMV_Anime_Mix_720P_qppstz.mp4";
+        }
+    });
+
+    // Robust Patch for "Royalty X Madara" / "Madara X Royalty" / "Royalty X Maadara"
+    libraryTracks.forEach(track => {
+        const titleLower = track.title.toLowerCase();
+        if ((titleLower.includes("madara") || titleLower.includes("maadara")) && !titleLower.includes("centuries")) {
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1778350407/vidssave.com_WAKE_UP_TO_REALITY_-_Madara_Uchiha_s_Words_-_Naruto_AMV_Edit_2160P_bwgy18.mp4";
         }
     });
 
@@ -960,6 +1006,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     libraryTracks.forEach(track => {
         if (track.title.toLowerCase().includes("moral of the story")) {
             track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1785576399/Moral_of_the_Story_-_AMV_-_Anime_MV_t6jyln.mp4";
+        }
+    });
+
+    // Robust Patch for "Let Me Down Slowly" (Alec Benjamin)
+    libraryTracks.forEach(track => {
+        if (track.title.toLowerCase().includes("let me down slowly")) {
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1787043078/vidssave.com_Let_Me_Down_Slowly_AMV_-_Anime_Mix_720P_1_bb6wy9.mp4";
         }
     });
 
