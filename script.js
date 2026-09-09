@@ -279,6 +279,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1787040709/vidssave.com_Caramella_Girls_-_Caramelldansen_HD_Version_Swedish_Original_720p_hq9h82.mp4"
         },
         {
+            "title": "Senorita",
+            "artist": "Shawn Mendes, Camila Cabello",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1788955625/Senorita_c43jx5.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1788955561/vidssave.com_Se%C3%B1orita_AMV_Rishe_x_Arnold_720P_kpneqt.mp4"
+        },
+        {
+            "title": "Caramella Girls X Demon Slayer",
+            "artist": "Caramella Girls",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1788955625/Demonslayer_Caramella_okcgnd.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1788955539/vidssave.com_%E6%89%8B%E6%8F%8F%E3%81%8D_%E9%AC%BC%E6%BB%85%E3%81%AE%E5%88%83%E3%81%A7%EF%BD%B3%EF%BD%AF%EF%BD%B0%EF%BD%B3%EF%BD%AF%EF%BD%B0%EF%BD%B3%EF%BE%8F%EF%BD%B3%EF%BE%8F_%EF%BE%9F_%EF%BE%9F_-%E9%AC%BC%E6%AE%BA%E9%9A%8A%E7%B7%A8-__kimetsu_Caramelldansen_720P_bgtpah.mp4"
+        },
+        {
             "title": "Pokemon Season 1 Opening",
             "artist": "Pokémon",
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781268669/Pok%C3%A9mon_Season_1_Opening_in_Tamil_jngk1k.mp3",
@@ -978,6 +992,47 @@ document.addEventListener('DOMContentLoaded', async () => {
             track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1787040709/vidssave.com_Caramella_Girls_-_Caramelldansen_HD_Version_Swedish_Original_720p_hq9h82.mp4";
         }
     }
+
+    // Check and add Senorita
+    const hasSenorita = libraryTracks.some(t => t.title.toLowerCase() === "senorita" || t.title.toLowerCase() === "se\u00f1orita");
+    if (!hasSenorita) {
+        libraryTracks.push({
+            "title": "Senorita",
+            "artist": "Shawn Mendes, Camila Cabello",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1788955625/Senorita_c43jx5.mp3",
+            "cover": "midnight_rain.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1788955561/vidssave.com_Se%C3%B1orita_AMV_Rishe_x_Arnold_720P_kpneqt.mp4"
+        });
+    } else {
+        const track = libraryTracks.find(t => t.title.toLowerCase() === "senorita" || t.title.toLowerCase() === "se\u00f1orita");
+        if (track) {
+            track.title = "Senorita";
+            track.artist = "Shawn Mendes, Camila Cabello";
+            track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1788955625/Senorita_c43jx5.mp3";
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1788955561/vidssave.com_Se%C3%B1orita_AMV_Rishe_x_Arnold_720P_kpneqt.mp4";
+        }
+    }
+
+    // Check and add Caramella Girls X Demon Slayer
+    const hasCaramellaDemonSlayer = libraryTracks.some(t => t.title.toLowerCase().includes("demon slayer") && t.title.toLowerCase().includes("caramella"));
+    if (!hasCaramellaDemonSlayer) {
+        libraryTracks.push({
+            "title": "Caramella Girls X Demon Slayer",
+            "artist": "Caramella Girls",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1788955625/Demonslayer_Caramella_okcgnd.mp3",
+            "cover": "neon_beats.png",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1788955539/vidssave.com_%E6%89%8B%E6%8F%8F%E3%81%8D_%E9%AC%BC%E6%BB%85%E3%81%AE%E5%88%83%E3%81%A7%EF%BD%B3%EF%BD%AF%EF%BD%B0%EF%BD%B3%EF%BD%AF%EF%BD%B0%EF%BD%B3%EF%BE%8F%EF%BD%B3%EF%BE%8F_%EF%BE%9F_%EF%BE%9F_-%E9%AC%BC%E6%AE%BA%E9%9A%8A%E7%B7%A8-__kimetsu_Caramelldansen_720P_bgtpah.mp4"
+        });
+    } else {
+        const track = libraryTracks.find(t => t.title.toLowerCase().includes("demon slayer") && t.title.toLowerCase().includes("caramella"));
+        if (track) {
+            track.title = "Caramella Girls X Demon Slayer";
+            track.artist = "Caramella Girls";
+            track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1788955625/Demonslayer_Caramella_okcgnd.mp3";
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1788955539/vidssave.com_%E6%89%8B%E6%8F%8F%E3%81%8D_%E9%AC%BC%E6%BB%85%E3%81%AE%E5%88%83%E3%81%A7%EF%BD%B3%EF%BD%AF%EF%BD%B0%EF%BD%B3%EF%BD%AF%EF%BD%B0%EF%BD%B3%EF%BE%8F%EF%BD%B3%EF%BE%8F_%EF%BE%9F_%EF%BE%9F_-%E9%AC%BC%E6%AE%BA%E9%9A%8A%E7%B7%A8-__kimetsu_Caramelldansen_720P_bgtpah.mp4";
+        }
+    }
+
 
     // Robust Patch for "Royalty ft. Neoni Official"
     libraryTracks.forEach(track => {
