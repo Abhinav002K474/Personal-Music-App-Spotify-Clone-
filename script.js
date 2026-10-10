@@ -293,6 +293,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1788955539/vidssave.com_%E6%89%8B%E6%8F%8F%E3%81%8D_%E9%AC%BC%E6%BB%85%E3%81%AE%E5%88%83%E3%81%A7%EF%BD%B3%EF%BD%AF%EF%BD%B0%EF%BD%B3%EF%BD%AF%EF%BD%B0%EF%BD%B3%EF%BE%8F%EF%BD%B3%EF%BE%8F_%EF%BE%9F_%EF%BE%9F_-%E9%AC%BC%E6%AE%BA%E9%9A%8A%E7%B7%A8-__kimetsu_Caramelldansen_720P_bgtpah.mp4"
         },
         {
+            "title": "Sailor Song",
+            "artist": "Gigi Perez",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1791626191/Sailor_Song_AMV_Gigi_Perez_Edit_mumczq.mp3",
+            "cover": "https://res.cloudinary.com/dhhn1410c/video/upload/v1791626125/vidssave.com_Sailor_Song_AMV_Gigi_Perez_Edit_720P_wujj27.jpg",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1791626125/vidssave.com_Sailor_Song_AMV_Gigi_Perez_Edit_720P_wujj27.mp4"
+        },
+        {
+            "title": "Mary on a Cross",
+            "artist": "Ghost",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1791626200/Ghost_-_Mary_On_A_Cross_gbnpnv.mp3",
+            "cover": "https://res.cloudinary.com/dhhn1410c/video/upload/v1791626102/vidssave.com_Obito_Rin_-_Marry_On_A_Cross_AMV_EDIT_720P_phy9is.jpg",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1791626102/vidssave.com_Obito_Rin_-_Marry_On_A_Cross_AMV_EDIT_720P_phy9is.mp4"
+        },
+        {
             "title": "Pokemon Season 1 Opening",
             "artist": "Pokémon",
             "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1781268669/Pok%C3%A9mon_Season_1_Opening_in_Tamil_jngk1k.mp3",
@@ -1030,6 +1044,48 @@ document.addEventListener('DOMContentLoaded', async () => {
             track.artist = "Caramella Girls";
             track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1788955625/Demonslayer_Caramella_okcgnd.mp3";
             track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1788955539/vidssave.com_%E6%89%8B%E6%8F%8F%E3%81%8D_%E9%AC%BC%E6%BB%85%E3%81%AE%E5%88%83%E3%81%A7%EF%BD%B3%EF%BD%AF%EF%BD%B0%EF%BD%B3%EF%BD%AF%EF%BD%B0%EF%BD%B3%EF%BE%8F%EF%BD%B3%EF%BE%8F_%EF%BE%9F_%EF%BE%9F_-%E9%AC%BC%E6%AE%BA%E9%9A%8A%E7%B7%A8-__kimetsu_Caramelldansen_720P_bgtpah.mp4";
+        }
+    }
+
+    // Check and add Sailor Song
+    const hasSailorSong = libraryTracks.some(t => t.title.toLowerCase().includes("sailor song"));
+    if (!hasSailorSong) {
+        libraryTracks.push({
+            "title": "Sailor Song",
+            "artist": "Gigi Perez",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1791626191/Sailor_Song_AMV_Gigi_Perez_Edit_mumczq.mp3",
+            "cover": "https://res.cloudinary.com/dhhn1410c/video/upload/v1791626125/vidssave.com_Sailor_Song_AMV_Gigi_Perez_Edit_720P_wujj27.jpg",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1791626125/vidssave.com_Sailor_Song_AMV_Gigi_Perez_Edit_720P_wujj27.mp4"
+        });
+    } else {
+        const track = libraryTracks.find(t => t.title.toLowerCase().includes("sailor song"));
+        if (track) {
+            track.title = "Sailor Song";
+            track.artist = "Gigi Perez";
+            track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1791626191/Sailor_Song_AMV_Gigi_Perez_Edit_mumczq.mp3";
+            track.cover = "https://res.cloudinary.com/dhhn1410c/video/upload/v1791626125/vidssave.com_Sailor_Song_AMV_Gigi_Perez_Edit_720P_wujj27.jpg";
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1791626125/vidssave.com_Sailor_Song_AMV_Gigi_Perez_Edit_720P_wujj27.mp4";
+        }
+    }
+
+    // Check and add Mary on a Cross
+    const hasMaryOnACross = libraryTracks.some(t => t.title.toLowerCase().includes("mary on a cross") || t.title.toLowerCase().includes("marry on a cross"));
+    if (!hasMaryOnACross) {
+        libraryTracks.push({
+            "title": "Mary on a Cross",
+            "artist": "Ghost",
+            "url": "https://res.cloudinary.com/dhocv2p3t/video/upload/v1791626200/Ghost_-_Mary_On_A_Cross_gbnpnv.mp3",
+            "cover": "https://res.cloudinary.com/dhhn1410c/video/upload/v1791626102/vidssave.com_Obito_Rin_-_Marry_On_A_Cross_AMV_EDIT_720P_phy9is.jpg",
+            "canvas": "https://res.cloudinary.com/dhhn1410c/video/upload/v1791626102/vidssave.com_Obito_Rin_-_Marry_On_A_Cross_AMV_EDIT_720P_phy9is.mp4"
+        });
+    } else {
+        const track = libraryTracks.find(t => t.title.toLowerCase().includes("mary on a cross") || t.title.toLowerCase().includes("marry on a cross"));
+        if (track) {
+            track.title = "Mary on a Cross";
+            track.artist = "Ghost";
+            track.url = "https://res.cloudinary.com/dhocv2p3t/video/upload/v1791626200/Ghost_-_Mary_On_A_Cross_gbnpnv.mp3";
+            track.cover = "https://res.cloudinary.com/dhhn1410c/video/upload/v1791626102/vidssave.com_Obito_Rin_-_Marry_On_A_Cross_AMV_EDIT_720P_phy9is.jpg";
+            track.canvas = "https://res.cloudinary.com/dhhn1410c/video/upload/v1791626102/vidssave.com_Obito_Rin_-_Marry_On_A_Cross_AMV_EDIT_720P_phy9is.mp4";
         }
     }
 
